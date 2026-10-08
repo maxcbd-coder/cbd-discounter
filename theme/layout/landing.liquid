@@ -1,0 +1,44 @@
+{%- liquid
+  # Gabarits marchands : jamais affichés, renvoyés vers la landing.
+  assign msc_blocked = false
+  case template.name
+    when 'product', 'collection', 'list-collections', 'cart', 'search', 'blog', 'article'
+      assign msc_blocked = true
+  endcase
+  if request.design_mode
+    assign msc_blocked = false
+  endif
+-%}
+<!doctype html>
+<html class="msc-html" lang="{{ request.locale.iso_code }}">
+  <head>
+    {%- if msc_blocked -%}
+      <meta name="robots" content="noindex, nofollow">
+      <meta http-equiv="refresh" content="0; url={{ routes.root_url }}">
+      <script>window.location.replace({{ routes.root_url | json }});</script>
+    {%- endif -%}
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- render 'meta-tags' -%}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+    {{ 'msc-landing.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'msc-landing.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="msc-body">
+    <a class="msc-skip" href="#contenu">Aller au contenu</a>
+    {% section 'msc-header' %}
+    <main id="contenu" role="main">
+      {{ content_for_layout }}
+    </main>
+    {% section 'msc-footer' %}
+  </body>
+</html>

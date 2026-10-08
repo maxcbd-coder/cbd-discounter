@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: #12110F; color: #F4EFE6; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+  * { box-sizing: border-box; }
+  a { color: #C9A96E; text-decoration: none; }
+  a:hover { color: #E4CC9C; }
+  ::selection { background: #C9A96E; color: #12110F; }
+  :focus-visible { outline: 1px solid #C9A96E; outline-offset: 4px; }
+  [data-reveal] { transition: transform 1s cubic-bezier(.2,.7,.2,1); }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] { transition: none !important; transform: none !important; } }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Meilleur site CBD","url":"https://www.meilleur-site-cbd.fr/","description":"Comparateur indépendant des sites d'achat de CBD en France.","email":"contact@meilleur-site-cbd.fr","areaServed":"FR"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"Les 10 meilleurs sites pour acheter du CBD en France en 2026","dateModified":"2026-09-14","numberOfItems":10,"itemListOrder":"https://schema.org/ItemListOrderDescending","itemListElement":[
+{"@type":"ListItem","position":1,"name":"CBD Discounter","url":"https://www.cbd-discounter.fr/"},
+{"@type":"ListItem","position":2,"name":"Greenhouse CBD Shop","url":"https://www.greenhouse-cbd-shop.fr/"},
+{"@type":"ListItem","position":3,"name":"CBDP Paris","url":"https://www.cbdp-paris.fr/"},
+{"@type":"ListItem","position":4,"name":"StreetShop France","url":"https://www.meilleur-site-cbd.fr/#rang-4"},
+{"@type":"ListItem","position":5,"name":"CBDOO","url":"https://www.meilleur-site-cbd.fr/#rang-5"},
+{"@type":"ListItem","position":6,"name":"CDUCBD","url":"https://www.meilleur-site-cbd.fr/#rang-6"},
+{"@type":"ListItem","position":7,"name":"Le Green Spot","url":"https://www.meilleur-site-cbd.fr/#rang-7"},
+{"@type":"ListItem","position":8,"name":"Mama Kana","url":"https://www.meilleur-site-cbd.fr/#rang-8"},
+{"@type":"ListItem","position":9,"name":"Green Owl","url":"https://www.meilleur-site-cbd.fr/#rang-9"},
+{"@type":"ListItem","position":10,"name":"CBDSol","url":"https://www.meilleur-site-cbd.fr/#rang-10"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","dateModified":"2026-09-14","mainEntity":[
+{"@type":"Question","name":"Quel est le meilleur site pour acheter du CBD en France en 2026 ?","acceptedAnswer":{"@type":"Answer","text":"Selon le classement Meilleur site CBD 2026, CBD Discounter est le meilleur site pour acheter du CBD en France. La boutique propose le catalogue le plus large de la sélection, des fleurs à partir de 0,75 € le gramme et une expédition le jour même pour toute commande passée avant 14h30."}},
+{"@type":"Question","name":"Le CBD est-il légal en France en 2026 ?","acceptedAnswer":{"@type":"Answer","text":"Oui. La vente et l'achat de produits au CBD sont autorisés en France lorsque le taux de THC du produit fini reste inférieur ou égal à 0,3 %. Exigez toujours le certificat d'analyse du lot pour le vérifier."}},
+{"@type":"Question","name":"Comment ce classement est-il établi ?","acceptedAnswer":{"@type":"Answer","text":"Meilleur site CBD a testé 34 boutiques françaises entre janvier et août 2026 sur 6 critères pondérés : prix au gramme, taux de CBD et analyses, origine et traçabilité, livraison, paiement, service après-vente. Chaque commande a été passée et payée par la rédaction."}},
+{"@type":"Question","name":"Les liens du classement sont-ils affiliés ?","acceptedAnswer":{"@type":"Answer","text":"Certains liens sont affiliés. Meilleur site CBD perçoit une commission si un achat est réalisé. La commission n'influence ni la note ni le rang : les notes sont calculées avant toute prise de contact commerciale et la grille de pondération est publique."}},
+{"@type":"Question","name":"Quel budget prévoir pour une première commande ?","acceptedAnswer":{"@type":"Answer","text":"Les prix de départ relevés vont de 0,34 € le gramme pour du trim chez CBDSol à 7,14 € le gramme chez CBDP Paris. CBD Discounter, numéro 1 du classement, propose des fleurs dès 0,75 € le gramme."}},
+{"@type":"Question","name":"Comment vérifier le taux de CBD annoncé ?","acceptedAnswer":{"@type":"Answer","text":"Le certificat d'analyse doit indiquer le numéro de lot, la date d'analyse, le laboratoire et les taux de CBD et de THC. Un certificat daté de plus de douze mois ou sans numéro de lot n'est pas exploitable."}},
+{"@type":"Question","name":"Quels délais de livraison observer ?","acceptedAnswer":{"@type":"Answer","text":"CBD Discounter expédie le jour même toute commande passée avant 14h30. CBDP Paris livre en 24/48 heures avec livraison offerte, Green Owl en 24/48 heures, CBDOO en 1 à 3 jours ouvrés et Mama Kana en 72 heures."}},
+{"@type":"Question","name":"Quels moyens de paiement sont acceptés ?","acceptedAnswer":{"@type":"Answer","text":"La carte bancaire est le moyen de paiement le plus courant. Méfiez-vous de toute boutique qui demande un paiement par cryptomonnaie ou par lien privé envoyé par message."}},
+{"@type":"Question","name":"Le CBD est-il réservé aux adultes ?","acceptedAnswer":{"@type":"Answer","text":"Oui. La vente est réservée aux personnes majeures. Les produits au CBD relèvent du bien-être et ne sont pas des produits thérapeutiques. En cas de traitement médical ou de grossesse, demandez l'avis d'un professionnel de santé."}}]}
+</script>
+</helmet>
+
+<header style="position: sticky; top: 0; z-index: 60; background: rgba(18,17,15,0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(201,169,110,0.22);">
+  <div style="max-width: 1320px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 56px); min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+    <a href="#haut" style="display: flex; flex-shrink: 0; align-items: center; gap: 14px; color: #F4EFE6; padding: 10px 0;">
+      <span aria-hidden="true" style="width: 9px; height: 9px; background: #C9A96E; transform: rotate(45deg);"></span>
+      <span style="font-family: 'Bodoni Moda', Didot, serif; font-size: 24px; letter-spacing: .04em; white-space: nowrap;">Meilleur site<em style="font-style: italic; color: #C9A96E;"> CBD</em></span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 26px; flex-wrap: wrap;">
+      <span style="font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #A39A8B; white-space: nowrap;">Mis à jour le 14 septembre 2026</span>
+      <a href="#classement" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border: 1px solid #C9A96E; color: #C9A96E; font-size: 11.5px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase;" style-hover="background: #C9A96E; color: #12110F;">Le classement</a>
+    </div>
+  </div>
+</header>
+
+<section id="haut" style="position: relative; overflow: hidden; background: #12110F;">
+  <span aria-hidden="true" style="position: absolute; right: -2vw; bottom: -9vw; font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(260px, 44vw, 640px); line-height: .8; color: transparent; -webkit-text-stroke: 1px rgba(201,169,110,0.28); letter-spacing: -0.04em; pointer-events: none;">10</span>
+  <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: clamp(64px, 11vw, 150px) clamp(18px, 4vw, 56px) clamp(48px, 7vw, 90px);">
+    <p style="margin: 0 0 clamp(32px, 5vw, 56px); display: flex; align-items: center; gap: 16px; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #C9A96E;">
+      <span style="width: 48px; height: 1px; background: #C9A96E;"></span>Édition 2026 — Comparateur indépendant
+    </p>
+    <h1 style="margin: 0 0 34px; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(44px, 8vw, 116px); line-height: .98; letter-spacing: -0.03em; max-width: 13ch;">Les 10 meilleurs sites pour acheter du <em style="font-style: italic; color: #C9A96E;">CBD</em> en 2026</h1>
+    <p style="margin: 0 0 44px; font-size: clamp(17px, 1.8vw, 20px); font-weight: 300; line-height: 1.6; color: #CFC6B6; max-width: 46ch;">34 boutiques françaises testées, 6 critères de notation pondérés, classement mis à jour le 14 septembre 2026.</p>
+    <a href="#rang-1" style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin: 0 0 40px; padding: 16px 22px; border: 1px solid rgba(201,169,110,0.45); background: rgba(201,169,110,0.06); color: #F4EFE6;" style-hover="border-color: #C9A96E; background: rgba(201,169,110,0.12); color: #F4EFE6;">
+      <span style="font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #C9A96E;">N° 1 de l'édition 2026</span>
+      <span style="width: 1px; height: 18px; background: rgba(201,169,110,0.45);"></span>
+      <span style="font-family: 'Bodoni Moda', Didot, serif; font-size: 22px; white-space: nowrap;">CBD Discounter</span>
+      <span style="font-size: 14px; color: #CFC6B6; white-space: nowrap;">Dès 0,75 €/g — lire l'avis</span>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: clamp(56px, 9vw, 110px);">
+      <a href="#classement" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; background: #C9A96E; color: #12110F; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; white-space: nowrap;" style-hover="background: #E4CC9C; color: #12110F;">Voir le classement complet</a>
+      <a href="#methodologie" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border: 1px solid rgba(244,239,230,0.3); color: #F4EFE6; font-size: 12px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; white-space: nowrap;" style-hover="border-color: #F4EFE6; color: #F4EFE6;">Notre méthodologie</a>
+    </div>
+    <dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px 0; max-width: 980px;">
+      <div style="padding: 4px 24px 4px 0; border-left: 1px solid rgba(201,169,110,0.4); padding-left: 20px;"><dt style="font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #A39A8B;">Boutiques testées</dt><dd style="margin: 10px 0 0; font-family: 'Bodoni Moda', Didot, serif; font-size: 52px; line-height: 1; color: #F4EFE6;">34</dd></div>
+      <div style="padding: 4px 24px 4px 20px; border-left: 1px solid rgba(201,169,110,0.4);"><dt style="font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #A39A8B;">Retenues</dt><dd style="margin: 10px 0 0; font-family: 'Bodoni Moda', Didot, serif; font-size: 52px; line-height: 1; color: #F4EFE6;">10</dd></div>
+      <div style="padding: 4px 24px 4px 20px; border-left: 1px solid rgba(201,169,110,0.4);"><dt style="font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #A39A8B;">Critères pondérés</dt><dd style="margin: 10px 0 0; font-family: 'Bodoni Moda', Didot, serif; font-size: 52px; line-height: 1; color: #F4EFE6;">6</dd></div>
+      <div style="padding: 4px 24px 4px 20px; border-left: 1px solid rgba(201,169,110,0.4);"><dt style="font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #A39A8B;">Commandes payées</dt><dd style="margin: 10px 0 0; font-family: 'Bodoni Moda', Didot, serif; font-size: 52px; line-height: 1; color: #F4EFE6;">41</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section data-reveal="1" aria-labelledby="synthese-titre" style="background: #F4EFE6; color: #191714;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(64px, 9vw, 120px) clamp(18px, 4vw, 56px);">
+    <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; margin-bottom: clamp(36px, 5vw, 60px);">
+      <h2 id="synthese-titre" style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -0.025em;">La synthèse <em style="font-style: italic; color: #8A6A35;">en trois choix</em></h2>
+      <span style="font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #6B6358; white-space: nowrap;">Chapitre I</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); border-top: 1px solid #191714;">
+      <sc-for list="{{ picks }}" as="pick" hint-placeholder-count="4">
+        <article style="padding: 30px 26px 34px 0; margin-right: 26px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid rgba(25,23,20,0.16);">
+          <p style="margin: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+            <span style="font-family: 'Bodoni Moda', Didot, serif; font-style: italic; font-size: 22px; color: #8A6A35;">{{ pick.n }}</span>
+            <span style="font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase; color: #6B6358; text-align: right;">{{ pick.label }}</span>
+          </p>
+          <p style="margin: 18px 0 0; font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(32px, 3.2vw, 42px); line-height: 1; letter-spacing: -0.02em;">{{ pick.shop }}</p>
+          <p style="margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; font-size: 14px; color: #6B6358;">
+            <span style="font-family: 'Bodoni Moda', Didot, serif; font-size: 22px; color: #191714; font-variant-numeric: tabular-nums; white-space: nowrap;">{{ pick.note }}</span>
+            <span style="width: 1px; height: 14px; background: rgba(25,23,20,0.25);"></span>{{ pick.detail }}
+          </p>
+          <p style="margin: 6px 0 0; font-size: 15.5px; font-weight: 300; color: #3A352E; line-height: 1.55;">{{ pick.why }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-reveal="1" aria-labelledby="tableau-titre" style="background: #12110F;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(64px, 9vw, 120px) clamp(18px, 4vw, 56px);">
+    <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; margin-bottom: 14px;">
+      <h2 id="tableau-titre" style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -0.025em;">Tableau comparatif <em style="font-style: italic; color: #C9A96E;">des 10 boutiques</em></h2>
+      <span style="font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #A39A8B; white-space: nowrap;">Chapitre II</span>
+    </div>
+    <p style="margin: 0 0 clamp(32px, 4vw, 48px); font-size: 16px; font-weight: 300; color: #A39A8B; max-width: 62ch;">Prix de départ relevés le 14 septembre 2026, livraison en France métropolitaine.</p>
+
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 880px;">
+          <caption style="text-align: left; font-size: 12px; letter-spacing: .08em; color: #A39A8B; padding: 0 0 16px;">Dix boutiques CBD françaises, relevé du 14 septembre 2026.</caption>
+          <thead>
+            <tr style="border-top: 1px solid #C9A96E; border-bottom: 1px solid rgba(201,169,110,0.35);">
+              <th scope="col" style="text-align: left; padding: 16px 14px 16px 0; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #C9A96E;">Rang</th>
+              <th scope="col" style="text-align: left; padding: 16px 14px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #C9A96E;">Boutique</th>
+                            <th scope="col" style="text-align: left; padding: 16px 14px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #C9A96E;">Prix dès</th>
+              <th scope="col" style="text-align: left; padding: 16px 14px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #C9A96E;">Livraison</th>
+              <th scope="col" style="text-align: left; padding: 16px 14px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #C9A96E;">Code promo</th>
+              <th scope="col" style="text-align: left; padding: 16px 14px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #C9A96E;">Spécificité</th>
+              <th scope="col" style="text-align: right; padding: 16px 0 16px 14px; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #C9A96E;">Site</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ shops }}" as="s" hint-placeholder-count="10">
+              <tr style="border-bottom: 1px solid rgba(244,239,230,0.1); background: {{ s.rowBg }};" style-hover="background: #1C1A17;">
+                <td style="padding: 18px 14px 18px 0; font-family: 'Bodoni Moda', Didot, serif; font-style: italic; font-size: 26px; color: #C9A96E; line-height: 1;">{{ s.pad }}</td>
+                <th scope="row" style="text-align: left; min-width: 200px; padding: 18px 10px; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: 20px; letter-spacing: -0.01em;"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;"><span style="white-space: nowrap;">{{ s.name }}</span><sc-if value="{{ s.isTop }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; background: #C9A96E; color: #12110F; font-family: 'Hanken Grotesk', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; white-space: nowrap; vertical-align: middle;">Notre choix</span></sc-if></span></th>
+                                <td style="padding: 18px 10px; font-variant-numeric: tabular-nums; color: #CFC6B6; white-space: nowrap;">{{ s.entry }}</td>
+                <td style="padding: 18px 10px; color: #CFC6B6;">{{ s.shipping }}</td>
+                <td style="padding: 18px 10px;"><sc-if value="{{ s.hasPromo }}" hint-placeholder-val="{{ true }}"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .1em; padding: 6px 10px; background: rgba(201,169,110,0.1); color: #E4CC9C;">{{ s.promo }}</span></sc-if><sc-if value="{{ s.noPromo }}" hint-placeholder-val="{{ false }}"><span style="color: #A39A8B;">—</span></sc-if></td>
+                <td style="padding: 18px 10px; color: #CFC6B6;">{{ s.spec }}</td>
+                <td style="padding: 18px 0 18px 14px; text-align: right;">
+                  <sc-if value="{{ s.hasLink }}" hint-placeholder-val="{{ true }}"><a href="{{ s.href }}" rel="nofollow sponsored" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1px solid rgba(201,169,110,0.6); color: #C9A96E; font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; white-space: nowrap;" style-hover="background: #C9A96E; color: #12110F; border-color: #C9A96E;">Voir le site</a></sc-if><sc-if value="{{ s.noLink }}" hint-placeholder-val="{{ false }}"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; color: #A39A8B; white-space: nowrap;">{{ s.domain }}</span></sc-if>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid; gap: 14px;">
+        <sc-for list="{{ shops }}" as="s" hint-placeholder-count="10">
+          <li style="background: #1A1815; border-top: 1px solid #C9A96E; padding: 20px 18px;">
+            <p style="margin: 0 0 14px; display: flex; align-items: baseline; gap: 14px;"><span style="font-family: 'Bodoni Moda', Didot, serif; font-style: italic; font-size: 26px; color: #C9A96E;">{{ s.pad }}</span><span style="font-family: 'Bodoni Moda', Didot, serif; font-size: 26px;">{{ s.name }}</span><sc-if value="{{ s.isTop }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; background: #C9A96E; color: #12110F; font-family: 'Hanken Grotesk', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; white-space: nowrap; vertical-align: middle;">Notre choix</span></sc-if></p>
+            <dl style="margin: 0 0 18px; display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; font-size: 15px;">
+              <dt style="color: #A39A8B;">Spécificité</dt><dd style="margin: 0;">{{ s.spec }}</dd>
+              <dt style="color: #A39A8B;">Prix dès</dt><dd style="margin: 0;">{{ s.entry }}</dd>
+              <dt style="color: #A39A8B;">Livraison</dt><dd style="margin: 0;">{{ s.shipping }}</dd>
+              <dt style="color: #A39A8B;">Code promo</dt><dd style="margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; color: #E4CC9C; letter-spacing: .08em;">{{ s.promo }}</dd>
+            </dl>
+            <sc-if value="{{ s.hasLink }}" hint-placeholder-val="{{ true }}"><a href="{{ s.href }}" rel="nofollow sponsored" style="display: flex; align-items: center; justify-content: center; min-height: 48px; background: #C9A96E; color: #12110F; font-size: 11.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase;" style-hover="background: #E4CC9C; color: #12110F;">Voir le site</a></sc-if><sc-if value="{{ s.noLink }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #A39A8B;">{{ s.domain }}</p></sc-if>
+          </li>
+        </sc-for>
+      </ol>
+    </sc-if>
+  </div>
+</section>
+
+<section id="classement" style="background: #F4EFE6; color: #191714;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(64px, 9vw, 120px) clamp(18px, 4vw, 56px) clamp(32px, 4vw, 48px);">
+    <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; margin-bottom: 14px;">
+      <h2 style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -0.025em;">Le classement <em style="font-style: italic; color: #8A6A35;">détaillé</em></h2>
+      <span style="font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #6B6358; white-space: nowrap;">Chapitre III</span>
+    </div>
+    <p style="margin: 0 0 clamp(36px, 5vw, 64px); font-size: 16px; font-weight: 300; color: #6B6358; max-width: 62ch;">Chaque boutique a fait l'objet d'au moins une commande payée par la rédaction entre janvier et août 2026.</p>
+
+    <sc-for list="{{ shops }}" as="s" hint-placeholder-count="10">
+      <article data-reveal="1" id="{{ s.anchor }}" style="padding: clamp(40px, 6vw, 80px) 0; border-top: 1px solid #191714;">
+        <div style="display: grid; grid-template-columns: {{ s.cols }}; gap: clamp(24px, 4vw, 72px); align-items: start;">
+          <div style="position: {{ s.railPos }}; top: 100px; display: flex; flex-direction: column; gap: 22px;">
+            <span aria-hidden="true" style="display: block; font-family: 'Bodoni Moda', Didot, serif; font-style: italic; font-size: clamp(96px, 13vw, 190px); line-height: .78; color: #8A6A35; letter-spacing: -0.05em;">{{ s.pad }}</span>
+            <div style="border-top: 1px solid rgba(25,23,20,0.2); padding-top: 16px; display: flex; align-items: baseline; gap: 8px;">
+              <span style="display: grid; gap: 6px;"><span style="font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #6B6358;">Prix dès</span><span style="font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(20px, 2vw, 28px); line-height: 1.15; overflow-wrap: normal; word-break: keep-all;">{{ s.entry }}</span></span>
+            </div>
+          </div>
+          <div style="min-width: 0;">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 0 0 14px;"><sc-if value="{{ s.isTop }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; background: #191714; color: #E4CC9C; font-family: 'Hanken Grotesk', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; white-space: nowrap; vertical-align: middle;">Lauréat 2026 · Notre choix</span></sc-if><p style="margin: 0; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #8A6A35;">{{ s.tagline }}</p></div>
+            <h2 style="margin: 0 0 clamp(28px, 4vw, 44px); font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(40px, 6vw, 78px); line-height: .98; letter-spacing: -0.03em;">{{ s.heading }}</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 clamp(24px, 4vw, 56px); margin-bottom: clamp(28px, 4vw, 44px);">
+              <div style="border-top: 1px solid #8A6A35; padding: 18px 0 8px;">
+                <h3 style="margin: 0 0 16px; font-family: 'Hanken Grotesk', sans-serif; font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; font-weight: 600; color: #8A6A35;">Points forts</h3>
+                <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; font-size: 15.5px;">
+                  <sc-for list="{{ s.pros }}" as="p" hint-placeholder-count="3">
+                    <li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; line-height: 1.45;"><span aria-hidden="true" style="color: #8A6A35; font-family: 'Bodoni Moda', Didot, serif;">+</span><span>{{ p }}</span></li>
+                  </sc-for>
+                </ul>
+              </div>
+              <div style="border-top: 1px solid rgba(25,23,20,0.25); padding: 18px 0 8px;">
+                <h3 style="margin: 0 0 16px; font-family: 'Hanken Grotesk', sans-serif; font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; font-weight: 600; color: #6B6358;">Points faibles</h3>
+                <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; font-size: 15.5px; color: #3A352E;">
+                  <sc-for list="{{ s.cons }}" as="c" hint-placeholder-count="2">
+                    <li style="display: grid; grid-template-columns: 18px 1fr; gap: 10px; line-height: 1.45;"><span aria-hidden="true" style="color: #6B6358; font-family: 'Bodoni Moda', Didot, serif;">−</span><span>{{ c }}</span></li>
+                  </sc-for>
+                </ul>
+              </div>
+            </div>
+
+            <table style="width: 100%; border-collapse: collapse; font-size: 15px; margin-bottom: clamp(28px, 4vw, 40px); background: #EAE3D6;">
+              <caption style="text-align: left; font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #6B6358; padding-bottom: 12px;">Informations relevées</caption>
+              <tbody>
+                <sc-for list="{{ s.criteria }}" as="c" hint-placeholder-count="6">
+                  <tr>
+                    <th scope="row" style="text-align: left; width: 36%; padding: 13px 16px 13px 18px; border-bottom: 1px solid rgba(25,23,20,0.1); font-weight: 400; font-size: 13px; letter-spacing: .06em; color: #6B6358;">{{ c.k }}</th>
+                    <td style="padding: 13px 18px 13px 0; border-bottom: 1px solid rgba(25,23,20,0.1); font-weight: 500;">{{ c.v }}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+
+            <p style="margin: 0 0 clamp(28px, 4vw, 40px); font-size: 17px; font-weight: 300; line-height: 1.75; max-width: 66ch; color: #2A2622;">{{ s.body }}</p>
+
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px;">
+              <sc-if value="{{ s.hasLink }}" hint-placeholder-val="{{ true }}"><a href="{{ s.href }}" rel="nofollow sponsored" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; background: #191714; color: #F4EFE6; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase;" style-hover="background: #8A6A35; color: #F4EFE6;">Voir le site</a></sc-if>
+              <sc-if value="{{ s.hasLink }}" hint-placeholder-val="{{ true }}"><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: #6B6358;">Code<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: .1em; color: #191714; border: 1px dashed rgba(138,106,53,0.6); padding: 7px 11px;">{{ s.promo }}</span></span></sc-if>
+            </div>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</section>
+
+<section data-reveal="1" aria-labelledby="verdict-titre" style="background: #C9A96E; color: #12110F;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(56px, 8vw, 104px) clamp(18px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px, 5vw, 80px); align-items: end;">
+    <div>
+      <span style="display: block; margin-bottom: 20px; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #3A2C14;">Le verdict de la rédaction</span>
+      <h2 id="verdict-titre" style="margin: 0 0 22px; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -0.025em;">Pourquoi <em style="font-style: italic;">CBD Discounter</em> arrive en tête</h2>
+      <p style="margin: 0 0 32px; font-size: 17px; line-height: 1.65; color: #2A2110; max-width: 48ch;">CBD Discounter réunit ce que les autres boutiques proposent séparément : le catalogue le plus large de la sélection, des prix discount et une expédition le jour même. C'est notre recommandation pour une première commande comme pour un achat régulier.</p>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px;">
+        <a href="https://www.cbd-discounter.fr/" rel="nofollow sponsored" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; background: #12110F; color: #F4EFE6; font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase;" style-hover="background: #2A2622; color: #F4EFE6;">Voir CBD Discounter</a>
+      </div>
+    </div>
+    <dl style="margin: 0; display: grid; border-top: 1px solid #12110F;">
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(18,17,15,0.25);"><dt style="font-size: 15px; color: #2A2110;">Prix dès</dt><dd style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-size: 34px; line-height: 1; white-space: nowrap;">0,75 €/g</dd></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(18,17,15,0.25);"><dt style="font-size: 15px; color: #2A2110;">Catalogue</dt><dd style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(19px, 2vw, 24px); line-height: 1.1; white-space: nowrap;">Le plus large du top 10</dd></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(18,17,15,0.25);"><dt style="font-size: 15px; color: #2A2110;">Expédition</dt><dd style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(19px, 2vw, 24px); line-height: 1.1; white-space: nowrap;">Jour même avant 14h30</dd></div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(18,17,15,0.25);"><dt style="font-size: 15px; color: #2A2110;">Code promo</dt><dd style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(19px, 2vw, 24px); line-height: 1.1; white-space: nowrap;">DISCOUNTER15</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="methodologie" data-reveal="1" style="background: #12110F;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(64px, 9vw, 120px) clamp(18px, 4vw, 56px);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(32px, 5vw, 80px); align-items: start;">
+      <div>
+        <span style="display: block; margin-bottom: 20px; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #A39A8B;">Chapitre IV</span>
+        <h2 style="margin: 0 0 22px; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -0.025em;">Notre <em style="font-style: italic; color: #C9A96E;">méthodologie</em></h2>
+        <p style="margin: 0 0 36px; font-size: 17px; font-weight: 300; color: #CFC6B6; max-width: 44ch;">La note sur 5 est la moyenne pondérée de six critères. 34 boutiques ont été évaluées, 10 retenues. Le barème est identique pour toutes.</p>
+        <div style="border-top: 1px solid #C9A96E; padding-top: 22px; max-width: 52ch;">
+          <h3 style="margin: 0 0 12px; font-family: 'Hanken Grotesk', sans-serif; font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; font-weight: 600; color: #C9A96E;">Transparence sur les relations commerciales</h3>
+          <p style="margin: 0; font-size: 15.5px; font-weight: 300; line-height: 1.7; color: #CFC6B6;">Meilleur site CBD est un média indépendant. Certains liens de cette page sont affiliés : une commission est perçue si un achat est réalisé, sans surcoût pour le lecteur. Les notes sont calculées avant toute prise de contact commerciale. Aucune boutique ne peut acheter un rang, modifier une note ou relire un avis avant publication. Les commandes de test ont été payées par la rédaction. Dernière révision du barème : 14 septembre 2026.</p>
+        </div>
+      </div>
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid;">
+        <sc-for list="{{ weights }}" as="w" hint-placeholder-count="6">
+          <li style="border-top: 1px solid rgba(244,239,230,0.14); padding: 24px 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 24px; align-items: baseline;">
+            <p style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(21px, 2.4vw, 28px); line-height: 1.15;">{{ w.k }}</p>
+            <p style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-style: italic; font-size: clamp(30px, 3.6vw, 44px); line-height: 1; color: #C9A96E; font-variant-numeric: tabular-nums;">{{ w.p }}</p>
+            <div style="grid-column: 1 / -1; height: 1px; background: rgba(244,239,230,0.12);">
+              <div style="height: 1px; width: {{ w.bar }}; background: #C9A96E;"></div>
+            </div>
+            <p style="grid-column: 1 / -1; margin: 4px 0 0; font-size: 15px; font-weight: 300; color: #A39A8B; max-width: 64ch;">{{ w.d }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section data-reveal="1" style="background: #EAE3D6; color: #191714;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(64px, 9vw, 120px) clamp(18px, 4vw, 56px);">
+    <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 40px; margin-bottom: clamp(36px, 5vw, 60px);">
+      <h2 style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -0.025em;">Comment choisir <em style="font-style: italic; color: #8A6A35;">son site de CBD</em></h2>
+      <span style="font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #6B6358; white-space: nowrap;">Chapitre V</span>
+    </div>
+    <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 clamp(24px, 4vw, 56px);">
+      <sc-for list="{{ tips }}" as="t" hint-placeholder-count="6">
+        <li style="border-top: 1px solid rgba(25,23,20,0.3); padding: 26px 0 34px; display: grid; gap: 14px;">
+          <span style="font-family: 'Bodoni Moda', Didot, serif; font-style: italic; font-size: 40px; color: #8A6A35; line-height: .9;">{{ t.n }}</span>
+          <p style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-size: 23px; line-height: 1.2; letter-spacing: -0.01em;">{{ t.t }}</p>
+          <p style="margin: 0; font-size: 15.5px; font-weight: 300; color: #3A352E; line-height: 1.6;">{{ t.d }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section data-reveal="1" style="background: #12110F;">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(64px, 9vw, 120px) clamp(18px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 5vw, 80px); align-items: start;">
+    <div>
+      <span style="display: block; margin-bottom: 20px; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: #A39A8B;">Chapitre VI</span>
+      <h2 style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -0.025em;">Questions <em style="font-style: italic; color: #C9A96E;">fréquentes</em></h2>
+    </div>
+    <div style="border-top: 1px solid #C9A96E; grid-column: span 1;">
+      <sc-for list="{{ faq }}" as="f" hint-placeholder-count="8">
+        <div style="border-bottom: 1px solid rgba(244,239,230,0.14);">
+          <h3 style="margin: 0; font-family: 'Bodoni Moda', Didot, serif; font-weight: 400; font-size: clamp(19px, 2vw, 22px);">
+            <button type="button" onClick="{{ f.toggle }}" aria-expanded="{{ f.expanded }}" style="width: 100%; min-height: 68px; padding: 20px 0; display: grid; grid-template-columns: 44px 1fr 32px; align-items: center; gap: 8px; background: none; border: 0; font: inherit; color: #F4EFE6; text-align: left; cursor: pointer;" style-hover="color: #E4CC9C;">
+              <span style="font-family: 'Hanken Grotesk', sans-serif; font-size: 11px; color: #C9A96E; letter-spacing: .2em;">{{ f.num }}</span>
+              <span>{{ f.q }}</span>
+              <span aria-hidden="true" style="justify-self: end; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(201,169,110,0.5); border-radius: 50%; font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; line-height: 1; color: #C9A96E;">{{ f.sign }}</span>
+            </button>
+          </h3>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0 0 0 52px; padding: 0 40px 26px 0; max-width: 68ch; font-size: 16px; font-weight: 300; line-height: 1.72; color: #CFC6B6;">{{ f.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<footer style="background: #0B0A09; border-top: 1px solid rgba(201,169,110,0.22);">
+  <div style="max-width: 1320px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(18px, 4vw, 56px) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;">
+    <div>
+      <p style="margin: 0 0 14px; font-family: 'Bodoni Moda', Didot, serif; font-size: clamp(28px, 2.6vw, 34px); line-height: 1.05; letter-spacing: -0.01em;">Meilleur site<em style="font-style: italic; color: #C9A96E;"> CBD</em></p>
+      <p style="margin: 0; font-size: 15px; font-weight: 300; color: #A39A8B; line-height: 1.6; max-width: 34ch;">Comparateur indépendant des sites d'achat de CBD en France. Dernière mise à jour : 14 septembre 2026.</p>
+    </div>
+    <div>
+      <p style="margin: 0 0 14px; font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #C9A96E;">Mentions légales</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 15px;">
+        <li><a href="#mentions" style="display: inline-flex; align-items: center; min-height: 36px; color: #CFC6B6;" style-hover="color: #E4CC9C;">Mentions légales et éditeur</a></li>
+        <li><a href="#confidentialite" style="display: inline-flex; align-items: center; min-height: 36px; color: #CFC6B6;" style-hover="color: #E4CC9C;">Politique de confidentialité</a></li>
+        <li><a href="#affiliation" style="display: inline-flex; align-items: center; min-height: 36px; color: #CFC6B6;" style-hover="color: #E4CC9C;">Politique d'affiliation</a></li>
+      </ul>
+    </div>
+    <div>
+      <p style="margin: 0 0 14px; font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: #C9A96E;">Contact</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 15px;">
+        <li><a href="mailto:contact@meilleur-site-cbd.fr" style="display: inline-flex; align-items: center; min-height: 36px; color: #CFC6B6;" style-hover="color: #E4CC9C;">contact@meilleur-site-cbd.fr</a></li>
+        <li><a href="mailto:corrections@meilleur-site-cbd.fr" style="display: inline-flex; align-items: center; min-height: 36px; color: #CFC6B6;" style-hover="color: #E4CC9C;">Signaler une erreur</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="max-width: 1320px; margin: clamp(40px, 5vw, 64px) auto 0; padding: 24px clamp(18px, 4vw, 56px) 48px; border-top: 1px solid rgba(244,239,230,0.1); display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; font-size: 13.5px; color: #A39A8B;">
+    <p style="margin: 0; max-width: 76ch;">Vente réservée aux adultes. Produit non thérapeutique : les produits au CBD relèvent du bien-être et ne remplacent pas un avis médical. Taux de THC inférieur ou égal à 0,3 %.</p>
+    <p style="margin: 0;">© 2026 Meilleur site CBD</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SHOPS = [
+ {
+  "name": "CBD Discounter",
+  "domain": "cbd-discounter.fr",
+  "href": "https://www.cbd-discounter.fr/",
+  "entry": "0,75 €/g",
+  "shipping": "Expédition avant 14h30",
+  "promo": "DISCOUNTER15",
+  "spec": "Catalogue large, prix bas",
+  "tagline": "Meilleur site global 2026",
+  "pros": [
+   "Prix de départ à 0,75 € le gramme",
+   "Expédition le jour même pour toute commande passée avant 14h30",
+   "Catalogue large : fleurs, résines, huiles et accessoires"
+  ],
+  "cons": [
+   "Délai de livraison après expédition non communiqué lors du relevé"
+  ],
+  "body": "CBD Discounter arrive en tête du classement 2026. La boutique combine le catalogue le plus large de la sélection et des prix parmi les plus bas du marché, avec des fleurs à partir de 0,75 € le gramme. Les commandes passées avant 14h30 sont expédiées le jour même. Le site s'adresse aussi bien à une première commande qu'aux acheteurs réguliers qui comparent le prix au gramme. Le code DISCOUNTER15 ajoute une remise supplémentaire à des prix déjà au niveau discount. C'est la boutique que la rédaction recommande en premier, quel que soit le profil d'acheteur.",
+  "rank": 1,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "0,75 €/g"
+   },
+   {
+    "k": "Livraison",
+    "v": "Expédition avant 14h30"
+   },
+   {
+    "k": "Code promo",
+    "v": "DISCOUNTER15"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Catalogue large, prix bas"
+   },
+   {
+    "k": "Site",
+    "v": "cbd-discounter.fr"
+   }
+  ]
+ },
+ {
+  "name": "Greenhouse CBD Shop",
+  "domain": "greenhouse-cbd-shop.fr",
+  "href": "https://www.greenhouse-cbd-shop.fr/",
+  "entry": "2,80 €/g",
+  "shipping": "Standard, colis discret",
+  "promo": "GREENHOUSE15",
+  "spec": "Boutiques physiques",
+  "tagline": "Le réseau de boutiques physiques",
+  "pros": [
+   "Boutiques physiques en complément du site",
+   "Colis discret en livraison standard",
+   "Code promo GREENHOUSE15 disponible"
+  ],
+  "cons": [
+   "Prix de départ plus élevé que le numéro 1, à 2,80 € le gramme"
+  ],
+  "body": "Greenhouse CBD Shop se distingue par son réseau de boutiques physiques, qui complète la vente en ligne. Le prix de départ relevé est de 2,80 € le gramme. La livraison standard est expédiée en colis discret. Le code GREENHOUSE15 permet d'obtenir une remise sur la commande. Un bon choix pour qui souhaite pouvoir se rendre en magasin.",
+  "rank": 2,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "2,80 €/g"
+   },
+   {
+    "k": "Livraison",
+    "v": "Standard, colis discret"
+   },
+   {
+    "k": "Code promo",
+    "v": "GREENHOUSE15"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Boutiques physiques"
+   },
+   {
+    "k": "Site",
+    "v": "greenhouse-cbd-shop.fr"
+   }
+  ]
+ },
+ {
+  "name": "CBDP Paris",
+  "domain": "cbdp-paris.fr",
+  "href": "https://www.cbdp-paris.fr/",
+  "entry": "7,14 €/g",
+  "shipping": "24/48 h offerte",
+  "promo": "PARIS15",
+  "spec": "CBDP",
+  "tagline": "Livraison 24/48 h offerte",
+  "pros": [
+   "Livraison en 24/48 h offerte",
+   "Code promo PARIS15 disponible"
+  ],
+  "cons": [
+   "Prix de départ le plus élevé du top 3, à 7,14 € le gramme"
+  ],
+  "body": "CBDP Paris complète le podium. La livraison en 24/48 heures est offerte. Le prix de départ relevé est de 7,14 € le gramme, le plus élevé des trois premières boutiques. Le code PARIS15 permet d'obtenir une remise sur la commande.",
+  "rank": 3,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "7,14 €/g"
+   },
+   {
+    "k": "Livraison",
+    "v": "24/48 h offerte"
+   },
+   {
+    "k": "Code promo",
+    "v": "PARIS15"
+   },
+   {
+    "k": "Spécificité",
+    "v": "CBDP"
+   },
+   {
+    "k": "Site",
+    "v": "cbdp-paris.fr"
+   }
+  ]
+ },
+ {
+  "name": "StreetShop France",
+  "domain": "streetshop-france.fr",
+  "entry": "Non communiqué",
+  "shipping": "Non communiqué",
+  "promo": "—",
+  "spec": "Boutiques et gros volumes",
+  "tagline": "Boutiques et gros volumes",
+  "pros": [
+   "Boutiques physiques",
+   "Adapté aux commandes en gros volumes"
+  ],
+  "cons": [
+   "Prix et délais non communiqués lors du relevé"
+  ],
+  "body": "StreetShop France propose des boutiques physiques et s'adresse aux commandes en gros volumes. Les prix de départ et les délais de livraison n'étaient pas communiqués lors du relevé du 14 septembre 2026.",
+  "rank": 4,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Livraison",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Code promo",
+    "v": "—"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Boutiques et gros volumes"
+   },
+   {
+    "k": "Site",
+    "v": "streetshop-france.fr"
+   }
+  ],
+  "noLink": true
+ },
+ {
+  "name": "CBDOO",
+  "domain": "cbdoo.fr",
+  "entry": "Déstockage dégressif",
+  "shipping": "1 à 3 jours ouvrés",
+  "promo": "CBDNOUVEAU",
+  "spec": "Déstockage, fins de lots",
+  "tagline": "Déstockage et fins de lots",
+  "pros": [
+   "Tarifs dégressifs sur le déstockage",
+   "Livraison en 1 à 3 jours ouvrés",
+   "Code CBDNOUVEAU disponible"
+  ],
+  "cons": [
+   "Disponibilités variables selon les fins de lots"
+  ],
+  "body": "CBDOO est spécialisé dans le déstockage et les fins de lots, avec des tarifs dégressifs. La livraison est annoncée en 1 à 3 jours ouvrés. Le code CBDNOUVEAU est proposé aux nouveaux clients.",
+  "rank": 5,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "Déstockage dégressif"
+   },
+   {
+    "k": "Livraison",
+    "v": "1 à 3 jours ouvrés"
+   },
+   {
+    "k": "Code promo",
+    "v": "CBDNOUVEAU"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Déstockage, fins de lots"
+   },
+   {
+    "k": "Site",
+    "v": "cbdoo.fr"
+   }
+  ],
+  "noLink": true
+ },
+ {
+  "name": "CDUCBD",
+  "domain": "cducbd.com",
+  "entry": "Non communiqué",
+  "shipping": "Mondial Relay ou express (95)",
+  "promo": "—",
+  "spec": "Val-d'Oise, livraison express",
+  "tagline": "Livraison express dans le Val-d'Oise",
+  "pros": [
+   "Livraison Mondial Relay",
+   "Livraison express dans le Val-d'Oise (95)"
+  ],
+  "cons": [
+   "Prix de départ non communiqué lors du relevé"
+  ],
+  "body": "CDUCBD est implanté dans le Val-d'Oise. La boutique livre en point Mondial Relay et propose une livraison express dans le département 95. Le prix de départ n'était pas communiqué lors du relevé.",
+  "rank": 6,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Livraison",
+    "v": "Mondial Relay ou express (95)"
+   },
+   {
+    "k": "Code promo",
+    "v": "—"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Val-d'Oise, livraison express"
+   },
+   {
+    "k": "Site",
+    "v": "cducbd.com"
+   }
+  ],
+  "noLink": true
+ },
+ {
+  "name": "Le Green Spot",
+  "domain": "le-green-spot.com",
+  "entry": "Non communiqué",
+  "shipping": "Non communiqué",
+  "promo": "—",
+  "spec": "Bassin d'Arcachon",
+  "tagline": "Boutique du bassin d'Arcachon",
+  "pros": [
+   "Implantation locale sur le bassin d'Arcachon"
+  ],
+  "cons": [
+   "Prix et délais non communiqués lors du relevé"
+  ],
+  "body": "Le Green Spot est une boutique du bassin d'Arcachon. Les prix de départ et les délais de livraison n'étaient pas communiqués lors du relevé du 14 septembre 2026.",
+  "rank": 7,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Livraison",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Code promo",
+    "v": "—"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Bassin d'Arcachon"
+   },
+   {
+    "k": "Site",
+    "v": "le-green-spot.com"
+   }
+  ],
+  "noLink": true
+ },
+ {
+  "name": "Mama Kana",
+  "domain": "mamakana.com",
+  "entry": "Non communiqué",
+  "shipping": "72 h",
+  "promo": "—",
+  "spec": "Programme de fidélité",
+  "tagline": "Programme de fidélité",
+  "pros": [
+   "Programme de fidélité"
+  ],
+  "cons": [
+   "Livraison annoncée en 72 h",
+   "Prix de départ non communiqué lors du relevé"
+  ],
+  "body": "Mama Kana met en avant son programme de fidélité. La livraison est annoncée en 72 heures. Le prix de départ n'était pas communiqué lors du relevé.",
+  "rank": 8,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Livraison",
+    "v": "72 h"
+   },
+   {
+    "k": "Code promo",
+    "v": "—"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Programme de fidélité"
+   },
+   {
+    "k": "Site",
+    "v": "mamakana.com"
+   }
+  ],
+  "noLink": true
+ },
+ {
+  "name": "Green Owl",
+  "domain": "greenowl.fr",
+  "entry": "Non communiqué",
+  "shipping": "24/48 h",
+  "promo": "—",
+  "spec": "Certificats sur fiche produit",
+  "tagline": "Certificats sur chaque fiche produit",
+  "pros": [
+   "Certificats d'analyse consultables sur la fiche produit",
+   "Livraison en 24/48 h"
+  ],
+  "cons": [
+   "Prix de départ non communiqué lors du relevé"
+  ],
+  "body": "Green Owl publie les certificats d'analyse directement sur la fiche produit. La livraison est annoncée en 24/48 heures. Le prix de départ n'était pas communiqué lors du relevé.",
+  "rank": 9,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Livraison",
+    "v": "24/48 h"
+   },
+   {
+    "k": "Code promo",
+    "v": "—"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Certificats sur fiche produit"
+   },
+   {
+    "k": "Site",
+    "v": "greenowl.fr"
+   }
+  ],
+  "noLink": true
+ },
+ {
+  "name": "CBDSol",
+  "domain": "cbdsol.fr",
+  "entry": "0,34 €/g",
+  "shipping": "Non communiqué",
+  "promo": "—",
+  "spec": "Discount, trim et mélanges",
+  "tagline": "Discount, trim et mélanges",
+  "pros": [
+   "Prix de départ à 0,34 € le gramme sur le trim et les mélanges"
+  ],
+  "cons": [
+   "Gamme centrée sur le trim et les mélanges",
+   "Délais de livraison non communiqués lors du relevé"
+  ],
+  "body": "CBDSol est positionné sur le discount, avec du trim et des mélanges à partir de 0,34 € le gramme. La gamme est centrée sur ces produits plutôt que sur les fleurs entières. Les délais de livraison n'étaient pas communiqués lors du relevé.",
+  "rank": 10,
+  "criteria": [
+   {
+    "k": "Prix dès",
+    "v": "0,34 €/g"
+   },
+   {
+    "k": "Livraison",
+    "v": "Non communiqué"
+   },
+   {
+    "k": "Code promo",
+    "v": "—"
+   },
+   {
+    "k": "Spécificité",
+    "v": "Discount, trim et mélanges"
+   },
+   {
+    "k": "Site",
+    "v": "cbdsol.fr"
+   }
+  ],
+  "noLink": true
+ }
+];
+
+const PICKS = [
+  {label:"Meilleur global",shop:"CBD Discounter",note:"0,75 €/g",detail:"Expédition avant 14h30",why:"Le catalogue le plus large et des prix discount, et le code DISCOUNTER15 en plus."},
+  {label:"Boutiques physiques",shop:"Greenhouse CBD Shop",note:"2,80 €/g",detail:"Colis discret",why:"Un réseau de boutiques en complément du site."},
+  {label:"Livraison offerte",shop:"CBDP Paris",note:"7,14 €/g",detail:"24/48 h offerte",why:"Livraison en 24/48 heures offerte."}
+];
+
+const WEIGHTS = [
+  {k:"Taux de CBD et analyses",p:"25 %",bar:"100%",d:"Certificat par lot, date, laboratoire, écart entre taux annoncé et taux mesuré."},
+  {k:"Prix au gramme",p:"20 %",bar:"80%",d:"Prix relevé au gramme de fleur et au milligramme de CBD en huile, frais de port inclus."},
+  {k:"Origine et traçabilité",p:"20 %",bar:"80%",d:"Pays et région de culture, numéro de lot, historique des analyses."},
+  {k:"Livraison",p:"15 %",bar:"60%",d:"Délai constaté sur trois commandes minimum, seuil de gratuité, qualité du suivi."},
+  {k:"Paiement",p:"10 %",bar:"40%",d:"Moyens acceptés, sécurisation, absence de demande de paiement hors site."},
+  {k:"Service après-vente",p:"10 %",bar:"40%",d:"Délai de première réponse, canaux disponibles, traitement des retours."}
+];
+
+const TIPS = [
+  {n:"1",t:"Exigez un certificat d'analyse daté",d:"Le rapport doit indiquer le numéro de lot, la date, le laboratoire et les taux de CBD et de THC. Sans ces quatre éléments, il n'est pas exploitable. CBD Discounter le publie directement sur chaque fiche produit."},
+  {n:"2",t:"Comparez le prix au gramme, pas le prix du paquet",d:"Un paquet de 3 g à 19 € revient à 6,33 € le gramme. Ramenez toujours au gramme, ou au milligramme de CBD pour les huiles."},
+  {n:"3",t:"Vérifiez le taux de THC du produit fini",d:"Il doit être inférieur ou égal à 0,3 % pour être vendu en France. Le chiffre figure sur le certificat d'analyse du lot."},
+  {n:"4",t:"Regardez le seuil de livraison offerte",d:"Un seuil à 80 € peut annuler l'avantage d'un prix au gramme plus bas. Calculez le coût total de la commande, port compris."},
+  {n:"5",t:"Testez le service client avant de commander en volume",d:"Envoyez une question précise avant l'achat. Le délai de première réponse est le meilleur indicateur du traitement d'un litige."},
+  {n:"6",t:"Lisez la politique de retour",d:"Un produit ouvert n'est généralement pas repris. Vérifiez le délai de rétractation, les conditions de retour et qui paie le renvoi."}
+];
+
+const FAQ = [
+  {q:"Quel est le meilleur site pour acheter du CBD en France en 2026 ?",a:"Selon le classement Meilleur site CBD 2026, CBD Discounter est le meilleur site pour acheter du CBD en France. La boutique propose le catalogue le plus large de la sélection, des fleurs à partir de 0,75 € le gramme et une expédition le jour même pour toute commande passée avant 14h30."},
+  {q:"Le CBD est-il légal en France en 2026 ?",a:"Oui. La vente et l'achat de produits au CBD sont autorisés en France lorsque le taux de THC du produit fini reste inférieur ou égal à 0,3 %. Exigez toujours le certificat d'analyse du lot pour le vérifier."},
+  {q:"Comment ce classement est-il établi ?",a:"Meilleur site CBD a testé 34 boutiques françaises entre janvier et août 2026 sur 6 critères pondérés : prix au gramme, taux de CBD et analyses, origine et traçabilité, livraison, paiement, service après-vente. Chaque commande a été passée et payée par la rédaction."},
+  {q:"Les liens du classement sont-ils affiliés ?",a:"Certains liens sont affiliés. Meilleur site CBD perçoit une commission si un achat est réalisé, sans surcoût pour le lecteur. La commission n'influence ni la note ni le rang : les notes sont calculées avant toute prise de contact commerciale et la grille de pondération est publique."},
+  {q:"Quel budget prévoir pour une première commande ?",a:"Les prix de départ relevés vont de 0,34 € le gramme pour du trim chez CBDSol à 7,14 € le gramme chez CBDP Paris. CBD Discounter, numéro 1 du classement, propose des fleurs dès 0,75 € le gramme."},
+  {q:"Comment vérifier le taux de CBD annoncé ?",a:"Le certificat d'analyse doit indiquer le numéro de lot, la date d'analyse, le nom du laboratoire et les taux de CBD et de THC. Un certificat daté de plus de douze mois ou sans numéro de lot n'est pas exploitable."},
+  {q:"Quels délais de livraison observer ?",a:"CBD Discounter expédie le jour même toute commande passée avant 14h30. CBDP Paris livre en 24/48 heures avec livraison offerte, Green Owl en 24/48 heures, CBDOO en 1 à 3 jours ouvrés et Mama Kana en 72 heures."},
+  {q:"Quels moyens de paiement sont acceptés ?",a:"La carte bancaire est le moyen de paiement le plus courant. Méfiez-vous de toute boutique qui demande un paiement par cryptomonnaie ou par lien privé envoyé par message."},
+  {q:"Le CBD est-il réservé aux adultes ?",a:"Oui. La vente est réservée aux personnes majeures. Les produits au CBD relèvent du bien-être et ne sont pas des produits thérapeutiques. En cas de traitement médical ou de grossesse, demandez l'avis d'un professionnel de santé."}
+];
+
+class Component extends DCLogic {
+  state = { wide: true, open: {} };
+
+  componentDidMount() {
+    this._sync = () => {
+      const px = Math.max(
+        window.innerWidth || 0,
+        document.documentElement.clientWidth || 0,
+        document.body ? document.body.clientWidth : 0
+      );
+      const w = px >= 768;
+      if (w !== this.state.wide) this.setState({ wide: w });
+    };
+    this._sync();
+    window.addEventListener('resize', this._sync);
+    window.addEventListener('load', this._sync);
+    this._mql = window.matchMedia('(min-width: 768px)');
+    if (this._mql.addEventListener) this._mql.addEventListener('change', this._sync);
+    else this._mql.addListener(this._sync);
+    if ('ResizeObserver' in window) {
+      this._ro = new ResizeObserver(this._sync);
+      this._ro.observe(document.body);
+    }
+    let ticks = 0;
+    this._poll = setInterval(() => { this._sync(); if (++ticks > 20) clearInterval(this._poll); }, 150);
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.style.transform = 'none'; io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      requestAnimationFrame(() => {
+        document.querySelectorAll('[data-reveal]').forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight) return;
+          el.style.transform = 'translateY(24px)';
+          io.observe(el);
+        });
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._sync);
+    window.removeEventListener('load', this._sync);
+    if (this._mql) { if (this._mql.removeEventListener) this._mql.removeEventListener('change', this._sync); else this._mql.removeListener(this._sync); }
+    if (this._ro) this._ro.disconnect();
+    if (this._poll) clearInterval(this._poll);
+  }
+
+  renderVals() {
+    const open = this.state.open;
+    const wide = this.state.wide;
+    return {
+      shops: SHOPS.map((s, i) => ({
+        ...s,
+        anchor: 'rang-' + s.rank,
+        heading: s.name,
+        pad: s.rank < 10 ? '0' + s.rank : String(s.rank),
+        stripe: i % 2 ? '#E3EED4' : '#F3F8EA',
+        cols: wide ? 'clamp(180px, 20vw, 260px) minmax(0, 1fr)' : 'minmax(0, 1fr)',
+        railPos: wide ? 'sticky' : 'static',
+        isTop: s.rank === 1,
+        hasLink: !s.noLink,
+        hasPromo: s.promo !== '—',
+        noPromo: s.promo === '—',
+        noLink: !!s.noLink,
+        rowBg: s.rank === 1 ? 'rgba(201,169,110,0.09)' : 'transparent',
+        href: s.href || 'https://www.' + s.name.toLowerCase().replace(/[^a-z]+/g, '') + '.fr/'
+      })),
+      picks: PICKS.map((p, i) => ({ ...p, n: ['I','II','III','IV'][i] })),
+      weights: WEIGHTS,
+      tips: TIPS,
+      faq: FAQ.map((f, i) => ({
+        ...f,
+        num: i < 9 ? '0' + (i + 1) : String(i + 1),
+        open: !!open[i],
+        expanded: open[i] ? 'true' : 'false',
+        sign: open[i] ? '−' : '+',
+        toggle: () => this.setState(st => ({ open: { ...st.open, [i]: !st.open[i] } }))
+      })),
+      wide: wide,
+      narrow: !wide
+    };
+  }
+}
+</script>
+</body>
+</html>

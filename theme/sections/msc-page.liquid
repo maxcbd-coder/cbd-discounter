@@ -1,0 +1,23 @@
+{%- comment -%} Pages secondaires (mentions légales, 404) dans la charte de la landing. {%- endcomment -%}
+<section class="msc-dark msc-page">
+  <div class="msc-container">
+    {%- if template.name == '404' -%}
+      <h1 class="msc-page__title">{{ section.settings.not_found_title }}</h1>
+      <div class="msc-rte"><p>{{ section.settings.not_found_text }}</p></div>
+    {%- else -%}
+      <h1 class="msc-page__title">{{ page.title }}</h1>
+      <div class="msc-rte">{{ page.content }}</div>
+    {%- endif -%}
+    <p style="margin-top: 40px;"><a class="msc-btn msc-btn--champagne" href="{{ routes.root_url }}#classement">Voir le classement</a></p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page Meilleur site CBD",
+  "settings": [
+    { "type": "text", "id": "not_found_title", "label": "Titre 404", "default": "Page introuvable" },
+    { "type": "textarea", "id": "not_found_text", "label": "Texte 404", "default": "Cette page n'existe pas ou n'est plus disponible. Retrouvez le classement des meilleurs sites pour acheter du CBD en 2026." }
+  ]
+}
+{% endschema %}

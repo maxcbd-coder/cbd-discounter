@@ -1,0 +1,58 @@
+<footer class="msc-footer">
+  <div class="msc-container msc-footer__grid">
+    <div>
+      <p class="msc-footer__brand">{{ section.settings.brand }}<em> {{ section.settings.brand_accent }}</em></p>
+      <p class="msc-footer__about">{{ section.settings.about }}</p>
+    </div>
+    <div>
+      <p class="msc-footer__label">Mentions légales</p>
+      <ul>
+        {%- if section.settings.legal_link != blank -%}
+          <li><a href="{{ section.settings.legal_link }}">Mentions légales et éditeur</a></li>
+        {%- endif -%}
+        {%- if section.settings.privacy_link != blank -%}
+          <li><a href="{{ section.settings.privacy_link }}">Politique de confidentialité</a></li>
+        {%- endif -%}
+        {%- if section.settings.affiliation_link != blank -%}
+          <li><a href="{{ section.settings.affiliation_link }}">Politique d'affiliation</a></li>
+        {%- endif -%}
+      </ul>
+    </div>
+    {%- if section.settings.contact_email != blank or section.settings.corrections_email != blank -%}
+      <div>
+        <p class="msc-footer__label">Contact</p>
+        <ul>
+          {%- if section.settings.contact_email != blank -%}
+            <li><a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></li>
+          {%- endif -%}
+          {%- if section.settings.corrections_email != blank -%}
+            <li><a href="mailto:{{ section.settings.corrections_email }}">Signaler une erreur</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="msc-container msc-footer__bottom">
+    <p>{{ section.settings.disclaimer }}</p>
+    <p>© {{ 'now' | date: '%Y' }} {{ section.settings.brand }} {{ section.settings.brand_accent }}</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "tag": "div",
+  "class": "msc-footer-section",
+  "settings": [
+    { "type": "text", "id": "brand", "label": "Marque", "default": "Meilleur site" },
+    { "type": "text", "id": "brand_accent", "label": "Marque — partie en italique doré", "default": "CBD" },
+    { "type": "textarea", "id": "about", "label": "Présentation", "default": "Comparateur indépendant des sites d'achat de CBD en France. Dernière mise à jour : 14 septembre 2026." },
+    { "type": "text", "id": "legal_link", "label": "Lien « Mentions légales et éditeur »", "default": "/policies/legal-notice" },
+    { "type": "text", "id": "privacy_link", "label": "Lien « Politique de confidentialité »", "default": "/policies/privacy-policy" },
+    { "type": "text", "id": "affiliation_link", "label": "Lien « Politique d'affiliation »", "default": "/#methodologie" },
+    { "type": "text", "id": "contact_email", "label": "E-mail de contact", "default": "contact@meilleur-site-cbd.fr" },
+    { "type": "text", "id": "corrections_email", "label": "E-mail « Signaler une erreur »", "default": "corrections@meilleur-site-cbd.fr" },
+    { "type": "textarea", "id": "disclaimer", "label": "Mention légale bas de page", "default": "Vente réservée aux adultes. Produit non thérapeutique : les produits au CBD relèvent du bien-être et ne remplacent pas un avis médical. Taux de THC inférieur ou égal à 0,3 %." }
+  ]
+}
+{% endschema %}
