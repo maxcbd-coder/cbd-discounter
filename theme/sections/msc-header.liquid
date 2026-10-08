@@ -1,28 +1,35 @@
+{%- liquid
+  # Sur l'accueil, ancres relatives (conserve ?preview_theme_id) ; ailleurs, retour à l'accueil.
+  assign base = routes.root_url
+  if template.name == 'index'
+    assign base = ''
+  endif
+-%}
 <header class="msc-header">
   <div class="msc-header__inner">
-    <a class="msc-logo" href="{{ routes.root_url }}#haut" aria-label="{{ section.settings.brand }} — accueil">
-      <span class="msc-logo__diamond" aria-hidden="true"></span>
-      <span class="msc-wordmark">{{ section.settings.brand }}<em> {{ section.settings.brand_accent }}</em></span>
+    <a class="msc-logo" href="{{ base }}#haut" aria-label="{{ section.settings.brand }} {{ section.settings.brand_pill }} — accueil">
+      <span class="msc-logo__word">{{ section.settings.brand }}</span>
+      <span class="msc-logo__pill">{{ section.settings.brand_pill }}</span>
     </a>
-    <div class="msc-header__right">
-      {%- if section.settings.date_label != blank -%}
-        <span class="msc-header__date">{{ section.settings.date_label }}</span>
-      {%- endif -%}
-      <a class="msc-header__cta" href="{{ routes.root_url }}#classement">{{ section.settings.cta_label }}</a>
-    </div>
+    <nav class="msc-nav" aria-label="Sections">
+      <a href="{{ base }}#podium">Podium</a>
+      <a href="{{ base }}#classement">Palmarès</a>
+      <a href="{{ base }}#methode">Méthode</a>
+      <a href="{{ base }}#faq">FAQ</a>
+      <a class="msc-nav__cta" href="{{ base }}#code">{{ section.settings.cta_label }}</a>
+    </nav>
   </div>
 </header>
 
 {% schema %}
 {
-  "name": "En-tête Meilleur site CBD",
+  "name": "En-tête Palmarès CBD",
   "tag": "div",
   "class": "msc-header-section",
   "settings": [
-    { "type": "text", "id": "brand", "label": "Marque", "default": "Meilleur site" },
-    { "type": "text", "id": "brand_accent", "label": "Marque — partie en italique doré", "default": "CBD" },
-    { "type": "text", "id": "date_label", "label": "Mention de mise à jour", "default": "Mis à jour le 14 septembre 2026" },
-    { "type": "text", "id": "cta_label", "label": "Bouton", "default": "Le classement" }
+    { "type": "text", "id": "brand", "label": "Logo — mot", "default": "palmarès" },
+    { "type": "text", "id": "brand_pill", "label": "Logo — pastille", "default": "cbd" },
+    { "type": "text", "id": "cta_label", "label": "Bouton", "default": "Code du n°1" }
   ]
 }
 {% endschema %}

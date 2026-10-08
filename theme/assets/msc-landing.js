@@ -1,48 +1,89 @@
-/* Meilleur site CBD — accordéon FAQ et reveal au scroll. Aucune dépendance. */
+/* Palmarès CBD — fiches dépliables, filtres par besoin, FAQ, copie du code. Aucune dépendance. */
 (function () {
   'use strict';
 
-  function initFaq(root) {
-    root.querySelectorAll('.msc-faq__btn').forEach(function (btn) {
-      if (btn.dataset.mscBound) return;
-      btn.dataset.mscBound = '1';
-      btn.addEventListener('click', function () {
-        var panel = document.getElementById(btn.getAttribute('aria-controls'));
-        var open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-        if (panel) panel.hidden = open;
+  function bind(el, key, handler) {
+    if (el.dataset[key]) return;
+    el.dataset[key] = '1';
+    el.addEventListener('click', handler);
+  }
+
+  function setExpanded(btn, open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (panel) panel.hidden = !open;
+  }
+
+  function initSheets(root) {
+    root.querySelectorAll('.msc-toggle').forEach(function (btn) {
+      bind(btn, 'mscSheet', function () {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        setExpanded(btn, open);
+        btn.textContent = open ? '−' : '+';
+        btn.setAttribute('aria-label', (open ? 'Fermer la fiche ' : 'Ouvrir la fiche ') + btn.dataset.name);
       });
     });
   }
 
-  function initReveal(root) {
-    if (!('IntersectionObserver' in window)) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.style.transform = 'none';
-            io.unobserve(entry.target);
-          }
+  function initFilters(root) {
+    root.querySelectorAll('[data-msc-filters]').forEach(function (group) {
+      var section = group.closest('section') || document;
+      var buttons = group.querySelectorAll('.msc-filter');
+      buttons.forEach(function (btn) {
+        bind(btn, 'mscFilter', function () {
+          var key = btn.dataset.filter;
+          buttons.forEach(function (b) {
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+          });
+          section.querySelectorAll('.msc-row').forEach(function (row) {
+            var tags = (row.dataset.tags || '').split(' ');
+            var match = !!key && tags.indexOf(key) !== -1;
+            row.classList.toggle('is-dimmed', !!key && !match);
+            var badge = row.querySelector('.msc-match');
+            if (badge) badge.hidden = !match;
+          });
         });
-      },
-      { rootMargin: '0px 0px -8% 0px' }
-    );
+      });
+    });
+  }
 
-    requestAnimationFrame(function () {
-      root.querySelectorAll('[data-reveal]').forEach(function (el) {
-        if (el.getBoundingClientRect().top < window.innerHeight) return;
-        el.style.transform = 'translateY(24px)';
-        io.observe(el);
+  function initFaq(root) {
+    root.querySelectorAll('.msc-faq__btn').forEach(function (btn) {
+      bind(btn, 'mscFaq', function () {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        setExpanded(btn, open);
+        var sign = btn.querySelector('.msc-faq__sign');
+        if (sign) sign.textContent = open ? '−' : '+';
+      });
+    });
+  }
+
+  function initCopy(root) {
+    root.querySelectorAll('.msc-copy').forEach(function (btn) {
+      var label = btn.textContent;
+      var timer;
+      bind(btn, 'mscCopy', function () {
+        var done = function () {
+          btn.textContent = 'Code copié ✓';
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            btn.textContent = label;
+          }, 2200);
+        };
+        try {
+          navigator.clipboard.writeText(btn.dataset.code).then(done, done);
+        } catch (e) {
+          done();
+        }
       });
     });
   }
 
   function init(root) {
+    initSheets(root);
+    initFilters(root);
     initFaq(root);
-    initReveal(root);
+    initCopy(root);
   }
 
   if (document.readyState === 'loading') {

@@ -2,10 +2,10 @@
   Remplace les gabarits marchands (produit, collection, panier, recherche).
   La redirection elle-même est faite dans layout/landing.liquid ; ceci n'est qu'un repli sans JavaScript.
 {%- endcomment -%}
-<section class="msc-dark msc-page">
-  <div class="msc-container">
+<section class="msc-page">
+  <div class="msc-container msc-section msc-page__inner">
     <h1 class="msc-page__title">Cette page n'est pas disponible</h1>
-    <p><a class="msc-btn msc-btn--champagne" href="{{ routes.root_url }}">Retour au classement</a></p>
+    <p class="msc-page__actions"><a class="msc-hero__cta" href="{{ routes.root_url }}">Retour au palmarès</a></p>
   </div>
 </section>
 
