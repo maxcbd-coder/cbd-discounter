@@ -1,0 +1,27 @@
+{%- comment -%}
+  Transforme chaque mention d'une boutique listée ci-dessous en lien externe.
+  Format d'une entrée : Nom|URL|rel. Entrées séparées par « ;; ».
+  rel « noopener » = dofollow ; « nofollow sponsored noopener » sinon.
+  @param text  Texte à afficher
+  @param raw   true si le texte est déjà du HTML (richtext) ; sinon il est échappé
+  À n'utiliser que hors d'un autre lien ou d'un bouton.
+{%- endcomment -%}
+{%- liquid
+  assign targets = 'CBD Discounter|https://www.cbd-discounter.fr/|noopener' | split: ';;'
+  if raw
+    assign out = text
+  else
+    assign out = text | escape
+  endif
+  for t in targets
+    assign parts = t | split: '|'
+    assign name = parts[0]
+    if out contains name
+      capture link
+        echo '<a class="gz-xlink" href="' | append: parts[1] | append: '" target="_blank" rel="' | append: parts[2] | append: '">' | append: name | append: '</a>'
+      endcapture
+      assign out = out | replace: name, link
+    endif
+  endfor
+  echo out
+-%}

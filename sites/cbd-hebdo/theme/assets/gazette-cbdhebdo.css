@@ -1,0 +1,42 @@
+/* CBD Hebdo — compléments de la Gazette : logos des boutiques et liens de mention.
+   Chargé après gazette.css. */
+
+/* ---------- Logos ---------- */
+.gz-logo {
+  --gz-logo: 40px;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--gz-logo);
+  height: var(--gz-logo);
+  background: var(--gz-paper-light);
+  border: 2px solid var(--gz-ink);
+  overflow: hidden;
+}
+.gz-logo__img { display: block; width: 64%; height: 64%; object-fit: contain; }
+.gz-logo--mono { background: var(--gz-paper); }
+.gz-logo__mono {
+  font-family: var(--gz-f-display); font-stretch: 75%; font-weight: 800;
+  font-size: calc(var(--gz-logo) * .44); line-height: 1; letter-spacing: -0.03em; color: var(--gz-ink);
+}
+
+.gz-shop-id { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.gz-shop-id--row { gap: 10px; }
+.gz-shop-id--fiche { gap: clamp(14px, 2vw, 22px); margin: 0 0 8px; }
+.gz-shop-id--fiche .gz-logo { --gz-logo: clamp(48px, 6vw, 64px) !important; }
+.gz-shop-id--fiche .gz-fiche__title { margin: 0; min-width: 0; }
+
+.gz-featured__id { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; padding-right: 80px; }
+.gz-featured__id .gz-featured__title { margin: 0; padding-right: 0; }
+
+.gz-duel__name { display: flex; align-items: center; gap: 12px; }
+.gz-duel__name .gz-logo { border-color: var(--gz-paper); }
+
+/* ---------- Liens de mention (boutique citée dans le texte) ---------- */
+a.gz-xlink { color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--gz-green); text-underline-offset: .15em; }
+a.gz-xlink:hover { color: var(--gz-green-text); }
+.gz-sachet--1 a.gz-xlink { text-decoration-color: var(--gz-ink); }
+.gz-duel a.gz-xlink:hover { color: var(--gz-green); }
+.gz-duel__name--a a.gz-xlink { text-decoration-color: var(--gz-ink); }
+.gz-sachet--1 a.gz-xlink:hover, .gz-duel__name--a a.gz-xlink:hover { color: var(--gz-paper-light); }
+.gz-footer a.gz-xlink:hover { color: var(--gz-green); }

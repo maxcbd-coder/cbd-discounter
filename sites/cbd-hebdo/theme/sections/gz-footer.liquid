@@ -8,7 +8,7 @@
       </div>
       <div>
         <p class="gz-footer__label">{{ section.settings.col_2_label | escape }}</p>
-        <p class="gz-footer__text">{{ section.settings.col_2_text | escape }}</p>
+        <p class="gz-footer__text">{% render 'gz-autolink', text: section.settings.col_2_text %}</p>
       </div>
       <ul class="gz-footer__links">
         <li><a href="{{ section.settings.legal_url | escape }}">{{ section.settings.legal_label | escape }}</a></li>
@@ -29,7 +29,7 @@
       "type": "text",
       "id": "flag",
       "label": "Titre",
-      "default": "La Gazette du Chanvre"
+      "default": "CBD Hebdo"
     },
     {
       "type": "text",
@@ -83,13 +83,13 @@
       "type": "text",
       "id": "email",
       "label": "E-mail de la rédaction",
-      "default": "redaction@gazette-du-chanvre.fr"
+      "default": "redaction@cbd-hebdo.fr"
     },
     {
       "type": "textarea",
       "id": "legal_line",
       "label": "Ligne légale",
-      "default": "Vente interdite aux mineurs. Les produits au CBD ne sont pas des médicaments. THC ≤ 0,3 %. © 2026 La Gazette du Chanvre."
+      "default": "Vente interdite aux mineurs. Les produits au CBD ne sont pas des médicaments. THC ≤ 0,3 %. © 2026 CBD Hebdo."
     }
   ],
   "presets": [

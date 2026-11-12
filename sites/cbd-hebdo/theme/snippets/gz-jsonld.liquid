@@ -1,6 +1,9 @@
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"La Gazette du Chanvre","url":"https://www.gazette-du-chanvre.fr/","email":"redaction@gazette-du-chanvre.fr","areaServed":"FR","description":"Journal consacré au CBD et au chanvre en France."}
+{"@context":"https://schema.org","@type":"NewsMediaOrganization","@id":{{ request.origin | append: '/#organisation' | json }},"name":"CBD Hebdo","alternateName":"CBDHebdo","url":{{ request.origin | append: '/' | json }},"email":"redaction@cbd-hebdo.fr","areaServed":"FR","description":"CBD Hebdo, le journal du CBD et du chanvre en France : classements, comparatifs et guides d'achat."}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"Les 10 meilleurs sites de CBD en France en 2026, passés au crible","datePublished":"2026-09-14","dateModified":"2026-09-14","author":{"@type":"Organization","name":"La Gazette du Chanvre"},"publisher":{"@type":"Organization","name":"La Gazette du Chanvre"},"inLanguage":"fr-FR"}
+{"@context":"https://schema.org","@type":"WebSite","@id":{{ request.origin | append: '/#site' | json }},"name":"CBD Hebdo","url":{{ request.origin | append: '/' | json }},"inLanguage":"fr-FR","publisher":{"@id":{{ request.origin | append: '/#organisation' | json }}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Les 10 meilleurs sites de CBD en France en 2026, passés au crible","datePublished":"2026-09-14","dateModified":"2026-11-12","mainEntityOfPage":{{ request.origin | append: '/' | json }},"author":{"@id":{{ request.origin | append: '/#organisation' | json }}},"publisher":{"@id":{{ request.origin | append: '/#organisation' | json }}},"inLanguage":"fr-FR"}
 </script>

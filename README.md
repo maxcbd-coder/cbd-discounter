@@ -1,4 +1,11 @@
-# ActuCBD — landing Shopify (actucbd.com)
+# Landings CBD — thèmes Shopify
+
+| Site | Domaine | Dossier |
+| --- | --- | --- |
+| ActuCBD | actucbd.com | `theme/` (ce README) |
+| CBD Hebdo | cbd-hebdo.fr | `sites/cbd-hebdo/` (voir son README) |
+
+## ActuCBD (actucbd.com)
 
 Landing « Les 10 meilleurs sites pour acheter du CBD en 2026 », à la marque **ActuCBD** (nom de domaine `actucbd.com`).
 

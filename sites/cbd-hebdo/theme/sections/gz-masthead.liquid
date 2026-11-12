@@ -9,7 +9,7 @@
   {%- if section.settings.disclosure_text != blank -%}
     <p class="gz-disclosure">
       {%- if section.settings.disclosure_label != blank -%}<span class="gz-disclosure__label">{{ section.settings.disclosure_label | escape }}</span>{%- endif -%}
-      <span>{{ section.settings.disclosure_text | escape }}</span>
+      <span>{% render 'gz-autolink', text: section.settings.disclosure_text %}</span>
     </p>
   {%- endif -%}
 </header>
@@ -41,13 +41,13 @@
       "type": "text",
       "id": "title_1",
       "label": "Titre du journal, ligne 1",
-      "default": "La Gazette"
+      "default": "CBD"
     },
     {
       "type": "text",
       "id": "title_2",
       "label": "Titre du journal, ligne 2",
-      "default": "du Chanvre"
+      "default": "Hebdo"
     },
     {
       "type": "header",

@@ -3,22 +3,27 @@
     <div class="gz-une__main">
       <p class="gz-tag-orange">{{ section.settings.label | escape }}</p>
       <h1 id="titre-une" class="gz-h1">{{ section.settings.heading | escape }}</h1>
-      <p class="gz-chapo">{{ section.settings.chapo | escape }}</p>
-      <div class="gz-une__body">{{ section.settings.body }}</div>
+      <p class="gz-chapo">{% render 'gz-autolink', text: section.settings.chapo %}</p>
+      <div class="gz-une__body">{% render 'gz-autolink', text: section.settings.body, raw: true %}</div>
     </div>
 
     <aside class="gz-featured" aria-label="{{ section.settings.aside_label | escape }}">
       <span class="gz-stamp" aria-hidden="true">{{ section.settings.stamp_1 | escape }}<br>{{ section.settings.stamp_2 | escape }}<br>{{ section.settings.stamp_3 | escape }}</span>
       <p class="gz-featured__label">{{ section.settings.aside_label | escape }}</p>
-      <h2 class="gz-featured__title">{{ section.settings.aside_title | escape }}</h2>
-      <p class="gz-featured__text">{{ section.settings.aside_text | escape }}</p>
+      <div class="gz-featured__id">
+        {%- if section.settings.aside_logo != blank -%}
+          <span class="gz-logo" style="--gz-logo: 52px;">{{ section.settings.aside_logo | image_url: width: 104, height: 104, crop: 'center' | image_tag: width: 52, height: 52, loading: 'eager', alt: '', class: 'gz-logo__img' }}</span>
+        {%- endif -%}
+        <h2 class="gz-featured__title">{% render 'gz-autolink', text: section.settings.aside_title %}</h2>
+      </div>
+      <p class="gz-featured__text">{% render 'gz-autolink', text: section.settings.aside_text %}</p>
       <dl class="gz-featured__data">
         <div><dt>{{ section.settings.row_1_label | escape }}</dt><dd>{{ section.settings.row_1_value | escape }}</dd></div>
         <div><dt>{{ section.settings.row_2_label | escape }}</dt><dd>{{ section.settings.row_2_value | escape }}</dd></div>
         <div><dt>{{ section.settings.row_3_label | escape }}</dt><dd>{{ section.settings.row_3_value | escape }}</dd></div>
       </dl>
       {%- if section.settings.cta_url != blank -%}
-        <a class="gz-btn gz-featured__cta" href="{{ section.settings.cta_url }}" rel="nofollow sponsored">{{ section.settings.cta_label | escape }}</a>
+        <a class="gz-btn gz-featured__cta" href="{{ section.settings.cta_url }}" rel="{% if section.settings.cta_dofollow %}noopener{% else %}nofollow sponsored{% endif %}" target="_blank">{{ section.settings.cta_label | escape }}</a>
       {%- endif -%}
     </aside>
   </div>
@@ -82,6 +87,11 @@
       "default": "2026"
     },
     {
+      "type": "image_picker",
+      "id": "aside_logo",
+      "label": "Logo"
+    },
+    {
       "type": "text",
       "id": "aside_title",
       "label": "Titre",
@@ -138,7 +148,14 @@
     {
       "type": "url",
       "id": "cta_url",
-      "label": "Bouton : lien (nofollow sponsored)"
+      "label": "Bouton : lien"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_dofollow",
+      "label": "Bouton : lien dofollow",
+      "info": "Coché : rel=\"noopener\". Décoché : rel=\"nofollow sponsored\".",
+      "default": false
     }
   ],
   "presets": [
