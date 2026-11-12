@@ -1,0 +1,20 @@
+{%- if section.settings.text != blank -%}
+  <div class="msc-ticker" aria-hidden="true">
+    <div class="msc-ticker__track">
+      {%- for i in (1..4) -%}
+        <span>{{ section.settings.text }}  ✦  </span>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Bandeau défilant",
+  "tag": "div",
+  "class": "msc-ticker-section",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Texte", "info": "Séparer les messages par « ✦ » entouré de deux espaces.", "default": "Palmarès CBD 2026  ✦  N°1 : CBD Discounter  ✦  Code DISCOUNTER15  ✦  10 boutiques classées  ✦  Relevé du 14 septembre 2026" }
+  ]
+}
+{% endschema %}
