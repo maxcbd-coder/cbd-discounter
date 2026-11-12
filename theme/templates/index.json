@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "landing",
   "sections": {
@@ -16,8 +25,11 @@
             "tagline": "Meilleur site global 2026",
             "pros": "Prix de départ à 0,75 € le gramme\nExpédition le jour même pour toute commande passée avant 14h30\nCatalogue large : fleurs, résines, huiles et accessoires",
             "cons": "Délai de livraison après expédition non communiqué lors du relevé",
-            "body": "CBD Discounter arrive en tête du classement 2026. La boutique combine le catalogue le plus large de la sélection et des prix parmi les plus bas du marché, avec des fleurs à partir de 0,75 € le gramme. Les commandes passées avant 14h30 sont expédiées le jour même. Le site s'adresse aussi bien à une première commande qu'aux acheteurs réguliers qui comparent le prix au gramme. Le code DISCOUNTER15 ajoute une remise supplémentaire à des prix déjà au niveau discount. C'est la boutique que la rédaction recommande en premier, quel que soit le profil d'acheteur.",
-            "url": "https://cbd-discounter.fr/"
+            "body": "CBD Discounter arrive en tête du classement ActuCBD 2026 et s'impose comme le meilleur site CBD pour la majorité des acheteurs. La boutique combine le catalogue le plus large de la sélection (fleurs, résines, huiles et accessoires) et le prix de fleur le plus bas relevé, à partir de 0,75 € le gramme. Les commandes passées avant 14h30 sont expédiées le jour même. Le site convient aussi bien à une première commande qu'aux acheteurs réguliers qui comparent le prix au gramme. Le code DISCOUNTER15 ajoute une remise supplémentaire à des prix déjà au niveau discount.",
+            "url": "https://cbd-discounter.fr/",
+            "logo": "shopify://shop_images/faviconV2_705a187a-3ea0-4dd4-9209-8bb3607011a2.png",
+            "dofollow": true,
+            "autolink": true
           }
         },
         "shop_02": {
@@ -33,7 +45,10 @@
             "pros": "Boutiques physiques en complément du site\nColis discret en livraison standard\nCode promo GREENHOUSE15 disponible",
             "cons": "Prix de départ plus élevé que le numéro 1, à 2,80 € le gramme",
             "body": "Greenhouse CBD Shop se distingue par son réseau de boutiques physiques, qui complète la vente en ligne. Le prix de départ relevé est de 2,80 € le gramme. La livraison standard est expédiée en colis discret. Le code GREENHOUSE15 permet d'obtenir une remise sur la commande. Un bon choix pour qui souhaite pouvoir se rendre en magasin.",
-            "url": "https://www.greenhousecbdshop.com/"
+            "url": "https://www.greenhousecbdshop.com/",
+            "logo": "shopify://shop_images/faviconV2_abec0284-9596-493b-9f9e-75c4301505ba.png",
+            "dofollow": false,
+            "autolink": false
           }
         },
         "shop_03": {
@@ -49,7 +64,10 @@
             "pros": "Livraison en 24/48 h offerte\nCode promo PARIS15 disponible",
             "cons": "Prix de départ le plus élevé du top 3, à 7,14 € le gramme",
             "body": "CBDP Paris complète le podium. La livraison en 24/48 heures est offerte. Le prix de départ relevé est de 7,14 € le gramme, le plus élevé des trois premières boutiques. Le code PARIS15 permet d'obtenir une remise sur la commande.",
-            "url": "https://cbdp-paris.com/"
+            "url": "https://cbdp-paris.com/",
+            "logo": "shopify://shop_images/faviconV2_a715e6da-ef4a-4898-8098-eea46b6f6f79.png",
+            "dofollow": false,
+            "autolink": false
           }
         },
         "shop_04": {
@@ -64,7 +82,8 @@
             "tagline": "Boutiques et gros volumes",
             "pros": "Boutiques physiques\nAdapté aux commandes en gros volumes",
             "cons": "Prix et délais non communiqués lors du relevé",
-            "body": "StreetShop France propose des boutiques physiques et s'adresse aux commandes en gros volumes. Les prix de départ et les délais de livraison n'étaient pas communiqués lors du relevé du 14 septembre 2026."
+            "body": "StreetShop France propose des boutiques physiques et s'adresse aux commandes en gros volumes. Les prix de départ et les délais de livraison n'étaient pas communiqués lors du relevé du 14 septembre 2026.",
+            "logo": "shopify://shop_images/faviconV2_d7c9db6b-1c46-4911-a32c-c90ee522527b.png"
           }
         },
         "shop_05": {
@@ -79,7 +98,8 @@
             "tagline": "Déstockage et fins de lots",
             "pros": "Tarifs dégressifs sur le déstockage\nLivraison en 1 à 3 jours ouvrés\nCode CBDNOUVEAU disponible",
             "cons": "Disponibilités variables selon les fins de lots",
-            "body": "CBDOO est spécialisé dans le déstockage et les fins de lots, avec des tarifs dégressifs. La livraison est annoncée en 1 à 3 jours ouvrés. Le code CBDNOUVEAU est proposé aux nouveaux clients."
+            "body": "CBDOO est spécialisé dans le déstockage et les fins de lots, avec des tarifs dégressifs. La livraison est annoncée en 1 à 3 jours ouvrés. Le code CBDNOUVEAU est proposé aux nouveaux clients.",
+            "logo": "shopify://shop_images/faviconV2_0977d18d-088a-47b7-bd67-58f4f254c317.png"
           }
         },
         "shop_06": {
@@ -94,7 +114,8 @@
             "tagline": "Livraison express dans le Val-d'Oise",
             "pros": "Livraison Mondial Relay\nLivraison express dans le Val-d'Oise (95)",
             "cons": "Prix de départ non communiqué lors du relevé",
-            "body": "CDUCBD est implanté dans le Val-d'Oise. La boutique livre en point Mondial Relay et propose une livraison express dans le département 95. Le prix de départ n'était pas communiqué lors du relevé."
+            "body": "CDUCBD est implanté dans le Val-d'Oise. La boutique livre en point Mondial Relay et propose une livraison express dans le département 95. Le prix de départ n'était pas communiqué lors du relevé.",
+            "logo": "shopify://shop_images/faviconV2_ee1a128c-9845-4713-9df6-114f52d1d48c.png"
           }
         },
         "shop_07": {
@@ -109,7 +130,8 @@
             "tagline": "Boutique du bassin d'Arcachon",
             "pros": "Implantation locale sur le bassin d'Arcachon",
             "cons": "Prix et délais non communiqués lors du relevé",
-            "body": "Le Green Spot est une boutique du bassin d'Arcachon. Les prix de départ et les délais de livraison n'étaient pas communiqués lors du relevé du 14 septembre 2026."
+            "body": "Le Green Spot est une boutique du bassin d'Arcachon. Les prix de départ et les délais de livraison n'étaient pas communiqués lors du relevé du 14 septembre 2026.",
+            "logo": "shopify://shop_images/faviconV2_f462cc66-7214-47d9-bc86-88049abf347e.png"
           }
         },
         "shop_08": {
@@ -124,7 +146,8 @@
             "tagline": "Programme de fidélité",
             "pros": "Programme de fidélité",
             "cons": "Livraison annoncée en 72 h\nPrix de départ non communiqué lors du relevé",
-            "body": "Mama Kana met en avant son programme de fidélité. La livraison est annoncée en 72 heures. Le prix de départ n'était pas communiqué lors du relevé."
+            "body": "Mama Kana met en avant son programme de fidélité. La livraison est annoncée en 72 heures. Le prix de départ n'était pas communiqué lors du relevé.",
+            "logo": "shopify://shop_images/faviconV2_7350cfd8-e783-423a-9731-89ec346b267c.png"
           }
         },
         "shop_09": {
@@ -154,7 +177,8 @@
             "tagline": "Discount, trim et mélanges",
             "pros": "Prix de départ à 0,34 € le gramme sur le trim et les mélanges",
             "cons": "Gamme centrée sur le trim et les mélanges\nDélais de livraison non communiqués lors du relevé",
-            "body": "CBDSol est positionné sur le discount, avec du trim et des mélanges à partir de 0,34 € le gramme. La gamme est centrée sur ces produits plutôt que sur les fleurs entières. Les délais de livraison n'étaient pas communiqués lors du relevé."
+            "body": "CBDSol est positionné sur le discount, avec du trim et des mélanges à partir de 0,34 € le gramme. La gamme est centrée sur ces produits plutôt que sur les fleurs entières. Les délais de livraison n'étaient pas communiqués lors du relevé.",
+            "logo": "shopify://shop_images/faviconV2_8c0ca157-4691-4d81-bdc6-b11fe3c4afa2.png"
           }
         },
         "pick_1": {
@@ -287,7 +311,7 @@
           "type": "faq",
           "settings": {
             "q": "Quel est le meilleur site pour acheter du CBD en France en 2026 ?",
-            "a": "Selon le classement Meilleur site CBD 2026, CBD Discounter est le meilleur site pour acheter du CBD en France. La boutique propose le catalogue le plus large de la sélection, des fleurs à partir de 0,75 € le gramme et une expédition le jour même pour toute commande passée avant 14h30."
+            "a": "Selon le classement ActuCBD 2026, CBD Discounter est le meilleur site pour acheter du CBD en France. La boutique propose le catalogue le plus large de la sélection, des fleurs à partir de 0,75 € le gramme et une expédition le jour même pour toute commande passée avant 14h30."
           }
         },
         "faq_2": {
@@ -301,14 +325,14 @@
           "type": "faq",
           "settings": {
             "q": "Comment ce classement est-il établi ?",
-            "a": "Meilleur site CBD a testé 34 boutiques françaises entre janvier et août 2026 sur 6 critères pondérés : prix au gramme, taux de CBD et analyses, origine et traçabilité, livraison, paiement, service après-vente. Chaque commande a été passée et payée par la rédaction."
+            "a": "ActuCBD a testé 34 boutiques françaises entre janvier et août 2026 sur 6 critères pondérés : prix au gramme, taux de CBD et analyses, origine et traçabilité, livraison, paiement, service après-vente. Chaque commande a été passée et payée par la rédaction."
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
             "q": "Les liens du classement sont-ils affiliés ?",
-            "a": "Certains liens sont affiliés. Meilleur site CBD perçoit une commission si un achat est réalisé, sans surcoût pour le lecteur. La commission n'influence ni la note ni le rang : les notes sont calculées avant toute prise de contact commerciale et la grille de pondération est publique."
+            "a": "Certains liens sont affiliés. ActuCBD perçoit une commission si un achat est réalisé, sans surcoût pour le lecteur. La commission n'influence ni la note ni le rang : les notes sont calculées avant toute prise de contact commerciale et la grille de pondération est publique."
           }
         },
         "faq_5": {
@@ -345,6 +369,117 @@
             "q": "Le CBD est-il réservé aux adultes ?",
             "a": "Oui. La vente est réservée aux personnes majeures. Les produits au CBD relèvent du bien-être et ne sont pas des produits thérapeutiques. En cas de traitement médical ou de grossesse, demandez l'avis d'un professionnel de santé."
           }
+        },
+        "need_1": {
+          "type": "need",
+          "settings": {
+            "label": "Pour payer le moins cher au gramme",
+            "shop": "CBD Discounter",
+            "why": "Le prix de fleur le plus bas relevé dans la sélection, dès 0,75 € le gramme, et le code DISCOUNTER15 en plus."
+          }
+        },
+        "need_2": {
+          "type": "need",
+          "settings": {
+            "label": "Pour être livré rapidement",
+            "shop": "CBD Discounter",
+            "why": "Expédition le jour même pour toute commande passée avant 14h30. Alternative : CBDP Paris, livraison 24/48 h offerte."
+          }
+        },
+        "need_3": {
+          "type": "need",
+          "settings": {
+            "label": "Pour un petit budget trim et mélanges",
+            "shop": "CBDSol",
+            "why": "Du trim et des mélanges à partir de 0,34 € le gramme, le prix de départ le plus bas relevé, sur une gamme plus restreinte."
+          }
+        },
+        "need_4": {
+          "type": "need",
+          "settings": {
+            "label": "Pour acheter en boutique physique",
+            "shop": "Greenhouse CBD Shop",
+            "why": "Un réseau de boutiques en complément du site. Autres adresses : StreetShop France, Le Green Spot (bassin d'Arcachon), CDUCBD (Val-d'Oise)."
+          }
+        },
+        "need_5": {
+          "type": "need",
+          "settings": {
+            "label": "Pour les fins de lots et le déstockage",
+            "shop": "CBDOO",
+            "why": "Des tarifs dégressifs sur le déstockage et une livraison annoncée en 1 à 3 jours ouvrés."
+          }
+        },
+        "need_6": {
+          "type": "need",
+          "settings": {
+            "label": "Pour lire les analyses avant d'acheter",
+            "shop": "Green Owl",
+            "why": "Les certificats d'analyse sont consultables directement sur chaque fiche produit."
+          }
+        },
+        "alert_1": {
+          "type": "alert",
+          "settings": {
+            "title": "Aucun certificat d'analyse par lot",
+            "desc": "Pas de certificat, ou un certificat sans numéro de lot, sans date ni laboratoire : le taux de THC ne peut pas être vérifié."
+          }
+        },
+        "alert_2": {
+          "type": "alert",
+          "settings": {
+            "title": "Un paiement demandé hors du site",
+            "desc": "Cryptomonnaie, virement après échange par message ou lien de paiement privé : aucune protection en cas de litige."
+          }
+        },
+        "alert_3": {
+          "type": "alert",
+          "settings": {
+            "title": "Des promesses de guérison",
+            "desc": "Un site qui affirme que le CBD soigne ou guérit une maladie enfreint la réglementation. C'est un signe de manque de sérieux."
+          }
+        },
+        "alert_4": {
+          "type": "alert",
+          "settings": {
+            "title": "Pas de mentions légales",
+            "desc": "Raison sociale, SIRET, adresse et contact doivent être affichés. Leur absence rend tout recours difficile."
+          }
+        },
+        "alert_5": {
+          "type": "alert",
+          "settings": {
+            "title": "Un prix sans taux de CBD ni de THC",
+            "desc": "Un prix au gramme très bas n'a de sens qu'avec les taux de cannabinoïdes affichés et vérifiables."
+          }
+        },
+        "alert_6": {
+          "type": "alert",
+          "settings": {
+            "title": "Des avis uniquement sur le site",
+            "desc": "Des avis hébergés seulement par la boutique ne sont pas vérifiables. Cherchez des avis sur une plateforme tierce."
+          }
+        },
+        "faq_10": {
+          "type": "faq",
+          "settings": {
+            "q": "Quel est le site de CBD le moins cher ?",
+            "a": "Parmi les prix relevés le 14 septembre 2026, CBDSol affiche le prix de départ le plus bas, à 0,34 € le gramme, sur du trim et des mélanges. Pour des fleurs entières, CBD Discounter propose le prix le plus bas de la sélection, dès 0,75 € le gramme, avec le code DISCOUNTER15 en plus."
+          }
+        },
+        "faq_11": {
+          "type": "faq",
+          "settings": {
+            "q": "Où acheter du CBD en boutique physique ?",
+            "a": "Greenhouse CBD Shop dispose d'un réseau de boutiques physiques. StreetShop France a aussi des boutiques et s'adresse aux gros volumes. Le Green Spot est implanté sur le bassin d'Arcachon et CDUCBD dans le Val-d'Oise."
+          }
+        },
+        "faq_12": {
+          "type": "faq",
+          "settings": {
+            "q": "Fleur, résine ou huile de CBD : quelle différence ?",
+            "a": "La fleur est la sommité séchée du chanvre et se compare au prix au gramme. La résine est un extrait de chanvre compressé, plus concentré. L'huile contient du CBD dilué dans une huile végétale : elle se compare au prix par milligramme de CBD."
+          }
         }
       },
       "block_order": [
@@ -361,6 +496,12 @@
         "pick_1",
         "pick_2",
         "pick_3",
+        "need_1",
+        "need_2",
+        "need_3",
+        "need_4",
+        "need_5",
+        "need_6",
         "weight_1",
         "weight_2",
         "weight_3",
@@ -373,7 +514,14 @@
         "tip_4",
         "tip_5",
         "tip_6",
+        "alert_1",
+        "alert_2",
+        "alert_3",
+        "alert_4",
+        "alert_5",
+        "alert_6",
         "faq_1",
+        "faq_10",
         "faq_2",
         "faq_3",
         "faq_4",
@@ -381,7 +529,9 @@
         "faq_6",
         "faq_7",
         "faq_8",
-        "faq_9"
+        "faq_9",
+        "faq_11",
+        "faq_12"
       ],
       "settings": {}
     }

@@ -1,8 +1,8 @@
 <header class="msc-header">
   <div class="msc-header__inner">
-    <a class="msc-logo" href="{{ routes.root_url }}#haut" aria-label="{{ section.settings.brand }} — accueil">
+    <a class="msc-logo" href="{{ routes.root_url }}#haut" aria-label="{{ section.settings.brand }}{{ section.settings.brand_accent }} — accueil">
       <span class="msc-logo__diamond" aria-hidden="true"></span>
-      <span class="msc-wordmark">{{ section.settings.brand }}<em> {{ section.settings.brand_accent }}</em></span>
+      <span class="msc-wordmark">{{ section.settings.brand }}<em>{{ section.settings.brand_accent }}</em></span>
     </a>
     <div class="msc-header__right">
       {%- if section.settings.date_label != blank -%}
@@ -15,13 +15,13 @@
 
 {% schema %}
 {
-  "name": "En-tête Meilleur site CBD",
+  "name": "En-tête ActuCBD",
   "tag": "div",
   "class": "msc-header-section",
   "settings": [
-    { "type": "text", "id": "brand", "label": "Marque", "default": "Meilleur site" },
+    { "type": "text", "id": "brand", "label": "Marque", "default": "Actu" },
     { "type": "text", "id": "brand_accent", "label": "Marque — partie en italique doré", "default": "CBD" },
-    { "type": "text", "id": "date_label", "label": "Mention de mise à jour", "default": "Mis à jour le 14 septembre 2026" },
+    { "type": "text", "id": "date_label", "label": "Mention de mise à jour", "default": "Mis à jour le 12 novembre 2026" },
     { "type": "text", "id": "cta_label", "label": "Bouton", "default": "Le classement" }
   ]
 }

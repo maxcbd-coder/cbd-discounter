@@ -1,0 +1,27 @@
+{%- comment -%}
+  Logo d'une boutique dans une tuile carrée. Sans image : monogramme (initiales).
+  @param s     Réglages du bloc shop (shop.settings)
+  @param size  Taille en px (défaut 40)
+  @param alt   Texte alternatif (vide = décoratif, le nom est déjà affiché à côté)
+{%- endcomment -%}
+{%- liquid
+  assign px = size | default: 40
+  assign px2 = px | times: 2
+  assign words = s.name | split: ' '
+  assign initials = ''
+  if words.size > 1
+    for w in words limit: 2
+      assign c = w | slice: 0 | upcase
+      assign initials = initials | append: c
+    endfor
+  else
+    assign initials = s.name | slice: 0, 2 | upcase
+  endif
+-%}
+<span class="msc-mark{% if s.logo == blank %} msc-mark--mono{% endif %}" style="--msc-mark: {{ px }}px;">
+  {%- if s.logo != blank -%}
+    {{- s.logo | image_url: width: px2, height: px2, crop: 'center' | image_tag: width: px, height: px, loading: 'lazy', alt: alt, class: 'msc-mark__img' -}}
+  {%- else -%}
+    <span class="msc-mark__mono" aria-hidden="true">{{ initials }}</span>
+  {%- endif -%}
+</span>

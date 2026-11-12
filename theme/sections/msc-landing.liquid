@@ -1,7 +1,9 @@
 {%- comment -%}
-  Meilleur site CBD — landing « Les 10 meilleurs sites pour acheter du CBD ».
-  Le contenu vient des blocs : shop (ordre = rang), pick, weight, tip, faq.
-  Règle : un bloc shop n'a un lien externe que si « url » est rempli (top 3 uniquement).
+  ActuCBD — landing « Les 10 meilleurs sites pour acheter du CBD ».
+  Le contenu vient des blocs : shop (ordre = rang), pick, need, weight, tip, alert, faq.
+  Liens : un bloc shop n'a un lien externe que si « url » est rempli.
+  « dofollow » coché → rel="noopener" ; sinon rel="nofollow sponsored noopener".
+  « Lier chaque mention » coché → chaque occurrence du nom dans les textes devient un lien (snippet msc-autolink).
 {%- endcomment -%}
 
 {%- liquid
@@ -9,6 +11,8 @@
   assign picks = section.blocks | where: 'type', 'pick'
   assign weights = section.blocks | where: 'type', 'weight'
   assign tips = section.blocks | where: 'type', 'tip'
+  assign alerts = section.blocks | where: 'type', 'alert'
+  assign needs = section.blocks | where: 'type', 'need'
   assign faqs = section.blocks | where: 'type', 'faq'
   assign top = shops | first
   assign romans = 'I,II,III,IV,V,VI,VII,VIII,IX,X' | split: ','
@@ -23,14 +27,20 @@
       <p class="msc-kicker">{{ section.settings.hero_kicker }}</p>
       <h1 id="msc-h1" class="msc-h1">{{ section.settings.hero_title }}</h1>
       <p class="msc-hero__sub">{{ section.settings.hero_sub }}</p>
+      <p class="msc-byline">
+        {{ section.settings.byline }}
+        {%- if section.settings.published_label != blank %} · Publié le <time datetime="{{ section.settings.published_iso }}">{{ section.settings.published_label }}</time>{% endif -%}
+        {%- if section.settings.update_label != blank %} · Mis à jour le <time datetime="{{ section.settings.update_iso }}">{{ section.settings.update_label }}</time>{% endif -%}
+      </p>
 
       {%- if top -%}
-        <a class="msc-plaque" href="#rang-1" {{ top.shopify_attributes }}>
+        <div class="msc-plaque" {{ top.shopify_attributes }}>
           <span class="msc-plaque__label">{{ section.settings.plaque_label }}</span>
           <span class="msc-plaque__sep" aria-hidden="true"></span>
-          <span class="msc-plaque__name">{{ top.settings.name }}</span>
-          <span class="msc-plaque__detail">Dès {{ top.settings.entry }} — lire l'avis</span>
-        </a>
+          {%- render 'msc-shop-logo', s: top.settings, size: 32, alt: '' -%}
+          <span class="msc-plaque__name">{% render 'msc-autolink', text: top.settings.name, shops: shops %}</span>
+          <a class="msc-plaque__detail" href="#rang-1">Dès {{ top.settings.entry }} — lire l'avis</a>
+        </div>
       {%- endif -%}
 
       <div class="msc-hero__ctas">
@@ -53,9 +63,25 @@
     </div>
   </section>
 
+  {%- comment -%} ===== Sommaire ===== {%- endcomment -%}
+  <nav class="msc-toc" aria-label="Sommaire">
+    <div class="msc-container">
+      <ol class="msc-toc__list">
+        {%- if picks.size > 0 -%}<li><a href="#synthese">Synthèse</a></li>{%- endif -%}
+        <li><a href="#comparatif">Comparatif</a></li>
+        <li><a href="#classement">Classement</a></li>
+        {%- if needs.size > 0 -%}<li><a href="#par-besoin">Selon votre besoin</a></li>{%- endif -%}
+        <li><a href="#methodologie">Méthodologie</a></li>
+        {%- if tips.size > 0 -%}<li><a href="#conseils">Conseils</a></li>{%- endif -%}
+        {%- if alerts.size > 0 -%}<li><a href="#alertes">Signaux d'alerte</a></li>{%- endif -%}
+        {%- if faqs.size > 0 -%}<li><a href="#faq">FAQ</a></li>{%- endif -%}
+      </ol>
+    </div>
+  </nav>
+
   {%- comment -%} ===== Chapitre I — Synthèse ===== {%- endcomment -%}
   {%- if picks.size > 0 -%}
-    <section class="msc-light msc-section" data-reveal aria-labelledby="synthese-titre">
+    <section id="synthese" class="msc-light msc-section" data-reveal aria-labelledby="synthese-titre">
       <div class="msc-container">
         <div class="msc-head">
           <h2 id="synthese-titre" class="msc-h2">{{ section.settings.synth_title }}</h2>
@@ -63,18 +89,30 @@
         </div>
         <div class="msc-picks">
           {%- for pick in picks -%}
+            {%- liquid
+              assign pick_shop = nil
+              for sh in shops
+                if sh.settings.name == pick.settings.shop
+                  assign pick_shop = sh
+                  break
+                endif
+              endfor
+            -%}
             <article class="msc-pick" {{ pick.shopify_attributes }}>
               <p class="msc-pick__top">
                 <span class="msc-pick__num">{{ romans[forloop.index0] }}</span>
                 <span class="msc-pick__label">{{ pick.settings.label }}</span>
               </p>
-              <p class="msc-pick__shop">{{ pick.settings.shop }}</p>
+              <p class="msc-pick__shop">
+                {%- if pick_shop -%}{%- render 'msc-shop-logo', s: pick_shop.settings, size: 40, alt: '' -%}{%- endif -%}
+                <span>{% render 'msc-autolink', text: pick.settings.shop, shops: shops %}</span>
+              </p>
               <p class="msc-pick__price">
                 <span class="msc-pick__note">{{ pick.settings.note }}</span>
                 <span class="msc-pick__sep" aria-hidden="true"></span>
                 {{- pick.settings.detail -}}
               </p>
-              <p class="msc-pick__why">{{ pick.settings.why }}</p>
+              <p class="msc-pick__why">{% render 'msc-autolink', text: pick.settings.why, shops: shops %}</p>
             </article>
           {%- endfor -%}
         </div>
@@ -83,7 +121,7 @@
   {%- endif -%}
 
   {%- comment -%} ===== Chapitre II — Tableau comparatif ===== {%- endcomment -%}
-  <section class="msc-dark msc-section" data-reveal aria-labelledby="tableau-titre">
+  <section id="comparatif" class="msc-dark msc-section" data-reveal aria-labelledby="tableau-titre">
     <div class="msc-container">
       <div class="msc-head msc-head--tight">
         <h2 id="tableau-titre" class="msc-h2">{{ section.settings.table_title }}</h2>
@@ -113,12 +151,17 @@
                 if forloop.index < 10
                   assign pad = '0' | append: forloop.index
                 endif
+                assign rel = 'nofollow sponsored noopener'
+                if s.dofollow
+                  assign rel = 'noopener'
+                endif
               -%}
               <tr{% if forloop.first %} class="is-top"{% endif %}>
                 <td class="msc-table__rank">{{ pad }}</td>
                 <th scope="row">
                   <span class="msc-table__name">
-                    <span>{{ s.name }}</span>
+                    {%- render 'msc-shop-logo', s: s, size: 36, alt: '' -%}
+                    <span>{% render 'msc-autolink', text: s.name, shops: shops %}</span>
                     {%- if forloop.first -%}<span class="msc-badge">Notre choix</span>{%- endif -%}
                   </span>
                 </th>
@@ -134,7 +177,7 @@
                 <td>{{ s.spec }}</td>
                 <td class="msc-table__site">
                   {%- if s.url != blank -%}
-                    <a class="msc-btn msc-btn--outline" href="{{ s.url }}" rel="nofollow sponsored noopener" target="_blank">Voir le site</a>
+                    <a class="msc-btn msc-btn--outline" href="{{ s.url }}" rel="{{ rel }}" target="_blank">Voir le site</a>
                   {%- else -%}
                     <span class="msc-domain">{{ s.domain }}</span>
                   {%- endif -%}
@@ -153,11 +196,16 @@
             if forloop.index < 10
               assign pad = '0' | append: forloop.index
             endif
+            assign rel = 'nofollow sponsored noopener'
+            if s.dofollow
+              assign rel = 'noopener'
+            endif
           -%}
-          <li class="msc-card">
+          <li class="msc-card{% if forloop.first %} is-top{% endif %}">
             <p class="msc-card__title">
               <span class="msc-card__rank">{{ pad }}</span>
-              <span class="msc-card__name">{{ s.name }}</span>
+              {%- render 'msc-shop-logo', s: s, size: 40, alt: '' -%}
+              <span class="msc-card__name">{% render 'msc-autolink', text: s.name, shops: shops %}</span>
               {%- if forloop.first -%}<span class="msc-badge">Notre choix</span>{%- endif -%}
             </p>
             <dl>
@@ -171,7 +219,7 @@
               <dd class="msc-card__promo">{{ s.promo | default: '—' }}</dd>
             </dl>
             {%- if s.url != blank -%}
-              <a class="msc-card__cta" href="{{ s.url }}" rel="nofollow sponsored noopener" target="_blank">Voir le site</a>
+              <a class="msc-card__cta" href="{{ s.url }}" rel="{{ rel }}" target="_blank">Voir le site</a>
             {%- else -%}
               <p class="msc-card__domain">{{ s.domain }}</p>
             {%- endif -%}
@@ -199,6 +247,11 @@
           endif
           assign pros = s.pros | newline_to_br | split: '<br />'
           assign cons = s.cons | newline_to_br | split: '<br />'
+          assign rel = 'nofollow sponsored noopener'
+          if s.dofollow
+            assign rel = 'noopener'
+          endif
+          assign logo_alt = 'Logo ' | append: s.name
         -%}
         <article id="rang-{{ forloop.index }}" class="msc-shop" data-reveal {{ shop.shopify_attributes }}>
           <div class="msc-shop__grid">
@@ -217,7 +270,10 @@
                 {%- endif -%}
                 <p class="msc-shop__tagline">{{ s.tagline }}</p>
               </div>
-              <h2 class="msc-shop__name">{{ s.name }}</h2>
+              <div class="msc-shop__head">
+                {%- render 'msc-shop-logo', s: s, size: 64, alt: logo_alt -%}
+                <h2 class="msc-shop__name">{% render 'msc-autolink', text: s.name, shops: shops %}</h2>
+              </div>
 
               <div class="msc-proscons">
                 <div class="msc-pros">
@@ -226,7 +282,7 @@
                     {%- for line in pros -%}
                       {%- assign item = line | strip -%}
                       {%- if item != blank -%}
-                        <li><span aria-hidden="true">+</span><span>{{ item }}</span></li>
+                        <li><span aria-hidden="true">+</span><span>{% render 'msc-autolink', text: item, shops: shops %}</span></li>
                       {%- endif -%}
                     {%- endfor -%}
                   </ul>
@@ -237,7 +293,7 @@
                     {%- for line in cons -%}
                       {%- assign item = line | strip -%}
                       {%- if item != blank -%}
-                        <li><span aria-hidden="true">−</span><span>{{ item }}</span></li>
+                        <li><span aria-hidden="true">−</span><span>{% render 'msc-autolink', text: item, shops: shops %}</span></li>
                       {%- endif -%}
                     {%- endfor -%}
                   </ul>
@@ -265,16 +321,22 @@
                   </tr>
                   <tr>
                     <th scope="row">Site</th>
-                    <td>{{ s.domain }}</td>
+                    <td>
+                      {%- if s.url != blank and s.autolink -%}
+                        <a class="msc-xlink" href="{{ s.url }}" rel="{{ rel }}" target="_blank">{{ s.domain }}</a>
+                      {%- else -%}
+                        {{ s.domain }}
+                      {%- endif -%}
+                    </td>
                   </tr>
                 </tbody>
               </table>
 
-              <p class="msc-shop__text">{{ s.body }}</p>
+              <p class="msc-shop__text">{% render 'msc-autolink', text: s.body, shops: shops %}</p>
 
               {%- if s.url != blank -%}
                 <div class="msc-shop__actions">
-                  <a class="msc-btn msc-btn--encre" href="{{ s.url }}" rel="nofollow sponsored noopener" target="_blank">Voir le site</a>
+                  <a class="msc-btn msc-btn--encre" href="{{ s.url }}" rel="{{ rel }}" target="_blank">Voir le site</a>
                   {%- if s.promo != blank -%}
                     <span class="msc-shop__code">Code<span>{{ s.promo }}</span></span>
                   {%- endif -%}
@@ -293,10 +355,16 @@
       <div class="msc-container msc-verdict__grid">
         <div>
           <span class="msc-verdict__kicker">Le verdict de la rédaction</span>
-          <h2 id="verdict-titre" class="msc-h2">Pourquoi <em>{{ top.settings.name }}</em> arrive en tête</h2>
-          <p class="msc-verdict__text">{{ section.settings.verdict_text }}</p>
+          <h2 id="verdict-titre" class="msc-h2">Pourquoi <em>{% render 'msc-autolink', text: top.settings.name, shops: shops %}</em> arrive en tête</h2>
+          <p class="msc-verdict__text">{% render 'msc-autolink', text: section.settings.verdict_text, shops: shops %}</p>
           {%- if top.settings.url != blank -%}
-            <a class="msc-btn msc-btn--noir" href="{{ top.settings.url }}" rel="nofollow sponsored noopener" target="_blank">Voir {{ top.settings.name }}</a>
+            {%- liquid
+              assign rel = 'nofollow sponsored noopener'
+              if top.settings.dofollow
+                assign rel = 'noopener'
+              endif
+            -%}
+            <a class="msc-btn msc-btn--noir" href="{{ top.settings.url }}" rel="{{ rel }}" target="_blank">Voir {{ top.settings.name }}</a>
           {%- endif -%}
         </div>
         <dl class="msc-verdict__facts">
@@ -323,16 +391,53 @@
     </section>
   {%- endif -%}
 
-  {%- comment -%} ===== Chapitre IV — Méthodologie ===== {%- endcomment -%}
+  {%- comment -%} ===== Chapitre IV — Selon votre besoin ===== {%- endcomment -%}
+  {%- if needs.size > 0 -%}
+    <section id="par-besoin" class="msc-light-2 msc-section" data-reveal aria-labelledby="besoin-titre">
+      <div class="msc-container">
+        <div class="msc-head msc-head--tight">
+          <h2 id="besoin-titre" class="msc-h2">{{ section.settings.needs_title }}</h2>
+          <span class="msc-chapter">Chapitre IV</span>
+        </div>
+        <p class="msc-lede">{{ section.settings.needs_sub }}</p>
+        <ul class="msc-needs">
+          {%- for need in needs -%}
+            {%- liquid
+              assign need_shop = nil
+              assign need_rank = nil
+              for sh in shops
+                if sh.settings.name == need.settings.shop
+                  assign need_shop = sh
+                  assign need_rank = forloop.index
+                  break
+                endif
+              endfor
+            -%}
+            <li class="msc-need" {{ need.shopify_attributes }}>
+              <h3 class="msc-need__label">{{ need.settings.label }}</h3>
+              <p class="msc-need__shop">
+                {%- if need_shop -%}{%- render 'msc-shop-logo', s: need_shop.settings, size: 36, alt: '' -%}{%- endif -%}
+                <span>{% render 'msc-autolink', text: need.settings.shop, shops: shops %}</span>
+                {%- if need_rank -%}<a class="msc-need__rank" href="#rang-{{ need_rank }}">N° {{ need_rank }}</a>{%- endif -%}
+              </p>
+              <p class="msc-need__why">{% render 'msc-autolink', text: need.settings.why, shops: shops %}</p>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ===== Chapitre V — Méthodologie ===== {%- endcomment -%}
   <section id="methodologie" class="msc-dark msc-section" data-reveal aria-labelledby="methodologie-titre">
     <div class="msc-container msc-2col">
       <div>
-        <span class="msc-chapter">Chapitre IV</span>
+        <span class="msc-chapter">Chapitre V</span>
         <h2 id="methodologie-titre" class="msc-h2">{{ section.settings.method_title }}</h2>
         <p class="msc-method__intro">{{ section.settings.method_intro }}</p>
         <div class="msc-transparency">
           <h3>Transparence sur les relations commerciales</h3>
-          <p>{{ section.settings.transparency_text }}</p>
+          <p>{% render 'msc-autolink', text: section.settings.transparency_text, shops: shops %}</p>
         </div>
       </div>
       <ol class="msc-weights">
@@ -350,20 +455,20 @@
     </div>
   </section>
 
-  {%- comment -%} ===== Chapitre V — Conseils ===== {%- endcomment -%}
+  {%- comment -%} ===== Chapitre VI — Conseils ===== {%- endcomment -%}
   {%- if tips.size > 0 -%}
-    <section class="msc-light-2 msc-section" data-reveal aria-labelledby="conseils-titre">
+    <section id="conseils" class="msc-light msc-section" data-reveal aria-labelledby="conseils-titre">
       <div class="msc-container">
         <div class="msc-head">
           <h2 id="conseils-titre" class="msc-h2">{{ section.settings.tips_title }}</h2>
-          <span class="msc-chapter">Chapitre V</span>
+          <span class="msc-chapter">Chapitre VI</span>
         </div>
         <ol class="msc-tips">
           {%- for tip in tips -%}
             <li class="msc-tip" {{ tip.shopify_attributes }}>
               <span class="msc-tip__num" aria-hidden="true">{{ forloop.index }}</span>
-              <h3 class="msc-tip__title">{{ tip.settings.title }}</h3>
-              <p class="msc-tip__desc">{{ tip.settings.desc }}</p>
+              <h3 class="msc-tip__title">{% render 'msc-autolink', text: tip.settings.title, shops: shops %}</h3>
+              <p class="msc-tip__desc">{% render 'msc-autolink', text: tip.settings.desc, shops: shops %}</p>
             </li>
           {%- endfor -%}
         </ol>
@@ -371,12 +476,33 @@
     </section>
   {%- endif -%}
 
-  {%- comment -%} ===== Chapitre VI — FAQ ===== {%- endcomment -%}
+  {%- comment -%} ===== Chapitre VII — Signaux d'alerte ===== {%- endcomment -%}
+  {%- if alerts.size > 0 -%}
+    <section id="alertes" class="msc-light-2 msc-section" data-reveal aria-labelledby="alertes-titre">
+      <div class="msc-container msc-2col">
+        <div>
+          <span class="msc-chapter">Chapitre VII</span>
+          <h2 id="alertes-titre" class="msc-h2">{{ section.settings.alerts_title }}</h2>
+          <p class="msc-alerts__intro">{{ section.settings.alerts_intro }}</p>
+        </div>
+        <ul class="msc-alerts">
+          {%- for alert in alerts -%}
+            <li class="msc-alert" {{ alert.shopify_attributes }}>
+              <h3 class="msc-alert__title">{{ alert.settings.title }}</h3>
+              <p class="msc-alert__desc">{% render 'msc-autolink', text: alert.settings.desc, shops: shops %}</p>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ===== Chapitre VIII — FAQ ===== {%- endcomment -%}
   {%- if faqs.size > 0 -%}
     <section id="faq" class="msc-dark msc-section" data-reveal aria-labelledby="faq-titre">
       <div class="msc-container msc-2col">
         <div>
-          <span class="msc-chapter">Chapitre VI</span>
+          <span class="msc-chapter">Chapitre VIII</span>
           <h2 id="faq-titre" class="msc-h2">{{ section.settings.faq_title }}</h2>
         </div>
         <div class="msc-faq">
@@ -400,7 +526,7 @@
                   <span class="msc-faq__sign" aria-hidden="true"></span>
                 </button>
               </h3>
-              <p id="msc-faq-{{ faq.id }}" class="msc-faq__a" hidden>{{ faq.settings.a }}</p>
+              <p id="msc-faq-{{ faq.id }}" class="msc-faq__a" hidden>{% render 'msc-autolink', text: faq.settings.a, shops: shops %}</p>
             </div>
           {%- endfor -%}
         </div>
@@ -414,10 +540,39 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": {{ request.origin | append: '/#organisation' | json }},
     "name": {{ section.settings.org_name | json }},
+    {%- if section.settings.org_alternate != blank %}
+    "alternateName": {{ section.settings.org_alternate | json }},
+    {%- endif %}
     "url": {{ request.origin | append: '/' | json }},
     "description": {{ section.settings.org_description | json }},
     "areaServed": "FR"
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": {{ request.origin | append: '/#site' | json }},
+    "name": {{ section.settings.org_name | json }},
+    "url": {{ request.origin | append: '/' | json }},
+    "inLanguage": "fr-FR",
+    "publisher": {"@id": {{ request.origin | append: '/#organisation' | json }}}
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ section.settings.itemlist_name | json }},
+    "description": {{ section.settings.hero_sub | strip_html | json }},
+    "inLanguage": "fr-FR",
+    "datePublished": {{ section.settings.published_iso | json }},
+    "dateModified": {{ section.settings.update_iso | json }},
+    "mainEntityOfPage": {{ request.origin | append: '/' | json }},
+    "author": {"@id": {{ request.origin | append: '/#organisation' | json }}},
+    "publisher": {"@id": {{ request.origin | append: '/#organisation' | json }}}
   }
 </script>
 <script type="application/ld+json">
@@ -435,7 +590,9 @@
         {%- else -%}
           {%- assign item_url = request.origin | append: '/#rang-' | append: forloop.index -%}
         {%- endif -%}
-        {"@type": "ListItem", "position": {{ forloop.index }}, "name": {{ shop.settings.name | json }}, "url": {{ item_url | json }}}
+        {"@type": "ListItem", "position": {{ forloop.index }}, "name": {{ shop.settings.name | json }}, "url": {{ item_url | json }}
+          {%- if shop.settings.logo != blank -%}, "image": {{ shop.settings.logo | image_url: width: 256 | prepend: 'https:' | json }}{%- endif -%}
+        }
         {%- unless forloop.last %},{% endunless -%}
       {%- endfor -%}
     ]
@@ -459,20 +616,25 @@
 
 {% schema %}
 {
-  "name": "Landing Meilleur site CBD",
+  "name": "Landing ActuCBD",
   "tag": "div",
   "class": "msc-landing-section",
   "settings": [
     { "type": "header", "content": "Général" },
-    { "type": "text", "id": "update_iso", "label": "Date de mise à jour (AAAA-MM-JJ, pour le SEO)", "default": "2026-09-14" },
-    { "type": "text", "id": "org_name", "label": "Nom du média", "default": "Meilleur site CBD" },
-    { "type": "text", "id": "org_description", "label": "Description du média (SEO)", "default": "Comparateur indépendant des sites d'achat de CBD en France." },
+    { "type": "text", "id": "published_iso", "label": "Date de publication (AAAA-MM-JJ)", "default": "2026-09-14" },
+    { "type": "text", "id": "published_label", "label": "Date de publication affichée", "default": "14 septembre 2026" },
+    { "type": "text", "id": "update_iso", "label": "Date de mise à jour (AAAA-MM-JJ, pour le SEO)", "default": "2026-11-12" },
+    { "type": "text", "id": "update_label", "label": "Date de mise à jour affichée", "default": "12 novembre 2026" },
+    { "type": "text", "id": "byline", "label": "Signature", "default": "Par la rédaction ActuCBD" },
+    { "type": "text", "id": "org_name", "label": "Nom du média", "default": "ActuCBD" },
+    { "type": "text", "id": "org_alternate", "label": "Autre nom du média (SEO)", "default": "Actu CBD" },
+    { "type": "text", "id": "org_description", "label": "Description du média (SEO)", "default": "ActuCBD compare les sites d'achat de CBD en France : prix au gramme, analyses, livraison et service client." },
     { "type": "text", "id": "itemlist_name", "label": "Nom du classement (SEO)", "default": "Les 10 meilleurs sites pour acheter du CBD en France en 2026" },
 
     { "type": "header", "content": "Hero" },
-    { "type": "text", "id": "hero_kicker", "label": "Surtitre", "default": "Édition 2026 — Comparateur indépendant" },
+    { "type": "text", "id": "hero_kicker", "label": "Surtitre", "default": "ActuCBD — Édition 2026" },
     { "type": "inline_richtext", "id": "hero_title", "label": "Titre H1 (italique = doré)", "default": "Les 10 meilleurs sites pour acheter du <em>CBD</em> en 2026" },
-    { "type": "textarea", "id": "hero_sub", "label": "Sous-titre", "default": "34 boutiques françaises testées, 6 critères de notation pondérés, classement mis à jour le 14 septembre 2026." },
+    { "type": "textarea", "id": "hero_sub", "label": "Sous-titre", "default": "Quel est le meilleur site pour acheter du CBD en France ? 34 boutiques testées, 10 retenues, 6 critères pondérés : prix au gramme, analyses, livraison et service client." },
     { "type": "text", "id": "plaque_label", "label": "Plaque lauréat — libellé", "default": "N° 1 de l'édition 2026" },
     { "type": "text", "id": "stat_1_label", "label": "Chiffre 1 — libellé", "default": "Boutiques testées" },
     { "type": "text", "id": "stat_1_value", "label": "Chiffre 1 — valeur", "default": "34" },
@@ -497,14 +659,20 @@
     { "type": "text", "id": "verdict_catalogue", "label": "Catalogue", "default": "Le plus large du top 10" },
     { "type": "text", "id": "verdict_shipping", "label": "Expédition", "default": "Jour même avant 14h30" },
 
+    { "type": "header", "content": "Selon votre besoin" },
+    { "type": "inline_richtext", "id": "needs_title", "label": "Chapitre IV — titre", "default": "Le meilleur site CBD <em>selon votre besoin</em>" },
+    { "type": "text", "id": "needs_sub", "label": "Chapitre IV — sous-titre", "default": "Le classement général désigne un n° 1, mais chaque acheteur a sa priorité : prix, rapidité, boutique physique ou analyses." },
+
     { "type": "header", "content": "Méthodologie" },
     { "type": "inline_richtext", "id": "method_title", "label": "Titre", "default": "Notre <em>méthodologie</em>" },
     { "type": "textarea", "id": "method_intro", "label": "Introduction", "default": "La note sur 5 est la moyenne pondérée de six critères. 34 boutiques ont été évaluées, 10 retenues. Le barème est identique pour toutes." },
-    { "type": "textarea", "id": "transparency_text", "label": "Transparence sur les relations commerciales", "default": "Meilleur site CBD est un média indépendant. Certains liens de cette page sont affiliés : une commission est perçue si un achat est réalisé, sans surcoût pour le lecteur. Les notes sont calculées avant toute prise de contact commerciale. Aucune boutique ne peut acheter un rang, modifier une note ou relire un avis avant publication. Les commandes de test ont été payées par la rédaction. Dernière révision du barème : 14 septembre 2026." },
+    { "type": "textarea", "id": "transparency_text", "label": "Transparence sur les relations commerciales", "default": "ActuCBD est un site éditorial consacré au CBD. Certains liens de cette page sont affiliés : une commission est perçue si un achat est réalisé, sans surcoût pour le lecteur. Les notes sont calculées avant toute prise de contact commerciale. Aucune boutique ne peut acheter un rang, modifier une note ou relire un avis avant publication. Les commandes de test ont été payées par la rédaction. Dernière révision du barème : 14 septembre 2026." },
 
     { "type": "header", "content": "Conseils et FAQ" },
-    { "type": "inline_richtext", "id": "tips_title", "label": "Chapitre V — titre", "default": "Comment choisir <em>son site de CBD</em>" },
-    { "type": "inline_richtext", "id": "faq_title", "label": "Chapitre VI — titre", "default": "Questions <em>fréquentes</em>" }
+    { "type": "inline_richtext", "id": "tips_title", "label": "Chapitre VI — titre", "default": "Comment choisir <em>son site de CBD</em>" },
+    { "type": "inline_richtext", "id": "alerts_title", "label": "Chapitre VII — titre", "default": "Les signaux <em>d'alerte</em>" },
+    { "type": "textarea", "id": "alerts_intro", "label": "Chapitre VII — introduction", "default": "Six signes qu'un site de CBD n'est pas fiable. Un seul suffit à passer son chemin." },
+    { "type": "inline_richtext", "id": "faq_title", "label": "Chapitre VIII — titre", "default": "Questions <em>fréquentes</em>" }
   ],
   "blocks": [
     {
@@ -513,7 +681,10 @@
       "settings": [
         { "type": "text", "id": "name", "label": "Nom", "default": "Nom de la boutique" },
         { "type": "text", "id": "domain", "label": "Nom de domaine affiché", "default": "exemple.fr" },
-        { "type": "url", "id": "url", "label": "Lien « Voir le site »", "info": "Uniquement pour le top 3. Laisser vide : le domaine s'affiche en texte, sans lien." },
+        { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Carré de préférence. Sans logo, les initiales s'affichent." },
+        { "type": "url", "id": "url", "label": "Lien « Voir le site »", "info": "Laisser vide : le domaine s'affiche en texte, sans lien." },
+        { "type": "checkbox", "id": "dofollow", "label": "Lien dofollow", "info": "Coché : rel=\"noopener\". Décoché : rel=\"nofollow sponsored noopener\".", "default": false },
+        { "type": "checkbox", "id": "autolink", "label": "Lier chaque mention du nom dans la page", "default": false },
         { "type": "text", "id": "entry", "label": "Prix dès", "default": "Non communiqué" },
         { "type": "text", "id": "shipping", "label": "Livraison", "default": "Non communiqué" },
         { "type": "text", "id": "promo", "label": "Code promo", "info": "Vide = « — »" },
@@ -537,6 +708,15 @@
       ]
     },
     {
+      "type": "need",
+      "name": "Selon votre besoin",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Besoin", "default": "Pour payer le moins cher" },
+        { "type": "text", "id": "shop", "label": "Boutique (nom exact du bloc boutique)" },
+        { "type": "textarea", "id": "why", "label": "Justification" }
+      ]
+    },
+    {
       "type": "weight",
       "name": "Méthodologie — critère",
       "settings": [
@@ -555,6 +735,14 @@
       ]
     },
     {
+      "type": "alert",
+      "name": "Signal d'alerte",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre" },
+        { "type": "textarea", "id": "desc", "label": "Texte" }
+      ]
+    },
+    {
       "type": "faq",
       "name": "FAQ — question",
       "settings": [
@@ -564,7 +752,7 @@
     }
   ],
   "presets": [
-    { "name": "Landing Meilleur site CBD" }
+    { "name": "Landing ActuCBD" }
   ]
 }
 {% endschema %}

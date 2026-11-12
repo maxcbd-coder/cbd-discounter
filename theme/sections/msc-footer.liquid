@@ -1,7 +1,7 @@
 <footer class="msc-footer">
   <div class="msc-container msc-footer__grid">
     <div>
-      <p class="msc-footer__brand">{{ section.settings.brand }}<em> {{ section.settings.brand_accent }}</em></p>
+      <p class="msc-footer__brand">{{ section.settings.brand }}<em>{{ section.settings.brand_accent }}</em></p>
       <p class="msc-footer__about">{{ section.settings.about }}</p>
     </div>
     <div>
@@ -34,7 +34,7 @@
   </div>
   <div class="msc-container msc-footer__bottom">
     <p>{{ section.settings.disclaimer }}</p>
-    <p>© {{ 'now' | date: '%Y' }} {{ section.settings.brand }} {{ section.settings.brand_accent }}</p>
+    <p>© {{ 'now' | date: '%Y' }} {{ section.settings.brand }}{{ section.settings.brand_accent }} · {{ request.host }}</p>
   </div>
 </footer>
 
@@ -44,14 +44,14 @@
   "tag": "div",
   "class": "msc-footer-section",
   "settings": [
-    { "type": "text", "id": "brand", "label": "Marque", "default": "Meilleur site" },
+    { "type": "text", "id": "brand", "label": "Marque", "default": "Actu" },
     { "type": "text", "id": "brand_accent", "label": "Marque — partie en italique doré", "default": "CBD" },
-    { "type": "textarea", "id": "about", "label": "Présentation", "default": "Comparateur indépendant des sites d'achat de CBD en France. Dernière mise à jour : 14 septembre 2026." },
+    { "type": "textarea", "id": "about", "label": "Présentation", "default": "ActuCBD compare les sites d'achat de CBD en France : prix au gramme, analyses, livraison et service client. Dernière mise à jour : 12 novembre 2026." },
     { "type": "text", "id": "legal_link", "label": "Lien « Mentions légales et éditeur »", "default": "/policies/legal-notice" },
     { "type": "text", "id": "privacy_link", "label": "Lien « Politique de confidentialité »", "default": "/policies/privacy-policy" },
     { "type": "text", "id": "affiliation_link", "label": "Lien « Politique d'affiliation »", "default": "/#methodologie" },
-    { "type": "text", "id": "contact_email", "label": "E-mail de contact", "default": "contact@meilleur-site-cbd.fr" },
-    { "type": "text", "id": "corrections_email", "label": "E-mail « Signaler une erreur »", "default": "corrections@meilleur-site-cbd.fr" },
+    { "type": "text", "id": "contact_email", "label": "E-mail de contact", "default": "contact@actucbd.com" },
+    { "type": "text", "id": "corrections_email", "label": "E-mail « Signaler une erreur »", "default": "corrections@actucbd.com" },
     { "type": "textarea", "id": "disclaimer", "label": "Mention légale bas de page", "default": "Vente réservée aux adultes. Produit non thérapeutique : les produits au CBD relèvent du bien-être et ne remplacent pas un avis médical. Taux de THC inférieur ou égal à 0,3 %." }
   ]
 }

@@ -1,0 +1,304 @@
+/* ActuCBD — compléments de la landing (logos, liens de mention, sommaire, besoins, signaux d'alerte).
+   Chargé après msc-landing.css. */
+
+/* ---------- Plaque lauréat (bloc, plus un lien) ---------- */
+.msc .msc-plaque {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin: 0 0 40px;
+  padding: 16px 22px;
+  border: 1px solid rgba(201, 169, 110, .45);
+  background: rgba(201, 169, 110, .06);
+  color: var(--msc-ivoire);
+}
+
+.msc .msc-plaque:hover {
+  border-color: var(--msc-champagne);
+  background: rgba(201, 169, 110, .12);
+}
+
+.msc .msc-plaque .msc-mark {
+  margin-right: -6px;
+}
+
+.msc a.msc-plaque__detail {
+  color: var(--msc-txt-2);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 169, 110, .45);
+  text-underline-offset: .25em;
+}
+
+.msc a.msc-plaque__detail:hover {
+  color: var(--msc-champagne-clair);
+}
+
+/* ---------- Logos dans les titres ---------- */
+.msc-pick__shop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.msc-card__title {
+  align-items: center;
+}
+
+.msc-shop__head {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 24px);
+  margin: 0 0 clamp(28px, 4vw, 44px);
+}
+
+.msc-shop__head .msc-mark {
+  --msc-mark: clamp(48px, 6vw, 64px) !important;
+}
+
+.msc-shop__head .msc-shop__name {
+  margin: 0;
+  min-width: 0;
+}
+
+/* ---------- Logos des boutiques ---------- */
+.msc-mark {
+  --msc-mark: 40px;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--msc-mark);
+  height: var(--msc-mark);
+  background: #fffdf8;
+  border: 1px solid rgba(201, 169, 110, .55);
+  overflow: hidden;
+}
+
+.msc-light .msc-mark,
+.msc-light-2 .msc-mark {
+  border-color: rgba(25, 23, 20, .18);
+}
+
+.msc-mark__img {
+  display: block;
+  width: 62%;
+  height: 62%;
+  object-fit: contain;
+}
+
+.msc-mark--mono {
+  background: transparent;
+}
+
+.msc-mark__mono {
+  font-family: var(--msc-serif);
+  font-style: italic;
+  font-size: calc(var(--msc-mark) * .42);
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: var(--msc-champagne);
+}
+
+.msc-light .msc-mark__mono,
+.msc-light-2 .msc-mark__mono {
+  color: var(--msc-bronze);
+}
+
+.msc-card.is-top {
+  border-top-width: 2px;
+  background: #211e19;
+}
+
+/* ---------- Liens dans le texte (mentions de boutique) ---------- */
+.msc a.msc-xlink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--msc-champagne);
+  text-underline-offset: .18em;
+}
+
+.msc a.msc-xlink:hover {
+  color: var(--msc-champagne-clair);
+}
+
+.msc-light a.msc-xlink,
+.msc-light-2 a.msc-xlink {
+  text-decoration-color: var(--msc-bronze);
+}
+
+.msc-light a.msc-xlink:hover,
+.msc-light-2 a.msc-xlink:hover {
+  color: var(--msc-bronze);
+}
+
+.msc-verdict a.msc-xlink,
+.msc-verdict a.msc-xlink:hover {
+  color: inherit;
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Signature ---------- */
+.msc-byline {
+  margin: -24px 0 36px;
+  font-size: 13px;
+  letter-spacing: .04em;
+  color: var(--msc-txt-3);
+}
+
+/* ---------- Sommaire ---------- */
+.msc-toc {
+  background: var(--msc-noir);
+  border-top: 1px solid rgba(201, 169, 110, .22);
+  border-bottom: 1px solid rgba(201, 169, 110, .22);
+}
+
+.msc-toc__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 0 clamp(18px, 3vw, 36px);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.msc-toc__list::-webkit-scrollbar {
+  display: none;
+}
+
+.msc-toc__list a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--msc-txt-2);
+}
+
+.msc .msc-toc__list a:hover {
+  color: var(--msc-champagne);
+}
+
+/* ---------- Chapitre IV — Selon votre besoin ---------- */
+.msc-needs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 0 clamp(24px, 4vw, 56px);
+}
+
+.msc-need {
+  border-top: 1px solid var(--msc-encre);
+  padding: 22px 0 34px;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.msc-need__label {
+  margin: 0;
+  font-family: var(--msc-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--msc-bronze);
+}
+
+.msc-need__shop {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  font-family: var(--msc-serif);
+  font-size: clamp(26px, 2.6vw, 32px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+}
+
+.msc a.msc-need__rank {
+  font-family: var(--msc-sans);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--msc-encre-3);
+  border: 1px solid rgba(25, 23, 20, .25);
+  padding: 4px 8px;
+}
+
+.msc a.msc-need__rank:hover {
+  color: var(--msc-encre);
+  border-color: var(--msc-encre);
+}
+
+.msc-need__why {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--msc-encre-2);
+}
+
+/* ---------- Chapitre VII — Signaux d'alerte ---------- */
+.msc-alerts__intro {
+  margin: 22px 0 0;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--msc-encre-2);
+  max-width: 40ch;
+}
+
+.msc-alerts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+}
+
+.msc-alert {
+  border-top: 1px solid rgba(25, 23, 20, .3);
+  padding: 22px 0 22px 34px;
+  position: relative;
+}
+
+.msc-alert::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 31px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--msc-bronze);
+  transform: rotate(45deg);
+}
+
+.msc-alert__title {
+  margin: 0 0 8px;
+  font-family: var(--msc-serif);
+  font-weight: 400;
+  font-size: clamp(20px, 2.2vw, 25px);
+  line-height: 1.2;
+}
+
+.msc-alert__desc {
+  margin: 0;
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--msc-encre-2);
+  max-width: 62ch;
+}
+
+@media (max-width: 767.98px) {
+  .msc-table__name .msc-mark {
+    --msc-mark: 32px !important;
+  }
+}
