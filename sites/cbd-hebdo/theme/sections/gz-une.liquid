@@ -1,0 +1,150 @@
+<section class="gz-une" aria-labelledby="titre-une">
+  <div class="gz-une__grid">
+    <div class="gz-une__main">
+      <p class="gz-tag-orange">{{ section.settings.label | escape }}</p>
+      <h1 id="titre-une" class="gz-h1">{{ section.settings.heading | escape }}</h1>
+      <p class="gz-chapo">{{ section.settings.chapo | escape }}</p>
+      <div class="gz-une__body">{{ section.settings.body }}</div>
+    </div>
+
+    <aside class="gz-featured" aria-label="{{ section.settings.aside_label | escape }}">
+      <span class="gz-stamp" aria-hidden="true">{{ section.settings.stamp_1 | escape }}<br>{{ section.settings.stamp_2 | escape }}<br>{{ section.settings.stamp_3 | escape }}</span>
+      <p class="gz-featured__label">{{ section.settings.aside_label | escape }}</p>
+      <h2 class="gz-featured__title">{{ section.settings.aside_title | escape }}</h2>
+      <p class="gz-featured__text">{{ section.settings.aside_text | escape }}</p>
+      <dl class="gz-featured__data">
+        <div><dt>{{ section.settings.row_1_label | escape }}</dt><dd>{{ section.settings.row_1_value | escape }}</dd></div>
+        <div><dt>{{ section.settings.row_2_label | escape }}</dt><dd>{{ section.settings.row_2_value | escape }}</dd></div>
+        <div><dt>{{ section.settings.row_3_label | escape }}</dt><dd>{{ section.settings.row_3_value | escape }}</dd></div>
+      </dl>
+      {%- if section.settings.cta_url != blank -%}
+        <a class="gz-btn gz-featured__cta" href="{{ section.settings.cta_url }}" rel="nofollow sponsored">{{ section.settings.cta_label | escape }}</a>
+      {%- endif -%}
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gazette · À la une",
+  "class": "gz-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Étiquette",
+      "default": "Grand classement"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Titre H1",
+      "default": "Les 10 meilleurs sites de CBD en France en 2026, passés au crible"
+    },
+    {
+      "type": "textarea",
+      "id": "chapo",
+      "label": "Chapô",
+      "default": "Dix boutiques en ligne, quatre relevés par site, un vainqueur sans contestation : CBD Discounter. Voici tout ce qu'il faut savoir avant de commander."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Article (la 1re lettre devient la lettrine)",
+      "default": "<p>Le marché français du CBD n'a jamais compté autant de boutiques en ligne. Trop, même : entre les sites qui affichent des prix sans préciser le grammage, ceux qui cachent leurs délais et ceux qui oublient les analyses, choisir où acheter relève du jeu de piste.</p><p>Pour cette troisième édition, la rédaction a relevé sur chaque site les quatre informations qui comptent vraiment au moment de payer : le prix d'appel au gramme, les conditions de livraison, les codes promo actifs et ce qui distingue la boutique des autres. Les relevés datent du 14 septembre 2026.</p><p>Le résultat est net. <strong>CBD Discounter</strong> prend la première place en cumulant ce que ses concurrents n'offrent que séparément : un prix d'appel de 0,75 € le gramme, un catalogue large et une expédition le jour même avant 14h30. <strong>Greenhouse CBD Shop</strong> et <strong>CBDP Paris</strong> complètent le podium, chacun avec un atout bien à lui.</p><p>Plus bas, vous trouverez le relevé complet, les dix fiches détaillées, nos face-à-face, un guide d'achat et un lexique pour ne plus confondre fleur, résine et trim.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Encart « À la une »"
+    },
+    {
+      "type": "text",
+      "id": "aside_label",
+      "label": "Libellé",
+      "default": "À la une"
+    },
+    {
+      "type": "text",
+      "id": "stamp_1",
+      "label": "Tampon, ligne 1",
+      "default": "Élu"
+    },
+    {
+      "type": "text",
+      "id": "stamp_2",
+      "label": "Tampon, ligne 2",
+      "default": "n°1"
+    },
+    {
+      "type": "text",
+      "id": "stamp_3",
+      "label": "Tampon, ligne 3",
+      "default": "2026"
+    },
+    {
+      "type": "text",
+      "id": "aside_title",
+      "label": "Titre",
+      "default": "CBD Discounter"
+    },
+    {
+      "type": "textarea",
+      "id": "aside_text",
+      "label": "Accroche",
+      "default": "Le meilleur compromis prix, choix et rapidité de cette édition."
+    },
+    {
+      "type": "text",
+      "id": "row_1_label",
+      "label": "Ligne 1 : libellé",
+      "default": "Prix dès"
+    },
+    {
+      "type": "text",
+      "id": "row_1_value",
+      "label": "Ligne 1 : valeur",
+      "default": "0,75 €/g"
+    },
+    {
+      "type": "text",
+      "id": "row_2_label",
+      "label": "Ligne 2 : libellé",
+      "default": "Expédition"
+    },
+    {
+      "type": "text",
+      "id": "row_2_value",
+      "label": "Ligne 2 : valeur",
+      "default": "jour même avant 14h30"
+    },
+    {
+      "type": "text",
+      "id": "row_3_label",
+      "label": "Ligne 3 : libellé",
+      "default": "Code"
+    },
+    {
+      "type": "text",
+      "id": "row_3_value",
+      "label": "Ligne 3 : valeur",
+      "default": "DISCOUNTER15"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Bouton : libellé",
+      "default": "Visiter CBD Discounter →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Bouton : lien (nofollow sponsored)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gazette · À la une"
+    }
+  ]
+}
+{% endschema %}

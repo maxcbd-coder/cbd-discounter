@@ -1,0 +1,17 @@
+<div class="gz-redirect">
+  <p><a href="{{ routes.root_url }}">{{ section.settings.label | escape }}</a></p>
+</div>
+
+{% schema %}
+{
+  "name": "Gazette · Redirection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Lien de retour",
+      "default": "Retour à La Gazette du Chanvre"
+    }
+  ]
+}
+{% endschema %}

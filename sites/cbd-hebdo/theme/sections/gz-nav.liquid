@@ -1,0 +1,48 @@
+<div class="gz-navbar">
+  <nav class="gz-nav" aria-label="Rubriques">
+    <span class="gz-nav__edition">{{ section.settings.edition | escape }}</span>
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.anchor | escape }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+    {%- endfor -%}
+  </nav>
+</div>
+
+{% schema %}
+{
+  "name": "Gazette · Rubriques",
+  "class": "gz-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "edition",
+      "label": "Mention d'édition",
+      "default": "● Édition 2026"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Lien d'ancre",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Libellé"
+        },
+        {
+          "type": "text",
+          "id": "anchor",
+          "label": "Ancre (#id)",
+          "default": "#"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Gazette · Rubriques"
+    }
+  ]
+}
+{% endschema %}

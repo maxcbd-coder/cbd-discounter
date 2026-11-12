@@ -1,0 +1,101 @@
+<footer class="gz-footer">
+  <div class="gz-wrap">
+    <p class="gz-footer__flag">{{ section.settings.flag | escape }}</p>
+    <div class="gz-footer__cols">
+      <div>
+        <p class="gz-footer__label">{{ section.settings.col_1_label | escape }}</p>
+        <p class="gz-footer__text">{{ section.settings.col_1_text | escape }}</p>
+      </div>
+      <div>
+        <p class="gz-footer__label">{{ section.settings.col_2_label | escape }}</p>
+        <p class="gz-footer__text">{{ section.settings.col_2_text | escape }}</p>
+      </div>
+      <ul class="gz-footer__links">
+        <li><a href="{{ section.settings.legal_url | escape }}">{{ section.settings.legal_label | escape }}</a></li>
+        <li><a href="{{ section.settings.privacy_url | escape }}">{{ section.settings.privacy_label | escape }}</a></li>
+        <li><a href="mailto:{{ section.settings.email | escape }}">{{ section.settings.email | escape }}</a></li>
+      </ul>
+    </div>
+    <p class="gz-footer__legal">{{ section.settings.legal_line | escape }}</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Gazette · Pied de page",
+  "class": "gz-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "flag",
+      "label": "Titre",
+      "default": "La Gazette du Chanvre"
+    },
+    {
+      "type": "text",
+      "id": "col_1_label",
+      "label": "Colonne 1 : libellé",
+      "default": "Colophon"
+    },
+    {
+      "type": "textarea",
+      "id": "col_1_text",
+      "label": "Colonne 1 : texte",
+      "default": "Classement établi par la rédaction. Relevés effectués le 14 septembre 2026. Prochaine édition au printemps 2027."
+    },
+    {
+      "type": "text",
+      "id": "col_2_label",
+      "label": "Colonne 2 : libellé",
+      "default": "Transparence"
+    },
+    {
+      "type": "textarea",
+      "id": "col_2_text",
+      "label": "Colonne 2 : texte",
+      "default": "Ce classement est publié en partenariat avec CBD Discounter, classé n°1. Seuls les trois sites du podium sont en lien, et certains peuvent être affiliés."
+    },
+    {
+      "type": "text",
+      "id": "legal_label",
+      "label": "Lien 1 : libellé",
+      "default": "Mentions légales"
+    },
+    {
+      "type": "text",
+      "id": "legal_url",
+      "label": "Lien 1 : adresse",
+      "default": "#mentions"
+    },
+    {
+      "type": "text",
+      "id": "privacy_label",
+      "label": "Lien 2 : libellé",
+      "default": "Confidentialité"
+    },
+    {
+      "type": "text",
+      "id": "privacy_url",
+      "label": "Lien 2 : adresse",
+      "default": "#confidentialite"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "E-mail de la rédaction",
+      "default": "redaction@gazette-du-chanvre.fr"
+    },
+    {
+      "type": "textarea",
+      "id": "legal_line",
+      "label": "Ligne légale",
+      "default": "Vente interdite aux mineurs. Les produits au CBD ne sont pas des médicaments. THC ≤ 0,3 %. © 2026 La Gazette du Chanvre."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gazette · Pied de page"
+    }
+  ]
+}
+{% endschema %}

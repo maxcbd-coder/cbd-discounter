@@ -1,0 +1,65 @@
+<section id="questions" class="gz-wrap" aria-labelledby="titre-questions">
+  <p class="gz-kicker">{{ section.settings.kicker | escape }}</p>
+  <h2 id="titre-questions" class="gz-h2 gz-section-title">{{ section.settings.heading | escape }}</h2>
+  <div class="gz-faq__grid">
+    {%- for block in section.blocks -%}
+      <div class="gz-qa" {{ block.shopify_attributes }}>
+        <h3><span>Q.</span> {{ block.settings.question | escape }}</h3>
+        <p><span>R.</span> {{ block.settings.answer | escape }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{%- for block in section.blocks -%}
+{"@type":"Question","name":{{ block.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.answer | json }}}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]}
+</script>
+
+{% schema %}
+{
+  "name": "Gazette · Questions",
+  "class": "gz-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Rubrique",
+      "default": "Rubrique · Courrier des lecteurs"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Vos questions, nos réponses"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Réponse (identique au JSON-LD FAQPage)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "Gazette · Questions"
+    }
+  ]
+}
+{% endschema %}

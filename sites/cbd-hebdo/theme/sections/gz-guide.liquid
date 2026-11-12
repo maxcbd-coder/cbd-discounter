@@ -1,0 +1,57 @@
+<section id="guide" class="gz-wrap" aria-labelledby="titre-guide">
+  <p class="gz-kicker">{{ section.settings.kicker | escape }}</p>
+  <h2 id="titre-guide" class="gz-h2 gz-section-title">{{ section.settings.heading | escape }}</h2>
+  <div class="gz-guide__cols">
+    {%- for block in section.blocks -%}
+      <div class="gz-tip" {{ block.shopify_attributes }}>
+        <h3><span class="gz-tip__n">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span>{{ block.settings.title | escape }}</span></h3>
+        <p>{{ block.settings.text | escape }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gazette · Guide d'achat",
+  "class": "gz-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Rubrique",
+      "default": "Rubrique · Guide d'achat"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Comment bien acheter son CBD en ligne"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tip",
+      "name": "Conseil",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texte"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "Gazette · Guide d'achat"
+    }
+  ]
+}
+{% endschema %}

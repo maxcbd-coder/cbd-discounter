@@ -1,0 +1,59 @@
+<section id="lexique" class="gz-lexique" aria-labelledby="titre-lexique">
+  <div class="gz-wrap">
+    <p class="gz-kicker">{{ section.settings.kicker | escape }}</p>
+    <h2 id="titre-lexique" class="gz-h2 gz-section-title">{{ section.settings.heading | escape }}</h2>
+    <dl class="gz-lexique__list">
+      {%- for block in section.blocks -%}
+        <div class="gz-term" {{ block.shopify_attributes }}>
+          <dt>{{ block.settings.term | escape }}</dt>
+          <dd>{{ block.settings.definition | escape }}</dd>
+        </div>
+      {%- endfor -%}
+    </dl>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gazette · Lexique",
+  "class": "gz-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Rubrique",
+      "default": "Rubrique · Lexique"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Les mots du chanvre"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "term",
+      "name": "Terme",
+      "settings": [
+        {
+          "type": "text",
+          "id": "term",
+          "label": "Terme"
+        },
+        {
+          "type": "textarea",
+          "id": "definition",
+          "label": "Définition"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "Gazette · Lexique"
+    }
+  ]
+}
+{% endschema %}

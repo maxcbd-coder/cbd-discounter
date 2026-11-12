@@ -1,0 +1,75 @@
+<header id="une" class="gz-masthead">
+  <div class="gz-dateline">
+    <span>{{ section.settings.date | escape }}</span>
+    <span>{{ section.settings.edition | escape }}</span>
+    <span>{{ section.settings.reading | escape }}</span>
+  </div>
+  <p class="gz-flag">{{ section.settings.title_1 | escape }}<span>{{ section.settings.title_2 | escape }}</span></p>
+  <div class="gz-double-rule"></div>
+  {%- if section.settings.disclosure_text != blank -%}
+    <p class="gz-disclosure">
+      {%- if section.settings.disclosure_label != blank -%}<span class="gz-disclosure__label">{{ section.settings.disclosure_label | escape }}</span>{%- endif -%}
+      <span>{{ section.settings.disclosure_text | escape }}</span>
+    </p>
+  {%- endif -%}
+</header>
+
+{% schema %}
+{
+  "name": "Gazette · Masthead",
+  "class": "gz-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "date",
+      "label": "Ligne de date (gauche)",
+      "default": "Paris, lundi 14 septembre 2026"
+    },
+    {
+      "type": "text",
+      "id": "edition",
+      "label": "Ligne de date (centre)",
+      "default": "Classement annuel · 3ᵉ édition"
+    },
+    {
+      "type": "text",
+      "id": "reading",
+      "label": "Ligne de date (droite)",
+      "default": "Lecture : 14 min"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Titre du journal, ligne 1",
+      "default": "La Gazette"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Titre du journal, ligne 2",
+      "default": "du Chanvre"
+    },
+    {
+      "type": "header",
+      "content": "Mention de partenariat"
+    },
+    {
+      "type": "text",
+      "id": "disclosure_label",
+      "label": "Étiquette",
+      "default": "Partenariat"
+    },
+    {
+      "type": "textarea",
+      "id": "disclosure_text",
+      "label": "Texte",
+      "default": "Ce classement est publié en partenariat avec CBD Discounter, classé n°1. Certains liens du podium peuvent être affiliés."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gazette · Masthead"
+    }
+  ]
+}
+{% endschema %}

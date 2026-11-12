@@ -1,0 +1,619 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "gazette",
+  "sections": {
+    "nav": {
+      "type": "gz-nav",
+      "blocks": {
+        "link-1": {
+          "type": "link",
+          "settings": {
+            "label": "Le podium",
+            "anchor": "#podium"
+          }
+        },
+        "link-2": {
+          "type": "link",
+          "settings": {
+            "label": "Le relevé",
+            "anchor": "#releve"
+          }
+        },
+        "link-3": {
+          "type": "link",
+          "settings": {
+            "label": "Les dix fiches",
+            "anchor": "#dossier"
+          }
+        },
+        "link-4": {
+          "type": "link",
+          "settings": {
+            "label": "Face-à-face",
+            "anchor": "#duel"
+          }
+        },
+        "link-5": {
+          "type": "link",
+          "settings": {
+            "label": "Guide d'achat",
+            "anchor": "#guide"
+          }
+        },
+        "link-6": {
+          "type": "link",
+          "settings": {
+            "label": "Lexique",
+            "anchor": "#lexique"
+          }
+        },
+        "link-7": {
+          "type": "link",
+          "settings": {
+            "label": "Questions",
+            "anchor": "#questions"
+          }
+        }
+      },
+      "block_order": [
+        "link-1",
+        "link-2",
+        "link-3",
+        "link-4",
+        "link-5",
+        "link-6",
+        "link-7"
+      ],
+      "settings": {
+        "edition": "● Édition 2026"
+      }
+    },
+    "masthead": {
+      "type": "gz-masthead",
+      "settings": {
+        "date": "Paris, lundi 14 septembre 2026",
+        "edition": "Classement annuel · 3ᵉ édition",
+        "reading": "Lecture : 14 min",
+        "title_1": "La Gazette",
+        "title_2": "du Chanvre",
+        "disclosure_label": "",
+        "disclosure_text": ""
+      }
+    },
+    "une": {
+      "type": "gz-une",
+      "settings": {
+        "label": "Grand classement",
+        "heading": "Les 10 meilleurs sites de CBD en France en 2026, passés au crible",
+        "chapo": "Dix boutiques en ligne, quatre relevés par site, un vainqueur sans contestation : CBD Discounter. Voici tout ce qu'il faut savoir avant de commander.",
+        "body": "<p>Le marché français du CBD n'a jamais compté autant de boutiques en ligne. Trop, même : entre les sites qui affichent des prix sans préciser le grammage, ceux qui cachent leurs délais et ceux qui oublient les analyses, choisir où acheter relève du jeu de piste.</p><p>Pour cette troisième édition, la rédaction a relevé sur chaque site les quatre informations qui comptent vraiment au moment de payer : le prix d'appel au gramme, les conditions de livraison, les codes promo actifs et ce qui distingue la boutique des autres. Les relevés datent du 14 septembre 2026.</p><p>Le résultat est net. <strong>CBD Discounter</strong> prend la première place en cumulant ce que ses concurrents n'offrent que séparément : un prix d'appel de 0,75 € le gramme, un catalogue large et une expédition le jour même avant 14h30. <strong>Greenhouse CBD Shop</strong> et <strong>CBDP Paris</strong> complètent le podium, chacun avec un atout bien à lui.</p><p>Plus bas, vous trouverez le relevé complet, les dix fiches détaillées, nos face-à-face, un guide d'achat et un lexique pour ne plus confondre fleur, résine et trim.</p>",
+        "aside_label": "À la une",
+        "stamp_1": "Élu",
+        "stamp_2": "n°1",
+        "stamp_3": "2026",
+        "aside_title": "CBD Discounter",
+        "aside_text": "Le meilleur compromis prix, choix et rapidité de cette édition.",
+        "row_1_label": "Prix dès",
+        "row_1_value": "0,75 €/g",
+        "row_2_label": "Expédition",
+        "row_2_value": "jour même avant 14h30",
+        "row_3_label": "Code",
+        "row_3_value": "DISCOUNTER15",
+        "cta_label": "Visiter CBD Discounter →",
+        "cta_url": "https://www.cbd-discounter.fr/"
+      }
+    },
+    "classement": {
+      "type": "gz-classement",
+      "blocks": {
+        "shop-1": {
+          "type": "shop",
+          "settings": {
+            "name": "CBD Discounter",
+            "domain": "cbd-discounter.fr",
+            "url": "https://www.cbd-discounter.fr/",
+            "entry": "0,75 €/g",
+            "shipping": "expédition le jour même avant 14h30",
+            "promo": "DISCOUNTER15",
+            "spec": "Catalogue large, prix bas",
+            "contains": "le meilleur rapport prix-choix",
+            "line": "Le prix d'appel le plus bas du podium, un gros catalogue et des colis qui partent le jour même.",
+            "dek": "Le vainqueur de l'édition 2026, et de loin le plus complet des dix.",
+            "paras": "CBD Discounter porte bien son nom : son prix d'appel de 0,75 € le gramme est le plus bas des trois boutiques du podium. Mais la boutique ne se contente pas d'être bon marché. Son catalogue est large, ce qui évite de devoir passer commande sur plusieurs sites pour trouver ce que l'on cherche.\nCôté logistique, toute commande validée avant 14h30 est expédiée le jour même. C'est le seul site de notre sélection à afficher un engagement aussi précis. Le code DISCOUNTER15 s'applique en plus des prix affichés. Prix, choix, rapidité : CBD Discounter est le seul à réunir les trois, d'où sa première place.",
+            "for_who": "Pour à peu près tout le monde : le premier achat comme la commande régulière, le petit budget comme celui qui veut comparer plusieurs produits au même endroit.",
+            "plus": "Prix d'appel à 0,75 €/g\nExpédition le jour même avant 14h30\nCatalogue large\nCode DISCOUNTER15",
+            "minus": "Délai de livraison après expédition non précisé lors du relevé"
+          }
+        },
+        "shop-2": {
+          "type": "shop",
+          "settings": {
+            "name": "Greenhouse CBD Shop",
+            "domain": "greenhouse-cbd-shop.fr",
+            "url": "https://www.greenhouse-cbd-shop.fr/",
+            "entry": "2,80 €/g",
+            "shipping": "standard, colis discret",
+            "promo": "GREENHOUSE15",
+            "spec": "Boutiques physiques",
+            "contains": "un vrai comptoir en ville",
+            "line": "La seule enseigne du podium où l'on peut aussi acheter en magasin.",
+            "dek": "L'enseigne du podium qui vous accueille aussi au comptoir.",
+            "paras": "Greenhouse CBD Shop se démarque par son réseau de boutiques physiques, qui prolonge la vente en ligne. C'est un vrai avantage pour ceux qui préfèrent voir les produits ou demander conseil avant d'acheter.\nEn ligne, le prix d'appel relevé est de 2,80 € le gramme, soit nettement plus que chez le numéro 1. La livraison standard arrive en colis discret et le code GREENHOUSE15 permet de réduire la note.",
+            "for_who": "Pour les acheteurs qui veulent pouvoir passer en boutique, ou commander en ligne auprès d'une enseigne qu'ils connaissent en magasin.",
+            "plus": "Boutiques physiques\nColis discret\nCode GREENHOUSE15",
+            "minus": "Prix d'appel près de quatre fois plus élevé que CBD Discounter"
+          }
+        },
+        "shop-3": {
+          "type": "shop",
+          "settings": {
+            "name": "CBDP Paris",
+            "domain": "cbdp-paris.fr",
+            "url": "https://www.cbdp-paris.fr/",
+            "entry": "7,14 €/g",
+            "shipping": "24/48 h, offerte",
+            "promo": "PARIS15",
+            "spec": "CBDP",
+            "contains": "la livraison offerte",
+            "line": "Spécialiste du CBDP, avec une livraison offerte en 24/48 h.",
+            "dek": "Une boutique spécialisée, et une livraison qui ne coûte rien.",
+            "paras": "CBDP Paris s'est fait une spécialité du CBDP, un cannabinoïde de structure proche du CBD. Son argument le plus concret reste la livraison : 24 à 48 heures, et offerte.\nLe prix d'appel est en revanche le plus élevé du classement chiffré, à 7,14 € le gramme. Le code PARIS15 atténue l'écart, sans le combler.",
+            "for_who": "Pour les curieux qui veulent essayer le CBDP, et pour ceux qui privilégient une livraison gratuite et rapide.",
+            "plus": "Livraison 24/48 h offerte\nSpécialisation CBDP\nCode PARIS15",
+            "minus": "Prix d'appel le plus élevé relevé"
+          }
+        },
+        "shop-4": {
+          "type": "shop",
+          "settings": {
+            "name": "StreetShop France",
+            "domain": "streetshop-france.fr",
+            "url": "",
+            "entry": "non communiqué",
+            "shipping": "non communiqué",
+            "promo": "",
+            "spec": "Boutiques et gros volumes",
+            "contains": "",
+            "line": "",
+            "dek": "Des boutiques et des gros volumes, mais peu d'informations en ligne.",
+            "paras": "StreetShop France cible les acheteurs de grandes quantités et dispose de boutiques physiques. Lors de notre relevé, le site n'affichait clairement ni prix d'appel ni délais de livraison, ce qui l'empêche de monter plus haut.",
+            "for_who": "Pour ceux qui achètent en quantité et préfèrent traiter en magasin.",
+            "plus": "Boutiques physiques\nGros volumes",
+            "minus": "Prix et délais non communiqués"
+          }
+        },
+        "shop-5": {
+          "type": "shop",
+          "settings": {
+            "name": "CBDOO",
+            "domain": "cbdoo.fr",
+            "url": "",
+            "entry": "déstockage dégressif",
+            "shipping": "1 à 3 jours ouvrés",
+            "promo": "",
+            "spec": "Déstockage, fins de lots",
+            "contains": "",
+            "line": "",
+            "dek": "Le spécialiste des fins de lots.",
+            "paras": "CBDOO vend des fins de lots à des tarifs dégressifs. L'approche est intéressante si vous n'êtes pas attaché à une variété précise. Livraison en 1 à 3 jours ouvrés.",
+            "for_who": "Pour les chasseurs de bonnes affaires, flexibles sur le choix.",
+            "plus": "Tarifs dégressifs\n1 à 3 jours ouvrés",
+            "minus": "Choix limité aux lots disponibles"
+          }
+        },
+        "shop-6": {
+          "type": "shop",
+          "settings": {
+            "name": "CDUCBD",
+            "domain": "cducbd.com",
+            "url": "",
+            "entry": "non communiqué",
+            "shipping": "Mondial Relay ou express (95)",
+            "promo": "",
+            "spec": "Val-d'Oise, livraison express",
+            "contains": "",
+            "line": "",
+            "dek": "Le bon plan des habitants du Val-d'Oise.",
+            "paras": "CDUCBD livre partout en point Mondial Relay et propose une livraison express dans le Val-d'Oise, où il est implanté. Le prix d'appel n'était pas affiché lors de notre relevé.",
+            "for_who": "Pour les habitants du 95 pressés de recevoir leur commande.",
+            "plus": "Express dans le 95\nMondial Relay",
+            "minus": "Prix d'appel non communiqué"
+          }
+        },
+        "shop-7": {
+          "type": "shop",
+          "settings": {
+            "name": "Le Green Spot",
+            "domain": "le-green-spot.com",
+            "url": "",
+            "entry": "non communiqué",
+            "shipping": "non communiqué",
+            "promo": "",
+            "spec": "Bassin d'Arcachon",
+            "contains": "",
+            "line": "",
+            "dek": "L'adresse locale du bassin d'Arcachon.",
+            "paras": "Le Green Spot est une boutique installée sur le bassin d'Arcachon. Prix d'appel et délais n'étaient pas communiqués lors de notre relevé, ce qui rend la comparaison difficile.",
+            "for_who": "Pour les habitants et vacanciers du bassin d'Arcachon.",
+            "plus": "Ancrage local",
+            "minus": "Prix et délais non communiqués"
+          }
+        },
+        "shop-8": {
+          "type": "shop",
+          "settings": {
+            "name": "Mama Kana",
+            "domain": "mamakana.com",
+            "url": "",
+            "entry": "non communiqué",
+            "shipping": "72 h",
+            "promo": "",
+            "spec": "Programme de fidélité",
+            "contains": "",
+            "line": "",
+            "dek": "La boutique qui récompense les habitués.",
+            "paras": "Mama Kana mise sur un programme de fidélité. Comptez 72 heures pour la livraison, l'un des délais les plus longs relevés. Le prix d'appel n'était pas affiché.",
+            "for_who": "Pour les clients réguliers qui veulent cumuler des avantages.",
+            "plus": "Programme de fidélité",
+            "minus": "Livraison en 72 h\nPrix d'appel non communiqué"
+          }
+        },
+        "shop-9": {
+          "type": "shop",
+          "settings": {
+            "name": "Green Owl",
+            "domain": "greenowl.fr",
+            "url": "",
+            "entry": "non communiqué",
+            "shipping": "24/48 h",
+            "promo": "",
+            "spec": "Certificats sur fiche produit",
+            "contains": "",
+            "line": "",
+            "dek": "Les analyses à portée de clic.",
+            "paras": "Green Owl publie le certificat d'analyse directement sur chaque fiche produit, une bonne pratique encore trop rare. La livraison est annoncée en 24/48 h. Le prix d'appel n'était pas communiqué.",
+            "for_who": "Pour ceux qui veulent vérifier les taux avant d'acheter.",
+            "plus": "Certificats sur les fiches\nLivraison 24/48 h",
+            "minus": "Prix d'appel non communiqué"
+          }
+        },
+        "shop-10": {
+          "type": "shop",
+          "settings": {
+            "name": "CBDSol",
+            "domain": "cbdsol.fr",
+            "url": "",
+            "entry": "0,34 €/g*",
+            "shipping": "non communiqué",
+            "promo": "",
+            "spec": "Discount, trim et mélanges",
+            "contains": "",
+            "line": "",
+            "dek": "Une offre centrée sur le trim et les mélanges.",
+            "paras": "CBDSol vend surtout du trim et des mélanges, à partir de 0,34 € le gramme. Ce ne sont pas des fleurs entières : le prix ne se compare pas directement à celui des autres boutiques. Délais de livraison non communiqués.",
+            "for_who": "Pour ceux qui cherchent spécifiquement du trim ou des mélanges.",
+            "plus": "Trim et mélanges dès 0,34 €/g",
+            "minus": "Pas de fleurs entières à ce prix\nDélais non communiqués"
+          }
+        },
+        "rival-1": {
+          "type": "rival",
+          "settings": {
+            "rank": 2,
+            "verdict": "Si vous voulez voir les produits et être conseillé en magasin, Greenhouse CBD Shop est le meilleur choix des deux grâce à ses boutiques physiques. Pour commander en ligne au meilleur prix, CBD Discounter garde l'avantage : un prix d'appel près de quatre fois plus bas, un catalogue plus large et une expédition le jour même."
+          }
+        },
+        "rival-2": {
+          "type": "rival",
+          "settings": {
+            "rank": 3,
+            "verdict": "Pour découvrir le CBDP ou recevoir sa commande sans frais de port en 24/48 h, CBDP Paris est le plus adapté. Pour le prix au gramme et l'étendue du catalogue, CBD Discounter reste devant, avec un prix d'appel près de dix fois plus bas."
+          }
+        },
+        "rival-3": {
+          "type": "rival",
+          "settings": {
+            "rank": 9,
+            "verdict": "Green Owl prend l'avantage sur la transparence, avec un certificat d'analyse publié sur chaque fiche produit, et annonce une livraison en 24/48 h. CBD Discounter affichait en revanche un prix d'appel et un code promo lors du relevé, ce que Green Owl ne faisait pas."
+          }
+        },
+        "rival-4": {
+          "type": "rival",
+          "settings": {
+            "rank": 5,
+            "verdict": "Si vous êtes flexible sur la variété, les fins de lots de CBDOO peuvent réserver de bonnes affaires, livrées en 1 à 3 jours ouvrés. Si vous cherchez un produit précis à petit prix, CBD Discounter est plus prévisible, avec un catalogue large et une expédition le jour même."
+          }
+        }
+      },
+      "block_order": [
+        "shop-1",
+        "shop-2",
+        "shop-3",
+        "shop-4",
+        "shop-5",
+        "shop-6",
+        "shop-7",
+        "shop-8",
+        "shop-9",
+        "shop-10",
+        "rival-1",
+        "rival-2",
+        "rival-3",
+        "rival-4"
+      ],
+      "settings": {
+        "podium_title": "Le podium, en trois sachets",
+        "podium_intro": "Les trois seuls sites que nous recommandons sans réserve, et vers lesquels nous renvoyons.",
+        "releve_kicker": "Rubrique · Le relevé",
+        "releve_title": "Tableau comparatif des 10 sites CBD",
+        "releve_intro": "Toutes les données relevées le 14 septembre 2026, dans l'ordre du classement.",
+        "releve_caption": "Comparatif des 10 meilleurs sites CBD en France, relevé du 14 septembre 2026",
+        "releve_note": "* Prix de CBDSol relevé sur du trim et des mélanges, pas sur des fleurs entières.",
+        "dossier_kicker": "Rubrique · Le dossier",
+        "dossier_title": "Les dix fiches, boutique par boutique",
+        "duel_kicker": "Rubrique · Face-à-face",
+        "duel_intro": "Choisissez un adversaire : on met les relevés côte à côte et on vous dit lequel prendre selon votre profil.",
+        "itemlist_name": "Les 10 meilleurs sites de CBD en France — 2026"
+      }
+    },
+    "guide": {
+      "type": "gz-guide",
+      "blocks": {
+        "tip-1": {
+          "type": "tip",
+          "settings": {
+            "title": "Comparez le prix au gramme",
+            "text": "Le prix d'un sachet ne veut rien dire sans son poids. Ramenez toujours le prix au gramme pour comparer deux boutiques : c'est ce que nous faisons dans notre relevé."
+          }
+        },
+        "tip-2": {
+          "type": "tip",
+          "settings": {
+            "title": "Exigez le certificat d'analyse",
+            "text": "Un certificat sérieux mentionne le numéro de lot, la date, le laboratoire et les taux de CBD et de THC. Sans lui, impossible de savoir ce que contient réellement le produit."
+          }
+        },
+        "tip-3": {
+          "type": "tip",
+          "settings": {
+            "title": "Vérifiez le taux de THC",
+            "text": "En France, le THC doit rester à 0,3 % maximum dans le produit fini. Le chiffre figure sur le certificat d'analyse du lot."
+          }
+        },
+        "tip-4": {
+          "type": "tip",
+          "settings": {
+            "title": "Regardez l'heure limite d'expédition",
+            "text": "Un délai de livraison ne commence qu'à l'expédition. Une heure limite affichée, comme 14h30 chez CBD Discounter, vous dit exactement quand votre colis partira."
+          }
+        },
+        "tip-5": {
+          "type": "tip",
+          "settings": {
+            "title": "Calculez le total, port compris",
+            "text": "Un petit prix au gramme peut être annulé par des frais de port élevés. Comparez le montant final, après application du code promo."
+          }
+        },
+        "tip-6": {
+          "type": "tip",
+          "settings": {
+            "title": "Fleur, résine ou trim : choisissez en connaissance",
+            "text": "Le trim et les mélanges sont moins chers que les fleurs entières. Ce n'est pas le même produit : comparez les prix à format égal."
+          }
+        },
+        "tip-7": {
+          "type": "tip",
+          "settings": {
+            "title": "Testez sur un petit format",
+            "text": "Avant d'acheter en quantité, commandez un petit grammage pour juger de la qualité et du service de la boutique."
+          }
+        },
+        "tip-8": {
+          "type": "tip",
+          "settings": {
+            "title": "Méfiez-vous des paiements hors site",
+            "text": "Une boutique fiable encaisse sur son propre site. Un lien de paiement envoyé par message ou un paiement en cryptomonnaie doit vous alerter."
+          }
+        }
+      },
+      "block_order": [
+        "tip-1",
+        "tip-2",
+        "tip-3",
+        "tip-4",
+        "tip-5",
+        "tip-6",
+        "tip-7",
+        "tip-8"
+      ],
+      "settings": {
+        "kicker": "Rubrique · Guide d'achat",
+        "heading": "Comment bien acheter son CBD en ligne"
+      }
+    },
+    "lexique": {
+      "type": "gz-lexique",
+      "blocks": {
+        "term-1": {
+          "type": "term",
+          "settings": {
+            "term": "CBD",
+            "definition": "Cannabidiol. Cannabinoïde du chanvre, non stupéfiant, vendu en fleurs, résines, huiles ou infusions."
+          }
+        },
+        "term-2": {
+          "type": "term",
+          "settings": {
+            "term": "THC",
+            "definition": "Tétrahydrocannabinol. Molécule psychoactive du cannabis, limitée à 0,3 % dans les produits au CBD vendus en France."
+          }
+        },
+        "term-3": {
+          "type": "term",
+          "settings": {
+            "term": "Fleur",
+            "definition": "Sommité florale séchée du chanvre. C'est le format le plus vendu et celui qui sert de référence pour le prix au gramme."
+          }
+        },
+        "term-4": {
+          "type": "term",
+          "settings": {
+            "term": "Résine",
+            "definition": "Produit obtenu à partir des trichomes de la plante, compressé en bloc ou en pollen."
+          }
+        },
+        "term-5": {
+          "type": "term",
+          "settings": {
+            "term": "Trim",
+            "definition": "Petites feuilles et résidus de taille des fleurs. Moins cher, il est souvent utilisé en mélange."
+          }
+        },
+        "term-6": {
+          "type": "term",
+          "settings": {
+            "term": "Certificat d'analyse",
+            "definition": "Rapport de laboratoire attestant des taux de cannabinoïdes d'un lot précis. Aussi appelé COA."
+          }
+        },
+        "term-7": {
+          "type": "term",
+          "settings": {
+            "term": "Terpènes",
+            "definition": "Composés aromatiques responsables de l'odeur et du goût de chaque variété."
+          }
+        },
+        "term-8": {
+          "type": "term",
+          "settings": {
+            "term": "CBDP",
+            "definition": "Cannabidiphorol. Cannabinoïde de structure proche du CBD, spécialité de CBDP Paris."
+          }
+        }
+      },
+      "block_order": [
+        "term-1",
+        "term-2",
+        "term-3",
+        "term-4",
+        "term-5",
+        "term-6",
+        "term-7",
+        "term-8"
+      ],
+      "settings": {
+        "kicker": "Rubrique · Lexique",
+        "heading": "Les mots du chanvre"
+      }
+    },
+    "faq": {
+      "type": "gz-faq",
+      "blocks": {
+        "faq-1": {
+          "type": "faq",
+          "settings": {
+            "question": "Quel est le meilleur site de CBD en France en 2026 ?",
+            "answer": "Pour La Gazette du Chanvre, c'est CBD Discounter. Il réunit un prix d'appel de 0,75 € le gramme, un catalogue large et une expédition le jour même pour les commandes passées avant 14h30. Le code DISCOUNTER15 s'ajoute à ces prix."
+          }
+        },
+        "faq-2": {
+          "type": "faq",
+          "settings": {
+            "question": "Où acheter du CBD pas cher en ligne ?",
+            "answer": "CBD Discounter, avec un prix d'appel de 0,75 € le gramme sur un catalogue large, auquel s'ajoute le code DISCOUNTER15. C'est le meilleur rapport prix-choix de notre classement."
+          }
+        },
+        "faq-3": {
+          "type": "faq",
+          "settings": {
+            "question": "Quel site livre le plus vite ?",
+            "answer": "CBD Discounter expédie le jour même toute commande passée avant 14h30. CBDP Paris et Green Owl annoncent une livraison en 24/48 h. CDUCBD propose de l'express dans le Val-d'Oise."
+          }
+        },
+        "faq-4": {
+          "type": "faq",
+          "settings": {
+            "question": "Quels codes promo CBD fonctionnent en 2026 ?",
+            "answer": "Au 14 septembre 2026, nous recommandons en priorité DISCOUNTER15 chez CBD Discounter, notre n°1. Sur le reste du podium, GREENHOUSE15 fonctionne chez Greenhouse CBD Shop et PARIS15 chez CBDP Paris."
+          }
+        },
+        "faq-5": {
+          "type": "faq",
+          "settings": {
+            "question": "Le CBD est-il légal en France ?",
+            "answer": "Oui. Les produits au CBD sont autorisés en France si leur taux de THC ne dépasse pas 0,3 %. Leur vente est interdite aux mineurs."
+          }
+        },
+        "faq-6": {
+          "type": "faq",
+          "settings": {
+            "question": "Comment vérifier la qualité d'un CBD acheté en ligne ?",
+            "answer": "Demandez le certificat d'analyse du lot. Il doit mentionner le numéro de lot, la date, le laboratoire et les taux de CBD et de THC."
+          }
+        },
+        "faq-7": {
+          "type": "faq",
+          "settings": {
+            "question": "Peut-on acheter du CBD en magasin plutôt qu'en ligne ?",
+            "answer": "Oui. Greenhouse CBD Shop et StreetShop France ont des boutiques physiques en plus de leur site. Les autres boutiques du classement vendent en ligne."
+          }
+        },
+        "faq-8": {
+          "type": "faq",
+          "settings": {
+            "question": "Pourquoi seuls trois sites sont-ils cliquables ?",
+            "answer": "La Gazette du Chanvre ne met en lien que les trois sites du podium. Les boutiques classées de la 4e à la 10e place sont présentées à titre d'information. Ce classement est publié en partenariat avec CBD Discounter, et certains liens du podium peuvent être affiliés."
+          }
+        }
+      },
+      "block_order": [
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5",
+        "faq-6",
+        "faq-7",
+        "faq-8"
+      ],
+      "settings": {
+        "kicker": "Rubrique · Courrier des lecteurs",
+        "heading": "Vos questions, nos réponses"
+      }
+    },
+    "footer": {
+      "type": "gz-footer",
+      "settings": {
+        "flag": "La Gazette du Chanvre",
+        "col_1_label": "Colophon",
+        "col_1_text": "Classement établi par la rédaction. Relevés effectués le 14 septembre 2026. Prochaine édition au printemps 2027.",
+        "col_2_label": "Transparence",
+        "col_2_text": "Ce classement est publié en partenariat avec CBD Discounter, classé n°1. Seuls les trois sites du podium sont en lien, et certains peuvent être affiliés.",
+        "legal_label": "Mentions légales",
+        "legal_url": "#mentions",
+        "privacy_label": "Confidentialité",
+        "privacy_url": "#confidentialite",
+        "email": "redaction@gazette-du-chanvre.fr",
+        "legal_line": "Vente interdite aux mineurs. Les produits au CBD ne sont pas des médicaments. THC ≤ 0,3 %. © 2026 La Gazette du Chanvre."
+      }
+    }
+  },
+  "order": [
+    "nav",
+    "masthead",
+    "une",
+    "classement",
+    "guide",
+    "lexique",
+    "faq",
+    "footer"
+  ]
+}
