@@ -1,0 +1,27 @@
+{%- comment -%}
+  Remplace chaque mention du nom d'une boutique (case « Lier chaque mention » cochée et lien rempli)
+  par un lien vers son site. dofollow coché : rel="noopener" ; sinon rel="nofollow sponsored noopener".
+  À n'utiliser que sur du texte affiché hors d'un autre lien ou d'un bouton.
+  @param text   Texte à traiter
+  @param shops  Blocs « shop » de la section
+{%- endcomment -%}
+{%- liquid
+  assign out = text
+  for sh in shops
+    assign ss = sh.settings
+    if ss.autolink and ss.url != blank and ss.name != blank
+      if out contains ss.name
+        if ss.dofollow
+          assign rel = 'noopener'
+        else
+          assign rel = 'nofollow sponsored noopener'
+        endif
+        capture link
+          echo '<a class="msc-xlink" href="' | append: ss.url | append: '" target="_blank" rel="' | append: rel | append: '">' | append: ss.name | append: '</a>'
+        endcapture
+        assign out = out | replace: ss.name, link
+      endif
+    endif
+  endfor
+  echo out
+-%}

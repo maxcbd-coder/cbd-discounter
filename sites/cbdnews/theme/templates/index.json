@@ -31,7 +31,10 @@
             "tag_budget": true,
             "tag_rapide": true,
             "tag_boutique": false,
-            "tag_promo": true
+            "tag_promo": true,
+            "logo": "shopify://shop_images/faviconV2.png",
+            "dofollow": true,
+            "autolink": true
           }
         },
         "shop_02": {
@@ -52,7 +55,10 @@
             "tag_budget": false,
             "tag_rapide": false,
             "tag_boutique": true,
-            "tag_promo": true
+            "tag_promo": true,
+            "logo": "shopify://shop_images/faviconV2_f0a430c9-bdfa-426d-b148-401551bcf708.png",
+            "dofollow": false,
+            "autolink": false
           }
         },
         "shop_03": {
@@ -73,7 +79,10 @@
             "tag_budget": false,
             "tag_rapide": true,
             "tag_boutique": false,
-            "tag_promo": true
+            "tag_promo": true,
+            "logo": "shopify://shop_images/faviconV2_cb6bc09d-2bcf-4af6-ac07-806b148cab98.png",
+            "dofollow": false,
+            "autolink": false
           }
         },
         "shop_04": {
@@ -93,7 +102,8 @@
             "tag_budget": false,
             "tag_rapide": false,
             "tag_boutique": true,
-            "tag_promo": false
+            "tag_promo": false,
+            "logo": "shopify://shop_images/faviconV2_48fbd025-a0c8-4ac5-901c-22dfc6cd1a21.png"
           }
         },
         "shop_05": {
@@ -113,7 +123,8 @@
             "tag_budget": true,
             "tag_rapide": false,
             "tag_boutique": false,
-            "tag_promo": true
+            "tag_promo": true,
+            "logo": "shopify://shop_images/faviconV2_fb0d8be2-6f8c-4386-8d87-046d9105c36b.png"
           }
         },
         "shop_06": {
@@ -133,7 +144,8 @@
             "tag_budget": false,
             "tag_rapide": true,
             "tag_boutique": false,
-            "tag_promo": false
+            "tag_promo": false,
+            "logo": "shopify://shop_images/faviconV2_6c1171c1-9d90-4248-9f29-113c36e6afe2.png"
           }
         },
         "shop_07": {
@@ -153,7 +165,8 @@
             "tag_budget": false,
             "tag_rapide": false,
             "tag_boutique": false,
-            "tag_promo": false
+            "tag_promo": false,
+            "logo": "shopify://shop_images/faviconV2_efd077b2-c9be-484f-b79b-d6cd7c7d44fe.png"
           }
         },
         "shop_08": {
@@ -173,7 +186,8 @@
             "tag_budget": false,
             "tag_rapide": false,
             "tag_boutique": false,
-            "tag_promo": false
+            "tag_promo": false,
+            "logo": "shopify://shop_images/faviconV2_1f3eda14-b911-4a43-9ae1-3f57fb13cd97.png"
           }
         },
         "shop_09": {
@@ -213,7 +227,8 @@
             "tag_budget": true,
             "tag_rapide": false,
             "tag_boutique": false,
-            "tag_promo": false
+            "tag_promo": false,
+            "logo": "shopify://shop_images/faviconV2_14e3de30-6f63-42c3-a293-ca949757872b.png"
           }
         },
         "perk_1": {
@@ -326,7 +341,7 @@
           "type": "faq",
           "settings": {
             "q": "Quel site choisir pour acheter du CBD en ligne en 2026 ?",
-            "a": "CBD Discounter arrive premier du Palmarès CBD 2026. Le site affiche un prix d'appel de 0,75 € le gramme, un catalogue large et expédie le jour même toute commande passée avant 14h30. Le code DISCOUNTER15 donne une remise supplémentaire."
+            "a": "CBD Discounter arrive premier du palmarès CBD News 2026. Le site affiche un prix d'appel de 0,75 € le gramme, un catalogue large et expédie le jour même toute commande passée avant 14h30. Le code DISCOUNTER15 donne une remise supplémentaire."
           }
         },
         "faq_2": {
@@ -368,7 +383,49 @@
           "type": "faq",
           "settings": {
             "q": "Pourquoi seules trois boutiques ont un lien ?",
-            "a": "Palmarès CBD ne renvoie que vers les trois sites du podium. Les boutiques classées de la 4e à la 10e place sont citées à titre informatif. Certains liens du podium peuvent être affiliés, sans effet sur le prix payé ni sur l'ordre du classement."
+            "a": "CBD News ne renvoie que vers les trois sites du podium. Les boutiques classées de la 4e à la 10e place sont citées à titre informatif. Certains liens du podium peuvent être affiliés, sans effet sur le prix payé ni sur l'ordre du classement."
+          }
+        },
+        "tip_7": {
+          "type": "tip",
+          "settings": {
+            "title": "Lis les mentions légales",
+            "text": "Raison sociale, SIRET, adresse : si tu ne les trouves pas sur le site, tu n'auras aucun recours en cas de souci."
+          }
+        },
+        "tip_8": {
+          "type": "tip",
+          "settings": {
+            "title": "Méfie-toi des promesses miracles",
+            "text": "Le CBD n'est pas un médicament. Un site qui promet de guérir quoi que ce soit ne respecte pas la réglementation : passe ton chemin."
+          }
+        },
+        "faq_8": {
+          "type": "faq",
+          "settings": {
+            "q": "Je débute : par quel site commencer ?",
+            "a": "Par CBD Discounter : un prix d'appel de 0,75 € le gramme, un catalogue large pour tester plusieurs produits au même endroit et le code DISCOUNTER15. Prends un petit grammage pour ta première commande."
+          }
+        },
+        "faq_9": {
+          "type": "faq",
+          "settings": {
+            "q": "Comment savoir si un site CBD est sérieux ?",
+            "a": "Regarde quatre choses : un certificat d'analyse par lot, un paiement sur le site lui-même, des mentions légales complètes (raison sociale, SIRET, adresse) et aucune promesse de guérison."
+          }
+        },
+        "faq_10": {
+          "type": "faq",
+          "settings": {
+            "q": "Fleur, résine ou huile : je prends quoi ?",
+            "a": "La fleur se compare au prix au gramme. La résine est un extrait compressé, plus concentré. L'huile se dose en gouttes et se compare au prix par milligramme de CBD. Choisis le format qui colle à ton usage."
+          }
+        },
+        "faq_11": {
+          "type": "faq",
+          "settings": {
+            "q": "C'est quoi le prix d'appel ?",
+            "a": "C'est le prix au gramme le plus bas affiché par une boutique, souvent sur son plus grand format. C'est le chiffre qu'on a relevé sur chaque site pour les comparer."
           }
         }
       },
@@ -397,13 +454,19 @@
         "tip_4",
         "tip_5",
         "tip_6",
+        "tip_7",
+        "tip_8",
         "faq_1",
+        "faq_8",
         "faq_2",
         "faq_3",
         "faq_4",
         "faq_5",
         "faq_6",
-        "faq_7"
+        "faq_7",
+        "faq_9",
+        "faq_10",
+        "faq_11"
       ],
       "settings": {}
     }

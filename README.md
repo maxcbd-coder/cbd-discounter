@@ -4,6 +4,7 @@
 | --- | --- | --- |
 | ActuCBD | actucbd.com | `theme/` (ce README) |
 | CBD Hebdo | cbd-hebdo.fr | `sites/cbd-hebdo/` (voir son README) |
+| CBD News | cbdnews.fr | `sites/cbdnews/` (voir son README) |
 
 ## ActuCBD (actucbd.com)
 

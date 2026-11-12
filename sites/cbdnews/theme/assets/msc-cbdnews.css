@@ -1,0 +1,52 @@
+/* CBD News — compléments du design Palmarès : logos des boutiques, liens de mention, signature datée.
+   Chargé après msc-landing.css. */
+
+/* ---------- Logos ---------- */
+.msc-mark {
+  --msc-mark: 40px;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: var(--msc-mark);
+  height: var(--msc-mark);
+  background: var(--paper);
+  border: 2px solid var(--pin);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.msc-mark__img { display: block; width: 64%; height: 64%; object-fit: contain; }
+.msc-mark--mono { background: var(--cream-2); }
+.msc-mark__mono {
+  font-family: var(--f-display); font-weight: 800; letter-spacing: -0.04em;
+  font-size: calc(var(--msc-mark) * .38); line-height: 1; color: var(--pin);
+}
+
+.msc-row__head > .msc-mark { --msc-mark: clamp(40px, 5vw, 52px) !important; }
+.msc-step .msc-mark { border-color: currentColor; }
+.msc-step--2 .msc-mark { border-color: var(--cream); }
+@media (max-width: 599.98px) {
+  .msc-step .msc-mark { --msc-mark: 30px !important; border-radius: 10px; }
+}
+
+.msc-focus__title { display: flex; align-items: center; gap: clamp(12px, 2vw, 20px); }
+.msc-focus__title .msc-mark { --msc-mark: clamp(44px, 5vw, 56px) !important; }
+
+/* ---------- Liens de mention ---------- */
+.msc-body a.msc-xlink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--leaf);
+  text-underline-offset: .16em;
+}
+.msc-body a.msc-xlink:hover { color: var(--leaf); }
+.msc-row--1 a.msc-xlink,
+.msc-focus a.msc-xlink { text-decoration-color: var(--pin); }
+.msc-row--1 a.msc-xlink:hover,
+.msc-focus a.msc-xlink:hover { color: var(--leaf); }
+
+/* ---------- Signature datée ---------- */
+.msc-byline {
+  margin: -18px 0 30px;
+  font-family: var(--f-mono); font-size: 13px; letter-spacing: .02em; color: var(--on-dark-3);
+}
