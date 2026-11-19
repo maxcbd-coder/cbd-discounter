@@ -1,0 +1,74 @@
+{%- liquid
+  # Site éditorial, pas de boutique : les gabarits marchands renvoient vers l'accueil.
+  assign cqp_blocked = false
+  case template.name
+    when 'product', 'collection', 'list-collections', 'cart', 'search', 'blog', 'article'
+      assign cqp_blocked = true
+  endcase
+  if request.design_mode
+    assign cqp_blocked = false
+  endif
+
+  assign cqp_title = page_title
+  assign cqp_description = page_description
+  if template.name == 'index'
+    if settings.cqp_home_title != blank
+      assign cqp_title = settings.cqp_home_title
+    endif
+    if settings.cqp_home_description != blank
+      assign cqp_description = settings.cqp_home_description
+    endif
+  elsif template.name == '404'
+    assign cqp_title = 'Page introuvable | ' | append: shop.name
+  else
+    assign cqp_title = page_title | append: ' | ' | append: shop.name
+  endif
+-%}
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ cqp_title | escape }}</title>
+    {%- if cqp_description != blank -%}
+      <meta name="description" content="{{ cqp_description | escape }}">
+    {%- endif -%}
+    {%- if cqp_blocked -%}
+      <meta name="robots" content="noindex, nofollow">
+      <meta http-equiv="refresh" content="0; url={{ routes.root_url }}">
+      <script>window.location.replace({{ routes.root_url | json }});</script>
+    {%- else -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif -%}
+    <meta property="og:site_name" content="{{ shop.name | escape }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="{{ cqp_title | escape }}">
+    {%- if cqp_description != blank -%}
+      <meta property="og:description" content="{{ cqp_description | escape }}">
+    {%- endif -%}
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta name="twitter:card" content="summary">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+    <meta name="theme-color" content="#13261C">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800;900&family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Martian+Mono:wght@400;500;700&display=swap">
+    {{ 'cqp-landing.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'cqp-landing.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="cqp-body">
+    <a class="cqp-skip" href="#contenu">Aller au contenu</a>
+    {% section 'cqp-header' %}
+    <main id="contenu">
+      {{ content_for_layout }}
+    </main>
+    {% section 'cqp-footer' %}
+  </body>
+</html>

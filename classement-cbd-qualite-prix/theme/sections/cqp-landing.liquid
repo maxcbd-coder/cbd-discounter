@@ -1,0 +1,517 @@
+{%- comment -%}
+  Classement CBD qualité-prix — one-page « Le classement CBD qualité/prix 2026 » (V5, Bauhaus géométrique).
+  Contenu éditable : réglages de la section + blocs « Boutique » (ordre = rang), « Guide qualité », « Guide prix », « Question ».
+  Règles : liens externes (nofollow sponsored), prix, indice et code uniquement pour les 3 premières boutiques ;
+  indice = nombre d'atouts ÷ prix d'appel au gramme ; chaque mention du n°1 dans les textes renvoie vers son site.
+{%- endcomment -%}
+
+{%- liquid
+  assign shops = section.blocks | where: 'type', 'shop'
+  assign guide_q = section.blocks | where: 'type', 'guide_q'
+  assign guide_p = section.blocks | where: 'type', 'guide_p'
+  assign faqs = section.blocks | where: 'type', 'faq'
+  assign top = shops | first
+  assign nc = section.settings.nc_label
+  assign cbd_name = top.settings.name
+  assign cbd_link = '<a class="cqp-cbdd" href="' | append: top.settings.url | append: '" rel="nofollow sponsored">' | append: cbd_name | append: '</a>'
+  assign dot_colors = '#2F8F4E,#7BC98F,#F2B705' | split: ','
+
+  comment
+    Podium : prix en centimes, nombre d'atouts et indice en centièmes, listés « a,b,c ».
+  endcomment
+  assign p_cents = ''
+  assign p_count = ''
+  assign p_idx = ''
+  for shop in shops limit: 3
+    assign pr = shop.settings.price | replace: ',', '.' | strip
+    assign c = pr | times: 100 | round
+    assign at = shop.settings.atouts | newline_to_br | split: '<br />'
+    assign n = 0
+    for a in at
+      assign a2 = a | strip
+      if a2 != blank
+        assign n = n | plus: 1
+      endif
+    endfor
+    if c > 0
+      assign ix = n | times: 10000.0 | divided_by: c | round
+    else
+      assign ix = 0
+    endif
+    assign p_cents = p_cents | append: c | append: ','
+    assign p_count = p_count | append: n | append: ','
+    assign p_idx = p_idx | append: ix | append: ','
+  endfor
+  assign p_cents = p_cents | split: ','
+  assign p_count = p_count | split: ','
+  assign p_idx = p_idx | split: ','
+  assign top_cents = p_cents[0] | plus: 0
+-%}
+
+<div class="cqp">
+  {%- comment -%} ===== 2.2 Hero + balance ===== {%- endcomment -%}
+  <section id="balance" class="cqp-hero" aria-labelledby="h1">
+    <div class="cqp-hero__inner">
+      <div>
+        <p class="cqp-kicker">{{ section.settings.hero_kicker }}</p>
+        <h1 id="h1" class="cqp-h1">
+          {{- section.settings.h1_before }} <span class="cqp-q">{{ section.settings.h1_q }}</span><span>/</span><span class="cqp-p">{{ section.settings.h1_p }}</span> {{ section.settings.h1_after -}}
+        </h1>
+        <p class="cqp-hero__intro">{{ section.settings.hero_intro | replace: cbd_name, cbd_link }}</p>
+        <div class="cqp-formula">
+          <span class="cqp-dot" aria-hidden="true" style="width: 26px; height: 26px;"></span>
+          <span class="cqp-formula__t">{{ section.settings.formula_q | newline_to_br }}</span>
+          <span class="cqp-formula__op" aria-hidden="true">÷</span>
+          <span class="cqp-sq" aria-hidden="true" style="width: 24px; height: 24px;"></span>
+          <span class="cqp-formula__t">{{ section.settings.formula_p | newline_to_br }}</span>
+        </div>
+        {%- if top -%}
+          <div class="cqp-hero__ctas">
+            <a class="cqp-pill cqp-pill--green" href="{{ top.settings.url }}" rel="nofollow sponsored">{{ section.settings.hero_cta_label }}</a>
+            <a class="cqp-pill cqp-pill--outline" href="#classement">{{ section.settings.hero_cta2_label }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if top -%}
+        {%- liquid
+          assign t0 = top.settings.tilt | default: -14
+          assign sq0 = top_cents | times: 11 | divided_by: 100.0 | plus: 24 | round
+          assign at0 = top.settings.atouts | newline_to_br | split: '<br />'
+        -%}
+        <div class="cqp-panel" data-cqp-balance>
+          <span class="cqp-panel__sun" aria-hidden="true"></span>
+          <p class="cqp-panel__title">{{ section.settings.balance_title }}</p>
+          <p class="cqp-panel__hint">{{ section.settings.balance_hint }}</p>
+
+          <div class="cqp-scale" data-cqp-scale aria-hidden="true" style="--tilt: {{ t0 }}deg;">
+            <div class="cqp-scale__base"></div>
+            <div class="cqp-scale__post"></div>
+            <div class="cqp-scale__beam">
+              <div class="cqp-scale__hook cqp-scale__hook--l">
+                <div class="cqp-scale__hang">
+                  <div class="cqp-scale__rod"></div>
+                  <div class="cqp-scale__pan">
+                    <div class="cqp-scale__dots" data-cqp-dots>
+                      {%- assign k = 0 -%}
+                      {%- for a in at0 -%}
+                        {%- assign a2 = a | strip -%}
+                        {%- if a2 != blank -%}
+                          {%- assign ci = k | modulo: 3 -%}
+                          <span style="background:{{ dot_colors[ci] }}"></span>
+                          {%- assign k = k | plus: 1 -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                    <div class="cqp-scale__bowl cqp-scale__bowl--q"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cqp-scale__hook cqp-scale__hook--r">
+                <div class="cqp-scale__hang">
+                  <div class="cqp-scale__rod"></div>
+                  <div class="cqp-scale__pan">
+                    <div class="cqp-scale__sqwrap"><span class="cqp-scale__sq" data-cqp-sq style="width: {{ sq0 }}px; height: {{ sq0 }}px;"></span></div>
+                    <div class="cqp-scale__bowl cqp-scale__bowl--p"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cqp-scale__pivot"></div>
+          </div>
+
+          <div class="cqp-tabs" role="group" aria-label="Choisir un site">
+            {%- for shop in shops limit: 3 -%}
+              <button type="button" class="cqp-tab" data-cqp-tab="{{ forloop.index0 }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ shop.settings.name }}</button>
+            {%- endfor -%}
+          </div>
+          <div class="cqp-legend">
+            <div class="cqp-legend__card">
+              <p class="cqp-legend__k"><span class="cqp-dot" style="width: 14px; height: 14px;"></span>Ce que vous obtenez</p>
+              <ul data-cqp-atouts>
+                {%- for a in at0 -%}{%- assign a2 = a | strip -%}{%- if a2 != blank -%}<li>{{ a2 | replace: cbd_name, cbd_link }}</li>{%- endif -%}{%- endfor -%}
+              </ul>
+            </div>
+            <div class="cqp-legend__card">
+              <p class="cqp-legend__k"><span class="cqp-sq" style="width: 13px; height: 13px;"></span>Ce que vous payez</p>
+              <p class="cqp-legend__price" data-cqp-price>{% render 'cqp-dec', n: top_cents, suffix: ' €' %}</p>
+              <p class="cqp-legend__unit">prix d'appel au gramme</p>
+            </div>
+          </div>
+          <p class="cqp-verdictbar"><strong>Indice <span data-cqp-idx>{% render 'cqp-dec', n: p_idx[0] %}</span></strong> · <span data-cqp-verdict>{{ top.settings.v | replace: cbd_name, cbd_link }}</span></p>
+
+          {%- comment -%} Données des 3 états pour le script de la balance. {%- endcomment -%}
+          <script type="application/json" data-cqp-data>
+            [
+              {%- for shop in shops limit: 3 -%}
+                {%- liquid
+                  assign c = p_cents[forloop.index0] | plus: 0
+                  assign sq = c | times: 11 | divided_by: 100.0 | plus: 24 | round
+                  assign tl = shop.settings.tilt | default: 0
+                  assign at = shop.settings.atouts | newline_to_br | split: '<br />'
+                -%}
+                {%- capture price_txt -%}{% render 'cqp-dec', n: c, suffix: ' €' %}{%- endcapture -%}
+                {%- capture idx_txt -%}{% render 'cqp-dec', n: p_idx[forloop.index0] %}{%- endcapture -%}
+                {"tilt": {{ tl }}, "sq": {{ sq }}, "price": {{ price_txt | json }}, "idx": {{ idx_txt | json }}, "verdict": {{ shop.settings.v | replace: cbd_name, cbd_link | json }}, "atouts": [
+                  {%- assign first = true -%}
+                  {%- for a in at -%}{%- assign a2 = a | strip -%}{%- if a2 != blank -%}{%- unless first -%},{%- endunless -%}{{ a2 | replace: cbd_name, cbd_link | json }}{%- assign first = false -%}{%- endif -%}{%- endfor -%}
+                ]}{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+            ]
+          </script>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} ===== 2.3 L'indice ===== {%- endcomment -%}
+  <section id="indice" class="cqp-section cqp-indice" aria-labelledby="h-indice">
+    <div class="cqp-wrap">
+      <div class="cqp-indice__head">
+        <div>
+          <p class="cqp-label">{{ section.settings.indice_kicker }}</p>
+          <h2 id="h-indice" class="cqp-h2">{{ section.settings.indice_title }}</h2>
+        </div>
+        <p class="cqp-indice__intro">{{ section.settings.indice_intro | replace: cbd_name, cbd_link }}</p>
+      </div>
+      <ol class="cqp-circles">
+        {%- for shop in shops limit: 3 -%}
+          <li>
+            <span class="cqp-circle cqp-circle--{{ forloop.index }}">{% render 'cqp-dec', n: p_idx[forloop.index0] %}</span>
+            <div class="cqp-circles__cap">
+              <p class="cqp-circles__name">{{ forloop.index }}. {{ shop.settings.name | replace: cbd_name, cbd_link }}</p>
+              <p class="cqp-circles__calc">{{ p_count[forloop.index0] }} atouts ÷ {% render 'cqp-dec', n: p_cents[forloop.index0], suffix: ' €/g' %}</p>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ol>
+      {%- if shops.size >= 3 and top_cents > 0 -%}
+        <div class="cqp-mults">
+          {%- for shop in shops offset: 1 limit: 2 -%}
+            {%- assign m = p_cents[forloop.index] | times: 10.0 | divided_by: top_cents | round -%}
+            <div>
+              <span class="cqp-mults__n{% if forloop.last %} cqp-mults__n--coral{% endif %}">×{% render 'cqp-dec', n: m, d: 1 %}</span>
+              <span class="cqp-mults__t">{{ shop.settings.name }} coûte {% render 'cqp-dec', n: m, d: 1 %} fois plus cher au gramme que {{ cbd_link }}.</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} ===== 2.4 Classement ===== {%- endcomment -%}
+  <section id="classement" class="cqp-section cqp-classement" aria-labelledby="h-classement">
+    <div class="cqp-wrap">
+      <p class="cqp-label">{{ section.settings.classement_kicker }}</p>
+      <h2 id="h-classement" class="cqp-h2">{{ section.settings.classement_title }}</h2>
+
+      {%- if top -%}
+        <article class="cqp-top" {{ top.shopify_attributes }}>
+          <div class="cqp-top__rank">
+            <span class="cqp-top__ball" aria-hidden="true"></span>
+            <p class="cqp-top__k">{{ section.settings.top_label }}</p>
+            <p class="cqp-top__n">1</p>
+          </div>
+          <div class="cqp-top__body">
+            <h3>{{ cbd_link }}</h3>
+            <p class="cqp-top__line">{{ section.settings.top_line | replace: cbd_name, cbd_link }}</p>
+            <div class="cqp-tiles">
+              <div class="cqp-tile"><span class="cqp-tile__shape cqp-tile__shape--sq" aria-hidden="true"></span><span><strong>{% render 'cqp-dec', n: top_cents, suffix: ' €/g' %}</strong><small>prix d'appel</small></span></div>
+              <div class="cqp-tile"><span class="cqp-tile__shape cqp-tile__shape--ci" aria-hidden="true"></span><span><strong>{% render 'cqp-dec', n: p_idx[0] %}</strong><small>indice qualité-prix</small></span></div>
+            </div>
+            <ul class="cqp-chips">
+              {%- assign chips = section.settings.top_chips | newline_to_br | split: '<br />' -%}
+              {%- for x in chips -%}{%- assign x2 = x | strip -%}{%- if x2 != blank -%}<li><span class="cqp-dot" style="width: 10px; height: 10px;"></span>{{ x2 }}</li>{%- endif -%}{%- endfor -%}
+            </ul>
+            <div class="cqp-top__ctas">
+              <a class="cqp-pill cqp-pill--green" href="{{ top.settings.url }}" rel="nofollow sponsored">Visiter {{ top.settings.name }} →</a>
+              <a class="cqp-top__more" href="#analyse-1">Lire l'analyse</a>
+            </div>
+          </div>
+        </article>
+      {%- endif -%}
+
+      <div class="cqp-duo">
+        {%- for shop in shops offset: 1 limit: 2 -%}
+          {%- assign rank = forloop.index | plus: 1 -%}
+          <article class="cqp-card cqp-card--{{ rank }}" {{ shop.shopify_attributes }}>
+            <div class="cqp-card__rank"><span class="cqp-shape cqp-shape--{{ rank }}">{{ rank }}</span></div>
+            <div class="cqp-card__body">
+              <h3>{{ shop.settings.name }}</h3>
+              <p class="cqp-card__line">{{ shop.settings.line | replace: cbd_name, cbd_link }}</p>
+              <dl>
+                <dt>Prix dès</dt><dd>{% render 'cqp-dec', n: p_cents[forloop.index], suffix: ' €/g' %}</dd>
+                <dt>Indice</dt><dd>{% render 'cqp-dec', n: p_idx[forloop.index] %}</dd>
+                <dt>Code</dt><dd class="cqp-mono">{{ shop.settings.promo | default: '—' }}</dd>
+              </dl>
+              {%- if shop.settings.url != blank -%}
+                <a class="cqp-pill cqp-pill--outline" href="{{ shop.settings.url }}" rel="nofollow sponsored">Visiter le site →</a>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+
+      {%- if shops.size > 3 -%}
+        <h3 class="cqp-rest__title">{{ section.settings.rest_title }} <span>{{ section.settings.rest_note }}</span></h3>
+        <ol class="cqp-rest" start="4">
+          {%- for shop in shops offset: 3 -%}
+            {%- assign rank = forloop.index | plus: 3 -%}
+            <li {{ shop.shopify_attributes }}>
+              <span class="cqp-rest__rank">{{ rank }}</span>
+              <a class="cqp-rest__name" href="#analyse-{{ rank }}">{{ shop.settings.name }}</a>
+              <p class="cqp-rest__spec">{{ shop.settings.spec }}</p>
+              <p class="cqp-rest__domain">{{ shop.settings.domain }}</p>
+            </li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} ===== 2.5 Analyses ===== {%- endcomment -%}
+  <section id="analyses" class="cqp-section cqp-analyses" aria-labelledby="h-analyses">
+    <div class="cqp-wrap">
+      <p class="cqp-label">{{ section.settings.analyses_kicker }}</p>
+      <h2 id="h-analyses" class="cqp-h2">{{ section.settings.analyses_title }}</h2>
+      <div class="cqp-analyses__list">
+        {%- for shop in shops -%}
+          {%- liquid
+            assign rank = forloop.index
+            assign shape = 2
+            if rank == 1
+              assign shape = 1
+            elsif rank == 3
+              assign shape = 3
+            endif
+            assign at = shop.settings.atouts | newline_to_br | split: '<br />'
+          -%}
+          <article id="analyse-{{ rank }}" class="cqp-an cqp-an--{{ rank }}" {{ shop.shopify_attributes }}>
+            <div class="cqp-an__head">
+              <span class="cqp-shape cqp-shape--{{ shape }}">{{ rank }}</span>
+              <div class="cqp-an__title">
+                <h3>{{ shop.settings.name | replace: cbd_name, cbd_link }}</h3>
+                <p class="cqp-an__dek">{{ shop.settings.dek | replace: cbd_name, cbd_link }}</p>
+              </div>
+              {%- if rank <= 3 and shop.settings.url != blank -%}
+                <a class="cqp-pill cqp-pill--dark" href="{{ shop.settings.url }}" rel="nofollow sponsored">Visiter →</a>
+              {%- endif -%}
+            </div>
+            <div class="cqp-an__cols">
+              <div class="cqp-an__col">
+                <h4><span class="cqp-dot" style="width: 16px; height: 16px;"></span>Côté qualité</h4>
+                <p>{{ shop.settings.q | replace: cbd_name, cbd_link }}</p>
+                <ul class="cqp-an__atouts">
+                  {%- for a in at -%}{%- assign a2 = a | strip -%}{%- if a2 != blank -%}<li><span class="cqp-dot" style="width: 10px; height: 10px;"></span><span>{{ a2 | replace: cbd_name, cbd_link }}</span></li>{%- endif -%}{%- endfor -%}
+                </ul>
+              </div>
+              <div class="cqp-an__col">
+                <h4><span class="cqp-sq" style="width: 15px; height: 15px;"></span>Côté prix</h4>
+                <p class="cqp-an__price">
+                  {%- if rank <= 3 and shop.settings.price != blank -%}
+                    {% render 'cqp-dec', n: p_cents[forloop.index0], suffix: ' €/g' %}
+                  {%- else -%}
+                    {{ nc }}
+                  {%- endif -%}
+                </p>
+                <p>{{ shop.settings.p | replace: cbd_name, cbd_link }}</p>
+                <p class="cqp-an__code">Code : <strong>{% if rank <= 3 and shop.settings.promo != blank %}{{ shop.settings.promo }}{% else %}—{% endif %}</strong> · {{ shop.settings.domain }}</p>
+              </div>
+              <div class="cqp-an__col cqp-an__col--v">
+                <h4><span class="cqp-tri"></span>Notre verdict</h4>
+                <p>{{ shop.settings.v | replace: cbd_name, cbd_link }}</p>
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ===== 2.6 Guide ===== {%- endcomment -%}
+  <section id="guide" class="cqp-section cqp-guide" aria-labelledby="h-guide">
+    <div class="cqp-wrap">
+      <p class="cqp-label">{{ section.settings.guide_kicker }}</p>
+      <h2 id="h-guide" class="cqp-h2">{{ section.settings.guide_title }}</h2>
+      <div class="cqp-guide__grid">
+        <div class="cqp-gcard cqp-gcard--q">
+          <p class="cqp-gcard__head"><span class="cqp-gcard__mark" aria-hidden="true"></span>{{ section.settings.guide_q_title }}</p>
+          <ol>
+            {%- for g in guide_q -%}
+              <li {{ g.shopify_attributes }}><span class="cqp-gnum">{{ forloop.index }}</span><div><h3>{{ g.settings.title }}</h3><p>{{ g.settings.text | replace: cbd_name, cbd_link }}</p></div></li>
+            {%- endfor -%}
+          </ol>
+        </div>
+        <div class="cqp-gcard cqp-gcard--p">
+          <p class="cqp-gcard__head"><span class="cqp-gcard__mark" aria-hidden="true"></span>{{ section.settings.guide_p_title }}</p>
+          <ol>
+            {%- for g in guide_p -%}
+              <li {{ g.shopify_attributes }}><span class="cqp-gnum">{{ forloop.index }}</span><div><h3>{{ g.settings.title }}</h3><p>{{ g.settings.text | replace: cbd_name, cbd_link }}</p></div></li>
+            {%- endfor -%}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ===== 2.7 FAQ (toujours visible) ===== {%- endcomment -%}
+  <section id="faq" class="cqp-section cqp-faq" aria-labelledby="h-faq">
+    <div class="cqp-wrap">
+      <p class="cqp-label">{{ section.settings.faq_kicker }}</p>
+      <h2 id="h-faq" class="cqp-h2">{{ section.settings.faq_title }}</h2>
+      <div class="cqp-faq__grid">
+        {%- for faq in faqs -%}
+          {%- assign odd = forloop.index0 | modulo: 2 -%}
+          <div class="cqp-faq__item" {{ faq.shopify_attributes }}>
+            <span class="cqp-faq__num{% if odd == 0 %} cqp-faq__num--ci{% endif %}">{{ forloop.index }}</span>
+            <h3>{{ faq.settings.q }}</h3>
+            <p>{{ faq.settings.a | replace: cbd_name, cbd_link }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{%- assign site_url = shop.url | append: '/' -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ section.settings.site_name | json }},
+    "url": {{ site_url | json }},
+    "inLanguage": "fr-FR",
+    "description": {{ section.settings.site_description | json }}
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": {{ section.settings.itemlist_name | json }},
+    "numberOfItems": {{ shops.size }},
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "itemListElement": [
+      {%- for shop in shops -%}
+        {%- liquid
+          if forloop.index <= 3 and shop.settings.url != blank
+            assign item_url = shop.settings.url
+          else
+            assign item_url = site_url | append: '#analyse-' | append: forloop.index
+          endif
+        -%}
+        {"@type": "ListItem", "position": {{ forloop.index }}, "name": {{ shop.settings.name | json }}, "url": {{ item_url | json }}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for faq in faqs -%}
+        {"@type": "Question", "name": {{ faq.settings.q | json }}, "acceptedAnswer": {"@type": "Answer", "text": {{ faq.settings.a | json }}}}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Classement qualité-prix",
+  "tag": "div",
+  "class": "cqp-landing-section",
+  "max_blocks": 40,
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_kicker", "label": "Libellé", "default": "Édition 2026 · 10 boutiques pesées" },
+    { "type": "text", "id": "h1_before", "label": "Titre H1 — début", "default": "Le classement CBD" },
+    { "type": "text", "id": "h1_q", "label": "Titre H1 — mot en vert", "default": "qualité" },
+    { "type": "text", "id": "h1_p", "label": "Titre H1 — mot en corail", "default": "prix" },
+    { "type": "text", "id": "h1_after", "label": "Titre H1 — fin", "default": "2026" },
+    { "type": "inline_richtext", "id": "hero_intro", "label": "Chapô", "default": "Un bon site de CBD ne se juge ni à son seul prix, ni à ses seuls services, mais au rapport entre les deux. Nous avons posé chaque boutique sur la balance. Une seule la fait pencher franchement du bon côté : <strong>CBD Discounter</strong>." },
+    { "type": "textarea", "id": "formula_q", "label": "Formule — côté qualité", "default": "atouts\nvérifiés" },
+    { "type": "textarea", "id": "formula_p", "label": "Formule — côté prix", "default": "prix\nau gramme" },
+    { "type": "text", "id": "hero_cta_label", "label": "Bouton principal", "default": "Voir CBD Discounter" },
+    { "type": "text", "id": "hero_cta2_label", "label": "Bouton secondaire", "default": "Le classement complet" },
+    { "type": "header", "content": "Balance" },
+    { "type": "text", "id": "balance_title", "label": "Titre", "default": "La balance qualité-prix" },
+    { "type": "text", "id": "balance_hint", "label": "Consigne", "default": "Choisissez un site du podium et regardez de quel côté elle penche." },
+    { "type": "header", "content": "L'indice" },
+    { "type": "text", "id": "indice_kicker", "label": "Libellé", "default": "01 — L'indice qualité-prix" },
+    { "type": "text", "id": "indice_title", "label": "Titre", "default": "À services égaux, le prix tranche" },
+    { "type": "textarea", "id": "indice_intro", "label": "Texte", "default": "Les trois sites du podium cumulent chacun trois atouts vérifiés. L'indice divise ces atouts par le prix d'appel au gramme : plus il est élevé, plus vous en avez pour votre argent." },
+    { "type": "header", "content": "Classement" },
+    { "type": "text", "id": "classement_kicker", "label": "Libellé", "default": "02 — Le classement" },
+    { "type": "text", "id": "classement_title", "label": "Titre", "default": "Les 10 sites, du meilleur rapport qualité-prix au moins documenté" },
+    { "type": "text", "id": "top_label", "label": "Carte n°1 — libellé", "default": "Meilleur rapport qualité-prix 2026" },
+    { "type": "textarea", "id": "top_line", "label": "Carte n°1 — phrase", "default": "Trois atouts vérifiés pour 0,75 € le gramme : le seul site du classement où la balance penche nettement du côté de ce que vous obtenez." },
+    { "type": "textarea", "id": "top_chips", "label": "Carte n°1 — pastilles (une par ligne)", "default": "Catalogue large\nExpédié le jour même avant 14h30\nCode DISCOUNTER15" },
+    { "type": "text", "id": "rest_title", "label": "Places 4 à 10 — titre", "default": "Places 4 à 10" },
+    { "type": "text", "id": "rest_note", "label": "Places 4 à 10 — précision", "default": "· citées à titre d'information, indice non calculable faute de prix comparable" },
+    { "type": "header", "content": "Analyses" },
+    { "type": "text", "id": "analyses_kicker", "label": "Libellé", "default": "03 — Les analyses" },
+    { "type": "text", "id": "analyses_title", "label": "Titre", "default": "Chaque site, côté qualité et côté prix" },
+    { "type": "text", "id": "nc_label", "label": "Mention si prix absent", "default": "Prix non communiqué" },
+    { "type": "header", "content": "Guide" },
+    { "type": "text", "id": "guide_kicker", "label": "Libellé", "default": "04 — Le guide" },
+    { "type": "text", "id": "guide_title", "label": "Titre", "default": "Juger soi-même le rapport qualité-prix" },
+    { "type": "text", "id": "guide_q_title", "label": "Carte qualité — titre", "default": "Évaluer la qualité" },
+    { "type": "text", "id": "guide_p_title", "label": "Carte prix — titre", "default": "Évaluer le prix" },
+    { "type": "header", "content": "FAQ" },
+    { "type": "text", "id": "faq_kicker", "label": "Libellé", "default": "05 — Questions fréquentes" },
+    { "type": "text", "id": "faq_title", "label": "Titre", "default": "Qualité, prix : vos questions" },
+    { "type": "header", "content": "Données structurées" },
+    { "type": "text", "id": "site_name", "label": "Nom du site (WebSite)", "default": "classement-cbd-meilleur-rapport-qualite-prix.com" },
+    { "type": "text", "id": "site_description", "label": "Description (WebSite)", "default": "Classement des sites de CBD en France selon leur rapport qualité-prix." },
+    { "type": "text", "id": "itemlist_name", "label": "Nom du classement (ItemList)", "default": "Classement CBD qualité-prix 2026" }
+  ],
+  "blocks": [
+    {
+      "type": "shop",
+      "name": "Boutique",
+      "settings": [
+        { "type": "paragraph", "content": "L'ordre des blocs donne le rang. Prix, indice, code et lien ne s'affichent que pour les 3 premières boutiques." },
+        { "type": "text", "id": "name", "label": "Nom", "default": "Nouvelle boutique" },
+        { "type": "text", "id": "domain", "label": "Domaine affiché", "default": "exemple.fr" },
+        { "type": "text", "id": "url", "label": "Lien (podium uniquement)" },
+        { "type": "text", "id": "price", "label": "Prix d'appel au gramme (podium, ex. 0,75)" },
+        { "type": "text", "id": "promo", "label": "Code promo (podium)" },
+        { "type": "number", "id": "tilt", "label": "Inclinaison de la balance en degrés (podium, négatif = côté qualité)" },
+        { "type": "text", "id": "spec", "label": "Spécificité (places 4 à 10)" },
+        { "type": "textarea", "id": "atouts", "label": "Atouts vérifiés (un par ligne)" },
+        { "type": "textarea", "id": "line", "label": "Phrase de la carte (n°2 et n°3)" },
+        { "type": "textarea", "id": "dek", "label": "Chapô de l'analyse" },
+        { "type": "textarea", "id": "q", "label": "Côté qualité" },
+        { "type": "textarea", "id": "p", "label": "Côté prix" },
+        { "type": "textarea", "id": "v", "label": "Notre verdict" }
+      ]
+    },
+    {
+      "type": "guide_q",
+      "name": "Guide — qualité",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Nouveau point" },
+        { "type": "textarea", "id": "text", "label": "Texte" }
+      ]
+    },
+    {
+      "type": "guide_p",
+      "name": "Guide — prix",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Nouveau point" },
+        { "type": "textarea", "id": "text", "label": "Texte" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "q", "label": "Question", "default": "Nouvelle question ?" },
+        { "type": "textarea", "id": "a", "label": "Réponse (identique dans le JSON-LD)" }
+      ]
+    }
+  ]
+}
+{% endschema %}

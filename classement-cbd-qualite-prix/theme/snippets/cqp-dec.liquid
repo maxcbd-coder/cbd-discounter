@@ -1,0 +1,20 @@
+{%- doc -%}
+  Affiche un nombre entier exprimé en centièmes (d = 2) ou en dixièmes (d = 1) au format français : 75 → « 0,75 », 37 → « 3,7 ».
+  @param {number} n - valeur entière
+  @param {number} [d] - nombre de décimales, 2 par défaut
+  @param {string} [suffix] - suffixe
+{%- enddoc -%}
+{%- liquid
+  assign cqp_n = n | plus: 0 | round
+  assign cqp_d = d | default: 2
+  assign cqp_div = 100
+  if cqp_d == 1
+    assign cqp_div = 10
+  endif
+  assign cqp_e = cqp_n | divided_by: cqp_div
+  assign cqp_r = cqp_n | modulo: cqp_div
+  if cqp_d == 2 and cqp_r < 10
+    assign cqp_r = '0' | append: cqp_r
+  endif
+  echo cqp_e | append: ',' | append: cqp_r | append: suffix
+-%}

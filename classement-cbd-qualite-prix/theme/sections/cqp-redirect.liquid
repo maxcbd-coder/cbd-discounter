@@ -1,0 +1,20 @@
+{%- comment -%}
+  Remplace les gabarits marchands (produit, collection, panier, recherche, blog).
+  La redirection est faite dans layout/landing.liquid ; ceci n'est qu'un repli sans JavaScript.
+{%- endcomment -%}
+<section class="cqp-page">
+  <div class="cqp-wrap">
+    <h1 class="cqp-h2">{{ section.settings.title }}</h1>
+    <p class="cqp-page__back"><a class="cqp-pill cqp-pill--green" href="{{ routes.root_url }}">{{ section.settings.back_label }}</a></p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Redirection accueil",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Cette page n'est pas disponible" },
+    { "type": "text", "id": "back_label", "label": "Bouton", "default": "Retour au classement →" }
+  ]
+}
+{% endschema %}

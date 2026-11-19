@@ -1,0 +1,49 @@
+{%- liquid
+  assign home = routes.root_url
+  if template.name == 'index'
+    assign home = ''
+  endif
+-%}
+<header class="cqp-header">
+  <div class="cqp-header__inner">
+    <a class="cqp-logo" href="{{ home }}#balance">
+      <span class="cqp-logo__shapes" aria-hidden="true"><span class="cqp-dot" style="width: 18px; height: 18px;"></span><span class="cqp-sq" style="width: 16px; height: 16px;"></span></span>
+      <span class="cqp-logo__text">
+        {{- section.settings.logo_before -}}
+        <span class="cqp-q">{{ section.settings.logo_q }}</span>
+        {{- section.settings.logo_sep -}}
+        <span class="cqp-p">{{ section.settings.logo_p }}</span>
+        {{- section.settings.logo_after -}}
+      </span>
+    </a>
+    <nav class="cqp-nav" aria-label="Sections">
+      <a href="{{ home }}#indice">L'indice</a>
+      <a href="{{ home }}#classement">Classement</a>
+      <a href="{{ home }}#analyses">Analyses</a>
+      <a href="{{ home }}#guide">Guide</a>
+      <a href="{{ home }}#faq">FAQ</a>
+      {%- if section.settings.cta_url != blank -%}
+        <a class="cqp-nav__cta" href="{{ section.settings.cta_url }}" rel="nofollow sponsored"><span class="cqp-dot" aria-hidden="true" style="width: 10px; height: 10px; background: #F2B705;"></span>{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "En-tête",
+  "tag": "div",
+  "class": "cqp-header-section",
+  "settings": [
+    { "type": "header", "content": "Logo texte" },
+    { "type": "text", "id": "logo_before", "label": "Début", "default": "classement-cbd-meilleur-rapport-" },
+    { "type": "text", "id": "logo_q", "label": "Mot en vert", "default": "qualite" },
+    { "type": "text", "id": "logo_sep", "label": "Séparateur", "default": "-" },
+    { "type": "text", "id": "logo_p", "label": "Mot en corail", "default": "prix" },
+    { "type": "text", "id": "logo_after", "label": "Fin", "default": ".com" },
+    { "type": "header", "content": "Bouton" },
+    { "type": "text", "id": "cta_label", "label": "Texte", "default": "N°1 : CBD Discounter" },
+    { "type": "text", "id": "cta_url", "label": "Lien (nofollow sponsored)", "default": "https://www.cbd-discounter.fr/" }
+  ]
+}
+{% endschema %}

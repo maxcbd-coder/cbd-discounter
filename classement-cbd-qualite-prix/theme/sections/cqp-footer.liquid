@@ -1,0 +1,58 @@
+<footer class="cqp-footer">
+  <div class="cqp-frieze" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="cqp-footer__inner">
+    <div class="cqp-footer__grid">
+      <div>
+        <p class="cqp-footer__logo">
+          {{- section.settings.logo_before -}}
+          <span class="cqp-q">{{ section.settings.logo_q }}</span>
+          {{- section.settings.logo_sep -}}
+          <span class="cqp-p">{{ section.settings.logo_p }}</span>
+          {{- section.settings.logo_after -}}
+        </p>
+        <p class="cqp-footer__text">{{ section.settings.about }}</p>
+      </div>
+      <div>
+        <p class="cqp-footer__k">{{ section.settings.transparency_title }}</p>
+        <p class="cqp-footer__text cqp-footer__text--wide">{{ section.settings.transparency_text }}</p>
+      </div>
+      <ul class="cqp-footer__links">
+        {%- if section.settings.legal_link != blank -%}
+          <li><a href="{{ section.settings.legal_link }}">Mentions légales</a></li>
+        {%- endif -%}
+        {%- if section.settings.privacy_link != blank -%}
+          <li><a href="{{ section.settings.privacy_link }}">Confidentialité</a></li>
+        {%- endif -%}
+        {%- if section.settings.contact_email != blank -%}
+          <li><a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></li>
+        {%- endif -%}
+      </ul>
+    </div>
+    <p class="cqp-footer__legal">
+      {{ section.settings.legal }} © {{ 'now' | date: '%Y' }}
+      {{ section.settings.logo_before }}{{ section.settings.logo_q }}{{ section.settings.logo_sep }}{{ section.settings.logo_p }}{{ section.settings.logo_after }}
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "tag": "div",
+  "class": "cqp-footer-section",
+  "settings": [
+    { "type": "text", "id": "logo_before", "label": "Logo — début", "default": "classement-cbd-meilleur-rapport-" },
+    { "type": "text", "id": "logo_q", "label": "Logo — mot en vert", "default": "qualite" },
+    { "type": "text", "id": "logo_sep", "label": "Logo — séparateur", "default": "-" },
+    { "type": "text", "id": "logo_p", "label": "Logo — mot en corail", "default": "prix" },
+    { "type": "text", "id": "logo_after", "label": "Logo — fin", "default": ".com" },
+    { "type": "textarea", "id": "about", "label": "Présentation", "default": "Le classement des sites de CBD selon leur rapport qualité-prix. Relevés du 14 septembre 2026, prochaine pesée en mars 2027." },
+    { "type": "text", "id": "transparency_title", "label": "Titre colonne 2", "default": "Transparence" },
+    { "type": "textarea", "id": "transparency_text", "label": "Texte colonne 2", "default": "Seuls les trois sites du podium sont en lien. Certains liens peuvent être affiliés, sans effet sur votre prix ni sur le classement." },
+    { "type": "text", "id": "legal_link", "label": "Lien « Mentions légales »", "default": "/policies/legal-notice" },
+    { "type": "text", "id": "privacy_link", "label": "Lien « Confidentialité »", "default": "/policies/privacy-policy" },
+    { "type": "text", "id": "contact_email", "label": "E-mail de contact", "default": "contact@classement-cbd-meilleur-rapport-qualite-prix.com" },
+    { "type": "textarea", "id": "legal", "label": "Mention légale", "default": "Vente interdite aux mineurs. Les produits au CBD ne sont pas des médicaments. THC ≤ 0,3 %." }
+  ]
+}
+{% endschema %}

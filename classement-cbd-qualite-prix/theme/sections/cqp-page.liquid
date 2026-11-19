@@ -1,0 +1,25 @@
+{%- comment -%} Pages (mentions légales, contact…) et 404 dans la charte de la landing. {%- endcomment -%}
+<section class="cqp-page">
+  <div class="cqp-wrap">
+    {%- if template.name == '404' -%}
+      <p class="cqp-label">Erreur 404</p>
+      <h1 class="cqp-h2">{{ section.settings.not_found_title }}</h1>
+      <div class="cqp-rte"><p>{{ section.settings.not_found_text }}</p></div>
+    {%- else -%}
+      <h1 class="cqp-h2">{{ page.title }}</h1>
+      <div class="cqp-rte">{{ page.content }}</div>
+    {%- endif -%}
+    <p class="cqp-page__back"><a class="cqp-pill cqp-pill--green" href="{{ routes.root_url }}#classement">{{ section.settings.back_label }}</a></p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page",
+  "settings": [
+    { "type": "text", "id": "not_found_title", "label": "Titre 404", "default": "Page introuvable" },
+    { "type": "textarea", "id": "not_found_text", "label": "Texte 404", "default": "Cette page n'existe pas ou n'est plus disponible. Retrouvez le classement CBD qualité-prix sur la page d'accueil." },
+    { "type": "text", "id": "back_label", "label": "Bouton retour", "default": "Voir le classement →" }
+  ]
+}
+{% endschema %}
