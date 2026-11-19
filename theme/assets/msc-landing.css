@@ -243,3 +243,8 @@ body.msc-body { margin: 0; background: var(--msc-bg); color: var(--msc-ink); fon
 .msc-rte { max-width: 72ch; font-size: 17px; }
 .msc-rte h2, .msc-rte h3 { font-family: var(--msc-f-display); font-stretch: 75%; text-transform: uppercase; line-height: 1.05; }
 .msc-page__back { margin-top: 40px; }
+
+/* Liens « CBD Discounter » dans les textes */
+.msc-body a.msc-cbdd { color: inherit; text-decoration: underline; text-decoration-thickness: from-font; text-underline-offset: 3px; }
+.msc-body a.msc-cbdd:hover { background: var(--msc-yellow); color: var(--msc-ink); text-decoration: none; }
+.msc-up { text-transform: uppercase; }

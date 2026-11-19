@@ -28,15 +28,12 @@
       btn.setAttribute('aria-pressed', parseInt(btn.getAttribute('data-msc-qty'), 10) === qty ? 'true' : 'false');
     });
 
-    var saving = sim.querySelector('[data-msc-saving]');
-    if (saving && rows.length >= 3) {
-      var names = Array.prototype.map.call(rows, function (row) {
-        return row.getAttribute('data-name');
-      });
-      saving.textContent =
-        'Pour ' + qty + ' g, ' + names[0] + ' vous fait économiser ' + eur(totals[1] - totals[0]) +
-        ' par rapport à ' + names[1] + ' et ' + eur(totals[2] - totals[0]) + ' par rapport à ' + names[2] + '.';
-    }
+    var q = sim.querySelector('[data-msc-q]');
+    var d1 = sim.querySelector('[data-msc-d="1"]');
+    var d2 = sim.querySelector('[data-msc-d="2"]');
+    if (q) q.textContent = qty;
+    if (d1 && totals.length >= 2) d1.textContent = eur(totals[1] - totals[0]);
+    if (d2 && totals.length >= 3) d2.textContent = eur(totals[2] - totals[0]);
   }
 
   function init(root) {
