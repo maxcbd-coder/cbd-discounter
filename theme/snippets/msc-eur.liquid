@@ -1,0 +1,15 @@
+{%- doc -%}
+  Affiche un montant en centimes au format français : 750 → « 7,50 € ».
+  @param {number} cents - montant en centimes
+  @param {string} [suffix] - suffixe, « € » par défaut
+{%- enddoc -%}
+{%- liquid
+  assign msc_c = cents | plus: 0 | round
+  assign msc_e = msc_c | divided_by: 100
+  assign msc_r = msc_c | modulo: 100
+  if msc_r < 10
+    assign msc_r = '0' | append: msc_r
+  endif
+  assign msc_suffix = suffix | default: ' €'
+  echo msc_e | append: ',' | append: msc_r | append: msc_suffix
+-%}

@@ -1,190 +1,192 @@
-# Handoff : Meilleur site CBD — landing « Les 10 meilleurs sites pour acheter du CBD en 2026 »
+# Handoff : meilleur-site-cbd-pas-cher.com (V4) — one-page « Meilleur site CBD pas cher en 2026 »
 
-## Overview
-Landing page unique (one-page) d'un comparateur éditorial, **Meilleur site CBD**. Elle présente un classement de 10 boutiques CBD françaises avec : hero, synthèse du podium, tableau comparatif, fiches détaillées, bandeau « verdict » mettant en avant le n°1 (CBD Discounter), méthodologie, conseils d'achat, FAQ et footer. Direction artistique « Noir & Champagne » : noir chaud, ivoire, accent doré, typographie Didone (Bodoni Moda). Page pensée pour le SEO et la citation par les LLM : phrases courtes et affirmatives, entités nommées, chiffres explicites, aucune info portée uniquement par une image.
+## Objectif
+Reproduire **à l'identique, au pixel près**, la maquette `Meilleur Site CBD Pas Cher V4.dc.html` : une **page unique éditoriale** qui compare les prix de 10 boutiques CBD et met en avant **CBD Discounter** comme meilleur site pas cher. **Ce n'est pas un site marchand** : aucun panier, compte, recherche ou paiement.
 
-## About the Design Files
-Les fichiers de ce dossier sont des **références de design réalisées en HTML** : un prototype qui montre l'apparence et le comportement attendus, **pas du code de production à copier**. La tâche est de **recréer ce design dans l'environnement du projet cible** (Next.js, Astro, WordPress, etc.) avec ses conventions. S'il n'y a pas encore de codebase : **Astro ou Next.js en rendu statique** conviennent parfaitement (page 100 % statique hormis l'accordéon FAQ).
+Direction artistique : **ticket de caisse + étiquettes de prix de supermarché**, sur fond vert chlorophylle quadrillé.
 
-Le prototype utilise un framework interne à styles inline. **Ne pas reprendre les styles inline** : les convertir en CSS / Tailwind / CSS-modules. Le point de rupture est géré en JS dans le prototype (contrainte de l'outil) → **en production, utiliser une media query CSS `@media (min-width: 768px)`**, pas de JS.
+## À propos des fichiers
+- `Meilleur Site CBD Pas Cher V4.dc.html` : **référence de design** en HTML (prototype). L'ouvrir dans un navigateur avec `support.js` à côté. Ce n'est **pas** du code de production : les styles sont inline et le rendu passe par un runtime interne. **Recréer** le design dans la stack cible avec du CSS propre (classes, CSS modules ou Tailwind).
+- Toutes les données sont dans le `<script type="text/x-dc">` en bas du fichier : `SHOPS`, `GUIDE`, `FAQ`, `QTYS`. Les **reprendre mot pour mot**.
+- Les 3 blocs JSON-LD sont dans le `<helmet>` en haut du fichier : les **reprendre tels quels**.
+- `support.js` : sert uniquement à ouvrir la référence.
 
-Ouvrir `Meilleur site CBD Landing.dc.html` directement dans un navigateur (avec `support.js` à côté) pour voir la référence. Toutes les données (boutiques, picks, pondérations, conseils, FAQ) sont dans le bloc `<script type="text/x-dc">` en bas du fichier : constantes `SHOPS`, `PICKS`, `WEIGHTS`, `TIPS`, `FAQ`. **Les extraire telles quelles dans un fichier de contenu** (JSON / MDX / CMS).
+### Stack
+- **Site statique** (Astro ou Next.js en export statique) : idéal. Une seule interaction (simulateur), en JS vanilla.
+- **Shopify** : layout dédié sans header, footer ni panier du thème. Une section Liquid par bloc ci-dessous, textes en `settings` et éléments répétés en `blocks`. Ne garder que `{{ content_for_header }}`. Rediriger `/cart`, `/collections`, `/products` vers `/` et les bloquer dans `robots.txt`.
 
 ## Fidelity
-**High-fidelity.** Couleurs, typographie, espacements, contenus et comportements sont définitifs. Recréer **au pixel près**. Comparer visuellement à la référence à 1440px, 1024px, 768px et 390px.
+**High-fidelity.** Couleurs, typographies, tailles, espacements, textes et interactions sont définitifs. Comparer à la référence à 1440, 1024, 768 et 390px.
 
 ---
 
-## Design Tokens
+## 1. Design tokens
 
 ### Couleurs
-| Rôle | Valeur |
+| Rôle | Hex |
 | --- | --- |
-| Fond sombre principal (header, hero, tableau, méthodologie, FAQ) | `#12110F` |
-| Fond sombre surélevé (cartes mobile, hover ligne tableau) | `#1A1815` / hover `#1C1A17` |
-| Fond footer | `#0B0A09` |
-| Ivoire (fond clair principal : synthèse, classement détaillé) | `#F4EFE6` |
-| Ivoire alterné (conseils, tableau des critères dans fiches) | `#EAE3D6` |
-| Champagne (accent sur fond sombre, fond du bandeau verdict) | `#C9A96E` |
-| Champagne clair (hover, codes promo sur sombre) | `#E4CC9C` |
-| Bronze (accent sur fond clair : chiffres, italiques, filets) | `#8A6A35` |
-| Texte sur sombre | `#F4EFE6` |
-| Texte secondaire sur sombre | `#CFC6B6` |
-| Texte atténué sur sombre | `#A39A8B` |
-| Encre sur clair | `#191714` |
-| Texte secondaire sur clair | `#3A352E` / corps d'article `#2A2622` |
-| Texte atténué sur clair | `#6B6358` |
-| Texte sur champagne (bandeau verdict) | `#12110F`, secondaire `#2A2110`, kicker `#3A2C14` |
-| Filets sur sombre | `rgba(244,239,230,0.10 → 0.14)` ; filets dorés `rgba(201,169,110,0.22 → 0.6)` |
-| Filets sur clair | `rgba(25,23,20,0.10 → 0.30)` ; filet plein `#191714` en tête de bloc |
-| Surbrillance ligne n°1 du tableau | `rgba(201,169,110,0.09)` |
-| Fond chip code promo (sombre) | `rgba(201,169,110,0.10)` |
+| Vert chlorophylle (hero, guide, boutons) | `#0B4D33` |
+| Encre (texte, bordures, ombres pleines, footer) | `#101A14` |
+| Fond de page | `#F4F5EE` |
+| Fond « rayon » (section classement) | `#E2E6D8` (aussi survol de la nav) |
+| Papier ticket | `#FBFBF4` |
+| Blanc (cartes, simulateur, FAQ) | `#FFFFFF` |
+| Jaune étiquette (accent principal) | `#FFE34A`, survol `#FFF07F` |
+| Vert « meilleur prix » (barre n°1, pastille, résultat) | `#19C36B` |
+| Vert pâle (encadré « Les plus ») | `#D7F5E3` |
+| Barres concurrents (simulateur) | `#D3D8CB` |
+| Texte secondaire sur clair | `#3D4A41` / `#26332A` |
+| Rang atténué (places 4-10) | `#6B776E` |
+| Texte secondaire sur vert | `#DDE8DF` ; sur encre `#C9D2CB` |
+| Quadrillage hero | `linear-gradient(rgba(244,245,238,.07) 1px, transparent 1px)` + idem en 90deg, `background-size: 28px 28px` |
 
-Aucun dégradé. Aucune ombre. **Aucun border-radius** (angles droits partout) sauf le cercle `+/−` de la FAQ (50 %).
+**Aucun border-radius**, sauf les petits ronds décoratifs (trou de l'étiquette). **Ombres pleines sans flou** (`4px 4px 0`, `6px 6px 0`, `8px 8px 0`). Une seule ombre floue : sous le ticket du hero (`0 30px 50px -20px rgba(0,0,0,.5)`).
 
-### Typographie (Google Fonts)
-- **Bodoni Moda** (opsz 6..96, 400 / 500 / italic 400) — tous les titres, chiffres, noms de boutiques. Fallback `Didot, serif`.
-- **Hanken Grotesk** (300 / 400 / 500 / 600) — corps, UI, labels. Fallback `system-ui, sans-serif`.
-- **JetBrains Mono** (500) — codes promo, noms de domaine.
-- Body : 17px / line-height 1.6 / `-webkit-font-smoothing: antialiased` / `text-wrap: pretty`.
+### Typographies (Google Fonts)
+```
+https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime:wght@400;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap
+```
+| Famille | Usage |
+| --- | --- |
+| **Archivo** (axe largeur 62-125) | Titres, prix, rangs. Toujours condensé via `font-stretch` (62 % à 80 %), le plus souvent en uppercase. |
+| **Courier Prime** 400/700 | Ticket, libellés de section, données, codes promo, logo. |
+| **Schibsted Grotesk** 400-800 | Corps de texte et interface. Body : 18px, line-height 1.6, `text-wrap: pretty`. |
 
-| Élément | Police | Taille | Poids | Line-height | Letter-spacing |
+| Élément | Police | Taille | Graisse | lh | Détails |
 | --- | --- | --- | --- | --- | --- |
-| H1 hero | Bodoni Moda | `clamp(44px, 8vw, 116px)` | 400 | .98 | −0.03em, max-width 13ch |
-| H2 de section | Bodoni Moda | `clamp(34px, 5vw, 64px)` | 400 | 1 | −0.025em |
-| H2 de fiche (nom boutique) | Bodoni Moda | `clamp(40px, 6vw, 78px)` | 400 | .98 | −0.03em |
-| Numéro de rang (rail fiche) | Bodoni Moda italic | `clamp(96px, 13vw, 190px)` | 400 | .78 | −0.05em, couleur `#8A6A35` |
-| « 10 » filigrane hero | Bodoni Moda | `clamp(260px, 44vw, 640px)` | 400 | .8 | −0.04em, `color: transparent; -webkit-text-stroke: 1px rgba(201,169,110,0.28)` |
-| Chiffres hero (stats) | Bodoni Moda | 52px | 400 | 1 | — |
-| Kicker / label / en-tête de tableau | Hanken Grotesk | 10.5–11px | 500–600 | — | .24–.32em, uppercase |
-| Boutons | Hanken Grotesk | 11–12px | 500–600 | — | .22–.24em, uppercase |
-| Sous-titre hero | Hanken Grotesk | `clamp(17px, 1.8vw, 20px)` | 300 | 1.6 | max-width 46ch |
-| Corps de fiche | Hanken Grotesk | 17px | 300 | 1.75 | max-width 66ch |
-| Italiques d'accent dans les H2 | Bodoni Moda italic | hérité | 400 | — | couleur `#C9A96E` (sombre) / `#8A6A35` (clair) |
+| H1 | Archivo | `clamp(48px, 7.6vw, 112px)` | 900 | .88 | stretch 68 %, uppercase, ls −0.02em ; « pas cher » sur fond jaune, texte encre, `rotate(-2deg)`, padding 0 .12em |
+| H2 | Archivo | `clamp(38px, 5.4vw, 76px)` | 900 | .9 | stretch 68 %, uppercase, ls −0.015em |
+| Libellé de section (« 01 · Simulateur de panier ») | Courier Prime | 14px | 700 | — | uppercase, `#0B4D33` (jaune sur fond vert) |
+| Prix étiquette n°1 (euros) | Archivo | `clamp(110px, 11vw, 150px)` | 900 | .82 | stretch 62 % |
+| Prix étiquettes n°2-3 (euros) | Archivo | `clamp(84px, 8vw, 110px)` | 900 | .82 | stretch 62 % |
+| Centimes + « € » | Archivo | 34px | 900 | — | à droite des euros, au-dessus de « le gramme » (Courier 13px) |
+| Nom sur étiquette | Archivo | `clamp(26px, 2.4vw, 32px)` | 800 | 1 | stretch 75 %, uppercase |
+| Nom dans les avis | Archivo | `clamp(36px, 4.4vw, 60px)` | 900 | .9 | stretch 70 %, uppercase ; n°1 en `#0B4D33` |
+| Total simulateur | Archivo | `clamp(26px, 3vw, 38px)` | 900 | 1 | stretch 70 % |
+| Ticket | Courier Prime | 15px | 400/700 | 1.5 | — |
 
-### Espacement et formes
-- Conteneur : `max-width: 1320px; margin: 0 auto; padding-inline: clamp(18px, 4vw, 56px)`.
-- Padding vertical de section : `clamp(64px, 9vw, 120px)` (verdict : `clamp(56px, 8vw, 104px)`).
-- Bordures : 1px uniquement. Rayon : 0.
-- Tap targets ≥ 44px ; CTA principaux 54px de haut.
-
-### Marque
-Logo = losange plein 9×9px `#C9A96E` (carré rotaté 45°) + wordmark « Meilleur site *CBD* » en Bodoni Moda 24px (« CBD » en italique champagne), `white-space: nowrap`. Footer : même wordmark en `clamp(28px, 2.6vw, 34px)`. Aucun autre asset graphique.
-
----
-
-## Screens / Views
-Une seule page, sections dans cet ordre.
-
-### 1. Header sticky
-`position: sticky; top: 0; z-index: 60; background: rgba(18,17,15,0.86); backdrop-filter: blur(14px)`; bordure basse 1px `rgba(201,169,110,0.22)` ; hauteur min 68px ; flex space-between, wrap.
-- Gauche : logo (lien `#haut`), `flex-shrink: 0`.
-- Droite (gap 26px) : « Mis à jour le 14 septembre 2026 » (11px, uppercase, .28em, `#A39A8B`, nowrap) + bouton contour « Le classement » (lien `#classement`, min-height 44px, padding 0 22px, bordure 1px `#C9A96E`, texte `#C9A96E`, 11.5px uppercase .24em ; hover : fond `#C9A96E`, texte `#12110F`).
-
-### 2. Hero (`#haut`)
-Fond `#12110F`, `overflow: hidden`, `position: relative`. Filigrane « 10 » en contour doré en bas à droite (`right: -2vw; bottom: -9vw`, pointer-events none).
-Padding : `clamp(64px, 11vw, 150px)` haut, `clamp(48px, 7vw, 90px)` bas.
-1. Kicker : filet 48×1px `#C9A96E` + « Édition 2026 — Comparateur indépendant » (11px, .32em, uppercase, `#C9A96E`), margin-bottom `clamp(32px, 5vw, 56px)`.
-2. H1 : « Les 10 meilleurs sites pour acheter du *CBD* en 2026 » (« CBD » italique `#C9A96E`), margin-bottom 34px.
-3. Sous-titre : « 34 boutiques françaises testées, 6 critères de notation pondérés, classement mis à jour le 14 septembre 2026. » `#CFC6B6`, margin-bottom 44px.
-4. **Plaque lauréat** (lien vers `#rang-1`) : inline-flex wrap, gap 10px 18px, padding 16px 22px, bordure 1px `rgba(201,169,110,0.45)`, fond `rgba(201,169,110,0.06)` ; hover bordure `#C9A96E` + fond `rgba(201,169,110,0.12)`. Contenu : « N° 1 de l'édition 2026 » (10.5px uppercase .28em champagne) · séparateur vertical 1×18px · « CBD Discounter » (Bodoni 22px) · « Dès 0,75 €/g — lire l'avis » (14px `#CFC6B6`). margin-bottom 40px.
-5. CTA (gap 14px) : « Voir le classement complet » (plein `#C9A96E`, texte `#12110F`, 54px, padding 0 32px, 12px 600 uppercase .24em, nowrap ; hover `#E4CC9C`) et « Notre méthodologie » (contour `rgba(244,239,230,0.3)`, texte ivoire ; hover bordure ivoire). margin-bottom `clamp(56px, 9vw, 110px)`.
-6. Stats `<dl>` : grille `repeat(auto-fit, minmax(150px, 1fr))`, max-width 980px, gap 28px 0. Chaque item : bordure gauche 1px `rgba(201,169,110,0.4)`, padding-left 20px ; `dt` 10.5px uppercase .28em `#A39A8B` ; `dd` Bodoni 52px, margin-top 10px. Valeurs : Boutiques testées 34 · Retenues 10 · Critères pondérés 6 · Commandes payées 41.
-
-### 3. Chapitre I — Synthèse en trois choix
-Fond `#F4EFE6`, texte `#191714`.
-- En-tête (réutilisé pour toutes les sections) : flex wrap space-between, align end ; H2 « La synthèse *en trois choix* » (italique bronze) ; à droite « Chapitre I » (11px uppercase .32em `#6B6358`, nowrap). margin-bottom `clamp(36px, 5vw, 60px)`.
-- Grille `repeat(auto-fit, minmax(260px, 1fr))`, bordure haute 1px `#191714`. Chaque carte : padding 30px 26px 34px 0, margin-right 26px, bordure basse 1px `rgba(25,23,20,0.16)`, colonne gap 14px :
-  - ligne 1 : numéro romain italique Bodoni 22px bronze (I, II, III) à gauche, label uppercase 10.5px .24em `#6B6358` à droite ;
-  - nom de boutique Bodoni `clamp(32px, 3.2vw, 42px)`, margin-top 18px ;
-  - ligne prix : prix Bodoni 22px (nowrap) · séparateur 1×14px · détail 14px `#6B6358` (flex-wrap) ;
-  - justification 15.5px 300 `#3A352E`.
-- Données : I Meilleur global — CBD Discounter — 0,75 €/g — Expédition avant 14h30 ; II Boutiques physiques — Greenhouse CBD Shop — 2,80 €/g — Colis discret ; III Livraison offerte — CBDP Paris — 7,14 €/g — 24/48 h offerte.
-
-### 4. Chapitre II — Tableau comparatif
-Fond `#12110F`. H2 « Tableau comparatif *des 10 boutiques* ». Sous-titre « Prix de départ relevés le 14 septembre 2026, livraison en France métropolitaine. » (16px 300 `#A39A8B`).
-**≥ 768px — `<table>`** dans un wrapper `overflow-x: auto` ; table `min-width: 880px`, 14.5px, `border-collapse: collapse`.
-- `<caption>` : « Dix boutiques CBD françaises, relevé du 14 septembre 2026. » (12px `#A39A8B`, aligné à gauche, padding-bottom 16px).
-- `thead tr` : bordure haute 1px `#C9A96E`, basse 1px `rgba(201,169,110,0.35)`. `th` : 10.5px uppercase .26em 500 `#C9A96E`, padding 16px 14px.
-- Colonnes : **Rang | Boutique | Prix dès | Livraison | Code promo | Spécificité | Site** (Site aligné à droite).
-- Lignes : bordure basse 1px `rgba(244,239,230,0.1)`, cellules padding 18px 10px ; hover fond `#1C1A17`. Ligne n°1 : fond `rgba(201,169,110,0.09)`.
-  - Rang : « 01 »…« 10 », Bodoni italique 26px `#C9A96E`.
-  - Boutique : `<th scope="row">` Bodoni 20px, min-width 200px, nom en nowrap. Ligne 1 : badge « Notre choix » à côté (fond `#C9A96E`, texte `#12110F`, 9.5px 600 uppercase .24em, padding 5px 10px).
-  - Prix dès : nowrap, `#CFC6B6`. Livraison, Spécificité : `#CFC6B6`.
-  - Code promo : si code → chip JetBrains Mono 12.5px .1em, padding 6px 10px, fond `rgba(201,169,110,0.1)`, texte `#E4CC9C` ; sinon « — » `#A39A8B`.
-  - Site : **rangs 1-3** → bouton contour « Voir le site » (44px, padding 0 18px, bordure `rgba(201,169,110,0.6)`, texte `#C9A96E`, 11px uppercase .22em ; hover plein champagne), `rel="nofollow sponsored"`. **Rangs 4-10** → nom de domaine en texte simple, JetBrains Mono 12.5px `#A39A8B`, **aucun lien**.
-
-**< 768px — `<ol>` de cartes** (gap 14px) : fond `#1A1815`, bordure haute 1px `#C9A96E`, padding 20px 18px. Ligne titre : rang italique 26px champagne + nom Bodoni 26px (+ badge pour le n°1). `<dl>` grille `auto 1fr`, gap 10px 18px, 15px : Spécificité, Prix dès, Livraison, Code promo (mono `#E4CC9C`). Puis : rangs 1-3 → bouton plein champagne pleine largeur 48px « Voir le site » ; rangs 4-10 → domaine en mono 13px `#A39A8B`, sans lien.
-
-### 5. Chapitre III — Classement détaillé (`#classement`)
-Fond `#F4EFE6`. H2 « Le classement *détaillé* ». Sous-titre « Chaque boutique a fait l'objet d'au moins une commande payée par la rédaction entre janvier et août 2026. ».
-10 `<article id="rang-N">` : bordure haute 1px `#191714`, padding `clamp(40px, 6vw, 80px) 0`.
-Grille : **≥ 768px** `clamp(180px, 20vw, 260px) minmax(0, 1fr)` ; **< 768px** une colonne. Gap `clamp(24px, 4vw, 72px)`, align start.
-- **Rail gauche** — `position: sticky; top: 100px` (≥768px seulement, `static` en dessous) : numéro « 01 » italique bronze géant ; dessous, bordure haute 1px `rgba(25,23,20,0.2)`, padding-top 16px : label « Prix dès » (10.5px uppercase .28em `#6B6358`) + valeur Bodoni `clamp(20px, 2vw, 28px)`.
-- **Colonne droite** :
-  1. Ligne kicker (flex wrap gap 10px 16px) : pour le n°1 uniquement, badge « Lauréat 2026 · Notre choix » (fond `#191714`, texte `#E4CC9C`) ; puis tagline 11px uppercase .3em bronze.
-  2. H2 nom de boutique (margin-bottom `clamp(28px, 4vw, 44px)`).
-  3. Points forts / Points faibles : grille `repeat(auto-fit, minmax(240px, 1fr))`, gap colonne `clamp(24px, 4vw, 56px)`. Chaque bloc : bordure haute 1px (forts `#8A6A35`, faibles `rgba(25,23,20,0.25)`), padding 18px 0 8px ; `h3` 10.5px 600 uppercase .28em (forts bronze, faibles `#6B6358`) ; `ul` sans puces, items en grille `18px 1fr` avec marqueur texte `+` / `−` en Bodoni.
-  4. Tableau « Informations relevées » (`caption` 10.5px uppercase) : fond `#EAE3D6`, 15px ; `th` 36 % 13px `#6B6358` padding 13px 16px 13px 18px ; `td` 500 ; filets `rgba(25,23,20,0.1)`. Lignes : Prix dès, Livraison, Code promo, Spécificité, Site.
-  5. Paragraphe 17px 300 lh 1.75 `#2A2622`, max-width 66ch.
-  6. **Rangs 1-3 seulement** : bouton plein `#191714` « Voir le site » (54px, padding 0 32px, texte ivoire, 12px 600 uppercase .24em ; hover `#8A6A35`) + « Code [CODE] » (chip mono 13px, bordure 1px dashed `rgba(138,106,53,0.6)`, padding 7px 11px). Rangs 4-10 : rien (pas de lien externe).
-
-### 6. Le verdict de la rédaction
-Fond `#C9A96E`, texte `#12110F`. Grille `repeat(auto-fit, minmax(300px, 1fr))`, gap `clamp(32px, 5vw, 80px)`, align end.
-- Gauche : kicker « Le verdict de la rédaction » ; H2 « Pourquoi *CBD Discounter* arrive en tête » ; paragraphe 17px `#2A2110` max-width 48ch ; bouton « Voir CBD Discounter » (plein `#12110F`, texte ivoire, 54px ; hover `#2A2622`), lien `https://www.cbd-discounter.fr/` `rel="nofollow sponsored"`.
-- Droite : `<dl>` bordure haute 1px `#12110F`, 4 lignes (grille `minmax(0,1fr) auto`, padding 18px 0, bordure basse `rgba(18,17,15,0.25)`) : Prix dès **0,75 €/g** (Bodoni 34px) · Catalogue **Le plus large du top 10** · Expédition **Jour même avant 14h30** · Code promo **DISCOUNTER15** (Bodoni `clamp(19px, 2vw, 24px)`, nowrap).
-
-### 7. Chapitre IV — Méthodologie (`#methodologie`)
-Fond `#12110F`. Grille 2 colonnes `repeat(auto-fit, minmax(300px, 1fr))`.
-- Gauche : « Chapitre IV », H2 « Notre *méthodologie* », paragraphe intro, puis encadré « Transparence sur les relations commerciales » (bordure haute 1px `#C9A96E`, padding-top 22px, h3 champagne 10.5px uppercase, texte 15.5px 300 `#CFC6B6`).
-- Droite : `<ol>` de 6 critères ; chaque `li` : bordure haute `rgba(244,239,230,0.14)`, padding 24px 0, grille `minmax(0,1fr) auto` : nom Bodoni `clamp(21px, 2.4vw, 28px)` | pourcentage Bodoni italique `clamp(30px, 3.6vw, 44px)` champagne ; jauge 1px pleine largeur (`rgba(244,239,230,0.12)` + remplissage `#C9A96E` de largeur = `bar`) ; description 15px 300 `#A39A8B`.
-- Pondérations : Taux de CBD et analyses 25 % (100 %) · Prix au gramme 20 % (80 %) · Origine et traçabilité 20 % (80 %) · Livraison 15 % (60 %) · Paiement 10 % (40 %) · Service après-vente 10 % (40 %).
-
-### 8. Chapitre V — Comment choisir son site de CBD
-Fond `#EAE3D6`. Grille `repeat(auto-fit, minmax(300px, 1fr))`, gap colonne `clamp(24px, 4vw, 56px)`. 6 items : bordure haute `rgba(25,23,20,0.3)`, padding 26px 0 34px, grille gap 14px : numéro Bodoni italique 40px bronze, titre Bodoni 23px, description 15.5px 300 `#3A352E`.
-
-### 9. Chapitre VI — FAQ
-Fond `#12110F`. Grille 2 colonnes (titre à gauche, accordéon à droite). Accordéon : bordure haute 1px `#C9A96E` ; 9 entrées, bordure basse `rgba(244,239,230,0.14)`.
-- `<h3>` (Bodoni `clamp(19px, 2vw, 22px)`) contenant `<button type="button" aria-expanded>` pleine largeur, min-height 68px, padding 20px 0, grille `44px 1fr 32px` : numéro « 01 » (11px .2em champagne, Hanken) | question | cercle 30×30 bordure `rgba(201,169,110,0.5)` avec `+`/`−` champagne. Hover texte `#E4CC9C`.
-- Réponse `<p>` : margin-left 52px, padding 0 40px 26px 0, 16px 300 lh 1.72 `#CFC6B6`, max-width 68ch, affichée seulement si ouverte.
-- 1re question : « Quel est le meilleur site pour acheter du CBD en France en 2026 ? » → réponse CBD Discounter.
-
-### 10. Footer
-Fond `#0B0A09`, bordure haute `rgba(201,169,110,0.22)`. Grille `repeat(auto-fit, minmax(240px, 1fr))`, gap 40px : wordmark + phrase ; « Mentions légales » (3 liens) ; « Contact » (2 mailto). Labels 10.5px uppercase champagne ; liens 15px `#CFC6B6` min-height 36px, hover `#E4CC9C`. Barre basse (bordure haute `rgba(244,239,230,0.1)`, 13.5px `#A39A8B`) : « Vente réservée aux adultes. Produit non thérapeutique… Taux de THC inférieur ou égal à 0,3 %. » + « © 2026 Meilleur site CBD ».
+### Mise en page
+- Conteneur : `max-width: 1320px; margin: 0 auto; padding-inline: clamp(14px, 3vw, 36px)`.
+- Padding vertical des sections : `clamp(56px, 8vw, 104px)`.
+- Bordures : **2px solid `#101A14`** partout ; séparateurs internes en pointillés (`1px dashed` ou `2px dashed`).
+- Zones cliquables ≥ 44px (CTA 50-54px).
+- Liens par défaut : `#0B4D33`, soulignés (`text-underline-offset: 3px`) ; survol `#101A14`.
+- Focus : `outline: 3px solid #FFE34A; outline-offset: 2px; box-shadow: 0 0 0 6px #101A14`. Sélection : fond jaune.
+- `html { scroll-behavior: smooth }` ; ancres avec `scroll-margin-top: 70-80px` (header sticky).
 
 ---
 
-## Interactions & Behavior
-- **Accordéon FAQ** : seul état interactif. `openFaq: Record<number, boolean>`, toggle au clic, plusieurs réponses ouvertes possibles, `aria-expanded` synchronisé, signe `+` ↔ `−`.
-- **Reveal au scroll** : éléments `data-reveal` hors viewport au chargement → `transform: translateY(24px)`, remis à `none` à l'entrée (IntersectionObserver, `rootMargin: 0px 0px -8% 0px`), `transition: transform 1s cubic-bezier(.2,.7,.2,1)`. **Pas d'animation d'opacité** (rien n'est masqué). Désactivé sous `prefers-reduced-motion: reduce`.
-- **Hovers** : listés par composant ci-dessus (transitions par défaut du navigateur, aucune durée imposée).
-- **Focus** : `:focus-visible { outline: 1px solid #C9A96E; outline-offset: 4px; }`.
-- **Sélection** : `::selection { background: #C9A96E; color: #12110F; }`.
-- **Scroll** : `scroll-behavior: smooth` ; ancres `#haut`, `#classement`, `#methodologie`, `#rang-1`…`#rang-10`. Le header sticky fait 68px → prévoir `scroll-margin-top: 80px` sur les ancres.
-- **Liens par défaut** : `a { color: #C9A96E }`, hover `#E4CC9C`, pas de soulignement.
+## 2. Sections (dans l'ordre)
 
-### Responsive
-Un seul point de rupture structurel : **768px**.
-- < 768px : tableau → cartes empilées ; fiches en une colonne, rail non sticky.
-- Tout le reste s'adapte par `clamp()` et `auto-fit`.
+### 2.1 Bandeau de relevé
+Fond jaune, bordure basse 2px. Flex wrap space-between, padding 8px, Courier Prime 13.5px 700 uppercase : « Relevé des prix du 14 septembre 2026 » · « Prix au gramme TTC · hors frais de port ».
 
-## Règles de contenu (impératives)
-- **Liens externes uniquement pour les rangs 1-3** (CBD Discounter, Greenhouse CBD Shop, CBDP Paris), tous en `rel="nofollow sponsored"`. Rangs 4-10 : nom de domaine affiché en texte, **jamais cliquable**.
-- Codes promo : CBD Discounter `DISCOUNTER15`, Greenhouse `GREENHOUSE15`, CBDP Paris `PARIS15`, CBDOO `CBDNOUVEAU`, autres « — ».
-- URLs : `https://www.cbd-discounter.fr/` confirmée. **À confirmer** : `greenhouse-cbd-shop.fr`, `cbdp-paris.fr`, domaine éditeur `meilleur-site-cbd.fr`, emails `contact@` / `corrections@meilleur-site-cbd.fr`.
-- Registre bien-être : aucune allégation thérapeutique.
+### 2.2 Header sticky
+`position: sticky; top: 0; z-index: 50`, fond `#F4F5EE`, bordure basse 2px. Flex wrap space-between.
+- **Logo** (lien `#ticket`) : Courier Prime 700 `clamp(15px, 1.6vw, 18px)`, « meilleur-site-cbd-**pas-cher**.com » ; « pas-cher » dans une boîte jaune bordée 2px, padding 0 6px.
+- **Nav** (15px 600) : Simulateur `#simulateur` · Le rayon `#rayon` · Avis `#avis` · Guide `#guide` · FAQ `#faq` (44px, padding 0 12px, survol fond `#E2E6D8`) + CTA « DISCOUNTER15 → » (fond vert, texte jaune, Courier 700, lien externe CBD Discounter ; survol fond encre).
 
-## State Management
-Aucun état serveur. Un seul état client : `openFaq`. Contenu statique dans un fichier de données. Structure d'une boutique : `rank, name, domain, href? (rangs 1-3), entry, shipping, promo, spec, tagline, pros[], cons[], criteria[{k,v}], body`. Dérivés : `pad` (« 01 »), `anchor` (« rang-N »), `isTop` (rank === 1), `hasLink` (rank ≤ 3), `hasPromo` (promo !== « — »).
+### 2.3 Hero `#ticket`
+Fond vert + quadrillage, texte `#F4F5EE`. Grille `repeat(auto-fit, minmax(min(100%, 440px), 1fr))`, gap `clamp(40px, 6vw, 88px)`, `align-items: center`.
 
-## SEO
-- Un seul `<h1>` ; `<h2>` par section et par fiche ; `<h3>` pour FAQ et sous-titres.
-- 3 JSON-LD dans `<head>` (à copier depuis le `<helmet>` du fichier) : `Organization`, `ItemList` (10 positions dans l'ordre ci-dessus), `FAQPage` (9 questions, texte identique à la FAQ visible). Les garder synchronisés.
-- Polices : `preconnect` + `display=swap` (idéalement auto-hébergées). Objectif Lighthouse 100.
+**Colonne gauche**
+1. Libellé jaune : « Comparatif des prix · 10 boutiques · édition 2026 ».
+2. **H1** : « Meilleur site CBD **pas cher** en 2026 ».
+3. Chapô `clamp(18px, 1.8vw, 21px)` `#DDE8DF`, max 46ch ; « CBD Discounter » en `<strong>` clair.
+4. Ligne CTA (flex wrap, gap 22px 28px) :
+   - **Étiquette de prix** (lien CBD Discounter) : fond jaune, bordure 2px, `clip-path: polygon(22px 0, 100% 0, 100% 100%, 22px 100%, 0 50%)` (étiquette à pointe gauche), `rotate(-3deg)`, padding 16px 28px 16px 46px. Trou : rond 12px vert bordé 2px, à 20px du bord gauche, centré verticalement. Contenu : « CBD DISCOUNTER · DÈS » (Courier 12.5px) puis « 0,75€/g » (Archivo stretch 62 %, 900, 72px ; « /g » en 30px).
+   - Pile de 2 liens : « Voir les prix CBD Discounter » (fond clair, bordure 2px, ombre `4px 4px 0 #101A14`, 54px, 800 ; survol fond jaune) et « Calculer mon panier ↓ » (lien texte vers `#simulateur`).
 
-## Assets
-Aucune image. Seuls éléments graphiques : losange CSS du logo et « 10 » typographique en contour. Polices Bodoni Moda, Hanken Grotesk, JetBrains Mono (Google Fonts, SIL OFL).
+**Colonne droite : le ticket** (`<figure>`, largeur `min(100%, 430px)`, centré, `rotate(2deg)`)
+- Corps : fond `#FBFBF4`, Courier 15px, padding `28px clamp(18px,3vw,30px) 18px`, ombre floue.
+- En-tête centré : « MEILLEUR-SITE-CBD-PAS-CHER.COM » (700 16px), « Ticket n° 2026-0914 · comparatif des prix » (13px).
+- Ligne pointillée en texte (`- - - -`, `overflow: hidden; white-space: nowrap`).
+- 3 lignes en grille `auto 1fr auto` : « 01 / CBD DISCOUNTER ……… / 0,75 €/G » (en gras), puis « 02 GREENHOUSE CBD SHOP 2,80 €/G », « 03 CBDP PARIS 7,14 €/G ». La colonne du milieu se termine par des points de conduite coupés (`overflow: hidden`).
+- Pointillés, puis 3 lignes clé/valeur 14px : MEILLEUR PRIX PODIUM → **CBD DISCOUNTER** · EXPÉDITION → **JOUR MÊME <14H30** · CODE N°1 → **DISCOUNTER15** (surligné jaune).
+- Ligne `= = = =`, code-barres de 54px : `repeating-linear-gradient(90deg, #101A14 0 2px, transparent 2px 4px, #101A14 4px 5px, transparent 5px 8px, #101A14 8px 11px, transparent 11px 13px, #101A14 13px 14px, transparent 14px 17px)`.
+- Pied : « Merci de votre visite · prix relevés le 14/09/2026 ».
+- **Bord déchiré en dents de scie** sous le ticket : div de 10px, `background: conic-gradient(from -45deg at bottom, #FBFBF4 90deg, transparent 0) 0 0 / 20px 10px repeat-x`.
+- `<figcaption>` masquée visuellement qui reprend les 3 prix en texte (accessibilité et SEO).
 
-## Files
-- `Meilleur site CBD Landing.dc.html` — référence de design complète (markup + styles exacts + données dans le `<script>` final).
-- `support.js` — runtime du prototype, nécessaire seulement pour ouvrir la référence ; aucune valeur pour la production.
+### 2.4 Bandeau verdict
+Fond encre. Grille `auto-fit, minmax(min(100%, 280px), 1fr)`, 3 cellules séparées par des filets verticaux `rgba(244,245,238,.18)`, padding 22px. Chaque cellule : libellé Courier 13px jaune uppercase + valeur 18px 600.
+« Prix le plus bas du podium » → CBD Discounter, 0,75 €/g · « Seul envoi le jour même » → CBD Discounter, avant 14h30 · « Code à utiliser » → DISCOUNTER15.
+
+### 2.5 Simulateur `#simulateur` (interactif)
+En-tête en 2 colonnes : libellé + H2 « Combien vous coûte votre CBD ? » à gauche ; à droite, texte d'explication (17.5px `#3D4A41`).
+**Carte** : fond blanc, bordure 2px, ombre `8px 8px 0 #0B4D33`.
+- **Sélecteur de quantité** (bordure basse 2px) : libellé « QUANTITÉ » (Courier 14px), puis 5 boutons `5 g / 10 g / 20 g / 50 g / 100 g` (flex 1 1 70px, 60px de haut, bordure gauche 2px, Archivo stretch 75 %, 800, 24px, `aria-pressed`). Actif : fond jaune. **Défaut : 10 g.**
+- **3 barres** (padding `clamp(20px, 3vw, 32px)`, gap 18px), grille `minmax(130px, 220px) minmax(0, 1fr)` :
+  - gauche : nom (18px 700) + prix au gramme (Courier 13.5px) ;
+  - droite : barre de 44px de haut, bordure 2px, largeur = `total / total max × 100 %` (max `calc(100% - 120px)`, min 10px), `transition: width .5s cubic-bezier(.2,.8,.2,1)` ; puis le total en Archivo.
+  - Couleurs : CBD Discounter `#19C36B`, les deux autres `#D3D8CB`.
+- **Pied** (fond jaune, bordure haute 2px pointillée) : phrase d'économie (17.5px 600) + CTA « Commander chez CBD Discounter → » (fond encre, texte jaune, 50px).
+
+**Logique**
+```js
+const PRICES = { "CBD Discounter": 0.75, "Greenhouse CBD Shop": 2.80, "CBDP Paris": 7.14 };
+total = prix * quantité;  // format fr : 7,50 €
+phrase = `Pour ${q} g, CBD Discounter vous fait économiser ${total2 - total1} par rapport à Greenhouse CBD Shop et ${total3 - total1} par rapport à CBDP Paris.`
+```
+Le simulateur ne compare **que les 3 sites du podium**. Le rendu initial (10 g) doit être présent dans le HTML côté serveur ; le JS ne fait que le mettre à jour.
+
+### 2.6 Le rayon `#rayon`
+Fond `#E2E6D8`, bordures 2px en haut et en bas. Libellé « 02 · Le classement », H2 « Les 10 sites, rangés comme en rayon », texte d'intro.
+
+**Étiquettes du podium** : `<ol>` en grille `auto-fit, minmax(min(100%, 300px), 1fr)`, gap 22px, `align-items: end`. Chaque étiquette (`<li id="etiquette-N">`) :
+- fond blanc, bordure 2px, ombre `6px 6px 0 #101A14` ;
+- **n°1 uniquement : pastille « MEILLEUR PRIX »** de 108×108px, fond `#19C36B`, position absolue `top: -34px; right: -14px`, `rotate(10deg)`, texte Archivo 900 15px uppercase, en forme d'étoile :
+  `clip-path: polygon(50% 0, 64.6% 14.9%, 85.4% 14.6%, 85.1% 35.4%, 100% 50%, 85.1% 64.6%, 85.4% 85.4%, 64.6% 85.1%, 50% 100%, 35.4% 85.1%, 14.6% 85.4%, 14.9% 64.6%, 0 50%, 14.9% 35.4%, 14.6% 14.6%, 35.4% 14.9%)` ;
+- bandeau haut (bordure basse 2px, Courier 14px uppercase) : « N° X du classement », fond jaune pour le n°1, `#F4F5EE` pour les n°2-3 ;
+- corps (padding 18px) : nom (H3) ; **prix en format étiquette** (euros géants + « ,75€ » + « le gramme ») ; `<dl>` Livraison / Atout / Code (bordure haute pointillée) ; CTA « Voir le site → » (52px, bordure 2px : n°1 fond vert texte jaune, n°2-3 fond encre texte clair ; survol fond jaune) ;
+- code-barres décoratif de 30px en pied (marges 0 18px 12px).
+
+**Le reste du rayon (places 4 à 10)** : bloc bordé 2px, fond `#F4F5EE`, en-tête encre « Le reste du rayon · places 4 à 10 ». 7 lignes en grille `56px 1fr` séparées par des pointillés : rang en Archivo 40px `#6B776E` ; nom (lien d'ancre interne vers `#avis-N`, Archivo stretch 80 % 800 21px) + spécificité ; ligne Courier 13.5px « Livraison : … · domaine ». **Ni prix, ni code, ni lien externe.**
+
+### 2.7 Avis détaillés `#avis`
+Libellé « 03 · Avis détaillés », H2 « Notre avis sur chaque site ». 10 `<article id="avis-N">` (bordure haute 2px, padding vertical `clamp(28px, 4vw, 44px)`), grille `auto-fit, minmax(min(100%, 300px), 1fr)` :
+- **Colonne gauche** : étiquettes « N° 0X » (bordure 2px) + pour le n°1 « Meilleur site pas cher 2026 » (fond `#19C36B`) ; H3 nom ; chapô (19px 600) ; encadré blanc bordé de données en Courier (Prix dès / Livraison / Code / Site) ; **rangs 1-3 uniquement** : CTA « Visiter {nom} → » (fond vert, texte jaune).
+- **Colonne droite** (`grid-column: span 2`) : paragraphes 18px lh 1.68 max 68ch ; puis 2 encadrés « + Les plus » (fond `#D7F5E3`) et « − Les moins » (blanc), bordés 2px, titres Courier 14px uppercase.
+- Valeurs « Prix dès » : `0,75 €/g`, `2,80 €/g`, `7,14 €/g` pour le podium, « non communiqué » pour les rangs 4-10.
+
+### 2.8 Guide `#guide`
+Fond vert, texte clair. Libellé jaune « 04 · Guide d'achat », H2 « Le vrai prix d'une commande », intro.
+- **Formule visuelle** (flex wrap, gap 10px, Archivo stretch 72 % 800 `clamp(18px, 2vw, 24px)` uppercase) : [Prix au gramme] **×** [Quantité] **+** [Frais de port] **−** [Code promo] **=** [Ce que vous payez]. Boîtes bordées 2px, padding 12px 16px : la 1re en jaune, les 3 suivantes en `#F4F5EE`, le résultat en `#19C36B`. Opérateurs en jaune, 32px.
+- **6 règles** en grille `auto-fit, minmax(min(100%, 300px), 1fr)` : filet haut `rgba(244,245,238,.4)`, « RÈGLE 0X » (Courier jaune), H3 Archivo stretch 78 % 800 25px uppercase, texte 17px `#DDE8DF`.
+
+### 2.9 FAQ `#faq`
+Libellé « 05 · Questions fréquentes », H2 « CBD pas cher : vos questions ». Grille `auto-fit, minmax(min(100%, 440px), 1fr)`, gap 14px. 8 cartes blanches bordées 2px, **toujours ouvertes** (pas d'accordéon) : H3 en grille `34px 1fr` (numéro Courier vert + question 19px 700), réponse 17px décalée de 42px. **Texte identique au JSON-LD FAQPage.**
+
+### 2.10 Footer
+Fond encre. 3 colonnes (`auto-fit, 260px`) : logo + phrase · « Transparence » · liens (Mentions légales, Confidentialité, `contact@meilleur-site-cbd-pas-cher.com`). Puis un grand code-barres clair de `clamp(60px, 9vw, 120px)` de haut, le numéro « 2 0 2 6 0 9 1 4 · 0 7 5 » (Courier 13px, ls .3em, centré), et la ligne légale : « Vente interdite aux mineurs. Les produits au CBD ne sont pas des médicaments. THC ≤ 0,3 %. © 2026 meilleur-site-cbd-pas-cher.com ».
+
+---
+
+## 3. Règles de contenu (impératives)
+- **Ordre** : 1 CBD Discounter · 2 Greenhouse CBD Shop · 3 CBDP Paris · 4 StreetShop France · 5 CBDOO · 6 CDUCBD · 7 Le Green Spot · 8 Mama Kana · 9 Green Owl · 10 CBDSol.
+- **Liens externes uniquement vers le top 3**, toujours en `rel="nofollow sponsored"` :
+  - CBD Discounter → `https://www.cbd-discounter.fr/`
+  - Greenhouse CBD Shop → `https://www.greenhouse-cbd-shop.fr/` *(à confirmer)*
+  - CBDP Paris → `https://www.cbdp-paris.fr/` *(à confirmer)*
+- Rangs 4-10 : domaine affiché en texte, **jamais cliquable**, **aucun prix affiché**, **aucun code promo**.
+- **Codes promo** : DISCOUNTER15, GREENHOUSE15, PARIS15 uniquement.
+- **CBD Discounter n'est jamais placé derrière un concurrent** : pas de tri, pas de prix de concurrent inférieur au sien (le prix de CBDSol est volontairement absent), le simulateur ne compare que le podium.
+- Aucune allégation thérapeutique ; mention mineurs / non médicament / THC ≤ 0,3 % obligatoire.
+
+## 4. SEO
+- `<title>` : « Meilleur site CBD pas cher en 2026 : le comparatif des prix | meilleur-site-cbd-pas-cher.com »
+- `<meta name="description">` : « Comparatif des prix au gramme de 10 sites CBD français. CBD Discounter, meilleur prix du podium à 0,75 €/g, expédition le jour même. Simulateur et codes promo. »
+- Un seul `<h1>` ; H2 par section ; H3 par étiquette, avis, règle et question ; H4 pour « Les plus » et « Les moins ».
+- JSON-LD : `WebSite`, `ItemList` (10 positions : URLs des sites pour 1-3, ancres `#avis-N` pour 4-10), `FAQPage` (8 Q/R).
+- Tout le contenu est rendu côté serveur, y compris l'état initial du simulateur.
+- Polices en `display=swap` (idéalement auto-hébergées). Aucune image. Objectif Lighthouse 95+ partout.
+
+## 5. Checklist de recette
+- [ ] Rendu identique à la référence à 1440, 1024, 768 et 390px.
+- [ ] Le ticket a bien son bord en dents de scie et son code-barres.
+- [ ] La pastille étoilée « Meilleur prix » est sur l'étiquette n°1 uniquement.
+- [ ] Le simulateur fonctionne au clavier, les 5 quantités sont justes (ex. 10 g → 7,50 € / 28,00 € / 71,40 €).
+- [ ] Liens externes uniquement vers le top 3, tous en `nofollow sponsored`.
+- [ ] Aucun prix ni code promo pour les places 4 à 10.
+- [ ] Pas de panier, de compte ni de recherche.
+- [ ] JSON-LD valides dans le test des résultats enrichis de Google.

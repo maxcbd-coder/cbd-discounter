@@ -1,32 +1,62 @@
 {%- liquid
-  # Gabarits marchands : jamais affichés, renvoyés vers la landing.
+  # Site éditorial, pas de boutique : les gabarits marchands renvoient vers l'accueil.
   assign msc_blocked = false
   case template.name
-    when 'product', 'collection', 'list-collections', 'cart', 'search', 'blog', 'article'
+    when 'product', 'collection', 'list-collections', 'cart', 'search', 'blog', 'article', 'customers/account', 'customers/login', 'customers/register'
       assign msc_blocked = true
   endcase
   if request.design_mode
     assign msc_blocked = false
   endif
+
+  assign msc_title = page_title
+  assign msc_description = page_description
+  if template.name == 'index'
+    if settings.msc_home_title != blank
+      assign msc_title = settings.msc_home_title
+    endif
+    if settings.msc_home_description != blank
+      assign msc_description = settings.msc_home_description
+    endif
+  elsif template.name == '404'
+    assign msc_title = 'Page introuvable | ' | append: shop.name
+  else
+    assign msc_title = page_title | append: ' | ' | append: shop.name
+  endif
 -%}
 <!doctype html>
-<html class="msc-html" lang="{{ request.locale.iso_code }}">
+<html lang="fr">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ msc_title | escape }}</title>
+    {%- if msc_description != blank -%}
+      <meta name="description" content="{{ msc_description | escape }}">
+    {%- endif -%}
     {%- if msc_blocked -%}
       <meta name="robots" content="noindex, nofollow">
       <meta http-equiv="refresh" content="0; url={{ routes.root_url }}">
       <script>window.location.replace({{ routes.root_url | json }});</script>
+    {%- else -%}
+      <link rel="canonical" href="{{ canonical_url }}">
     {%- endif -%}
-
+    <meta property="og:site_name" content="{{ shop.name | escape }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="{{ msc_title | escape }}">
+    {%- if msc_description != blank -%}
+      <meta property="og:description" content="{{ msc_description | escape }}">
+    {%- endif -%}
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta name="twitter:card" content="summary">
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
-
-    {%- render 'meta-tags' -%}
+    <meta name="theme-color" content="#0B4D33">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime:wght@400;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
     {{ 'msc-landing.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'msc-landing.js' | asset_url }}" defer></script>
 
@@ -36,7 +66,7 @@
   <body class="msc-body">
     <a class="msc-skip" href="#contenu">Aller au contenu</a>
     {% section 'msc-header' %}
-    <main id="contenu" role="main">
+    <main id="contenu">
       {{ content_for_layout }}
     </main>
     {% section 'msc-footer' %}
